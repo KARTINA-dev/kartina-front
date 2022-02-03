@@ -1,0 +1,17 @@
+@import "../../node_modules/normalize.css/normalize";
+@import "./colors";
+
+body {
+  line-height: 1.15;
+  font-family: "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  color: var(--color-typo-primary);
+  overflow: hidden;
+}
+
+code {
+  line-height: 1.15;
+  font-family: "source-code-pro", "Menlo", "Monaco", "Consolas", "Courier New",
+    monospace;
+  color: var(--color-typo-primary);
+}
