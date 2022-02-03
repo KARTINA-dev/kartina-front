@@ -11,6 +11,12 @@ module.exports = {
   plugins: ['react', '@typescript-eslint'],
   rules: {
     'no-shadow': 'off',
+    'import/order': [
+      'warn',
+      {
+        'newlines-between': 'always',
+      },
+    ],
     '@typescript-eslint/no-shadow': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
