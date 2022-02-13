@@ -6,6 +6,7 @@ import checker from 'vite-plugin-checker';
 
 export default defineConfig(() => {
   return {
+    base: '/kartina-front/',
     publicDir: resolve(process.cwd(), 'public'),
     root: 'src',
     plugins: [
