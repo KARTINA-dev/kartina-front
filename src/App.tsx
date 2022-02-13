@@ -1,15 +1,18 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Main } from './pages/Main/Main';
 
-import { history, store } from '../store';
+import { store } from './store';
 
-export const App: React.FC = () => (
+const App: React.VFC = () => (
   <React.StrictMode>
     <Provider store={store}>
-      <Router history={history}>
+      <Router>
         <Main />
       </Router>
     </Provider>
   </React.StrictMode>
 );
+
+export default App;

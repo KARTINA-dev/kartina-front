@@ -14,8 +14,7 @@ export default defineConfig(() => {
       checker({
         overlay: true,
         eslint: {
-          extensions: ['.ts', '.tsx'],
-          files: ['./'],
+          lintCommand: 'eslint --color --ext .js,.ts,.tsx',
         },
         typescript: {
           tsconfigPath: resolve(process.cwd(), 'tsconfig.json'),

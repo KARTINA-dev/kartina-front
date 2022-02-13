@@ -1,17 +1,22 @@
-@import "../../node_modules/normalize.css/normalize";
-@import "./colors";
+@import '../../node_modules/normalize.css/normalize';
+@import './typography';
+@import './colors';
 
 body {
   line-height: 1.15;
-  font-family: "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: 'HelveticaNeueCyr', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   color: var(--color-typo-primary);
+  background-color: var(--color-bg-default);
+  font-size: var(--font-size-m);
   overflow: hidden;
 }
 
-code {
-  line-height: 1.15;
-  font-family: "source-code-pro", "Menlo", "Monaco", "Consolas", "Courier New",
-    monospace;
-  color: var(--color-typo-primary);
+ul,
+ul li,
+ul ul li {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style: none;
 }

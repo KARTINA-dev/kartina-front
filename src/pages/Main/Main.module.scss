@@ -1,0 +1,59 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  font-size: var(--font-size-s);
+}
+
+.introduction {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--color-bg-default);
+  height: 80vh;
+  padding: 0 6rem;
+  margin: 0 auto;
+  width: 100%;
+
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 4rem 0;
+
+    &Column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.125rem;
+
+      &Tools {
+        align-self: center;
+        align-items: center;
+        flex-direction: row;
+        gap: 1.125rem;
+      }
+    }
+
+    &Subtitle {
+      &Meta {
+        color: var(--color-typo-accent);
+      }
+    }
+
+    &Languages {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      gap: 1.125rem;
+    }
+
+    &Link {
+      text-transform: uppercase;
+
+      &Accent {
+        color: var(--color-typo-accent);
+      }
+    }
+  }
+}
