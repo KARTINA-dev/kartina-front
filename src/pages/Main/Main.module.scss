@@ -6,6 +6,11 @@
   font-size: var(--font-size-s);
 }
 
+.loading {
+  justify-content: center;
+  align-items: center;
+}
+
 .introduction {
   display: flex;
   flex-direction: column;
@@ -49,7 +54,9 @@
     }
 
     &Link {
+      cursor: pointer;
       text-transform: uppercase;
+      color: var(--color-typo-primary);
 
       &Accent {
         color: var(--color-typo-accent);

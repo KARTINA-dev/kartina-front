@@ -1,6 +1,18 @@
 @import '../../node_modules/normalize.css/normalize';
 @import './typography';
 @import './colors';
+@import './animations';
+
+html,
+body,
+div#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
   line-height: 1.15;
@@ -10,6 +22,17 @@ body {
   background-color: var(--color-bg-default);
   font-size: var(--font-size-m);
   overflow: hidden;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+a {
+  cursor: pointer;
+  color: var(--color-typo-link);
+  text-decoration: none;
 }
 
 ul,

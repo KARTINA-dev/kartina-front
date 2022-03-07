@@ -1,9 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Main } from './pages/Main/Main';
 
+import Main from './pages/Main/Main';
 import { store } from './store';
+import './flow';
 
 const App: React.VFC = () => (
   <React.StrictMode>

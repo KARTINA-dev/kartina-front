@@ -1,12 +1,28 @@
+import cn from 'classnames';
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import { ReactComponent as ThemeIcon } from '../../assets/icons/theme_24.svg';
 import { useTranslation } from '../../i18n';
-import cn from 'classnames';
+import { Spinner } from '../../components/Spinner/Spinner';
+import { Routes } from '../../constants/routes';
 
+import { useAuthentication } from './hooks';
 import styles from './Main.module.scss';
 
-export const Main: React.VFC = () => {
+const Main: React.VFC = () => {
   const { t } = useTranslation();
+
+  const { user, login, isLoading } = useAuthentication();
+
+  if (isLoading) {
+    return (
+      <div className={cn(styles.main, styles.loading)}>
+        <Spinner />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.main}>
@@ -14,28 +30,36 @@ export const Main: React.VFC = () => {
         <div className={styles.header}>
           <ul className={styles.headerColumn}>
             <li className={styles.headerItem}>
-              <a className={styles.headerLink}>{t(({ introduction }) => introduction.header.drops)}</a>
+              <a href='/' className={styles.headerLink}>
+                {t(({ introduction }) => introduction.header.drops)}
+              </a>
             </li>
             <li className={styles.headerItem}>
-              <a className={styles.headerLink}>{t(({ introduction }) => introduction.header.marketplace)}</a>
+              <a href='/' className={styles.headerLink}>
+                {t(({ introduction }) => introduction.header.marketplace)}
+              </a>
             </li>
             <li className={styles.headerItem}>
-              <a className={styles.headerLink}>{t(({ introduction }) => introduction.header.contact)}</a>
+              <a href='/' className={styles.headerLink}>
+                {t(({ introduction }) => introduction.header.contact)}
+              </a>
             </li>
           </ul>
           <ul className={styles.headerColumn}>
             <li className={styles.headerItem}>
-              <a className={styles.headerLink}>{t(({ introduction }) => introduction.header.faq)}</a>
+              <a href='/' className={styles.headerLink}>
+                {t(({ introduction }) => introduction.header.faq)}
+              </a>
             </li>
-
             <li className={styles.headerItem}>
-              <a className={cn(styles.headerLink, styles.headerLinkAccent)}>
+              <a href='/' className={cn(styles.headerLink, styles.headerLinkAccent)}>
                 {t(({ introduction }) => introduction.header.galleries)}
               </a>
             </li>
-
             <li className={styles.headerItem}>
-              <a className={styles.headerLink}>{t(({ introduction }) => introduction.header.socials)}</a>
+              <a href='/' className={styles.headerLink}>
+                {t(({ introduction }) => introduction.header.socials)}
+              </a>
             </li>
           </ul>
           <ul className={styles.headerColumn}>
@@ -51,7 +75,15 @@ export const Main: React.VFC = () => {
               <span className={styles.headerLanguage}>{t(({ introduction }) => introduction.header.jp)}</span>
               <span className={styles.headerLanguage}>{t(({ introduction }) => introduction.header.en)}</span>
             </div>
-            <a className={cn(styles.headerLink, styles.headerBuy)}>{t(({ introduction }) => introduction.header.ru)}</a>
+            {user ? (
+              <button className={cn(styles.headerLink, styles.headerBuy)} onClick={login}>
+                {t(({ introduction }) => introduction.header.profile)}
+              </button>
+            ) : (
+              <Link className={cn(styles.headerLink, styles.headerBuy)} to={Routes.Profile}>
+                {t(({ introduction }) => introduction.header.signIn)}
+              </Link>
+            )}
           </ul>
         </div>
         <Logo />
@@ -59,3 +91,5 @@ export const Main: React.VFC = () => {
     </div>
   );
 };
+
+export default Main;
