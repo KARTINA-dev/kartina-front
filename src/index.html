@@ -14,6 +14,12 @@
   <link rel="stylesheet" href="/styles/fonts.css" />
 
   <title>KARTINA — the meta gallery</title>
+
+  <!--  Polyfill for nodejs builtin -->
+  <script type="module">
+    import { Buffer } from 'buffer';
+    window.Buffer = Buffer;
+  </script>
 </head>
 
 <body>
