@@ -13,7 +13,7 @@ export const ru = {
         ru: 'RU',
         jp: '中文',
         en: 'EN',
-        signIn: 'Sign in',
+        login: 'Sign in',
         profile: 'Profile',
       },
     },

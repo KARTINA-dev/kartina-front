@@ -76,13 +76,13 @@ const Main: React.VFC = () => {
               <span className={styles.headerLanguage}>{t(({ introduction }) => introduction.header.en)}</span>
             </div>
             {user ? (
+              <Link className={cn(styles.headerLink, styles.headerBuy)} to={Routes.Profile}>
+                {t(({ introduction }) => introduction.header.profile)}
+              </Link>
+            ) : (
               <button className={cn(styles.headerLink, styles.headerBuy)} onClick={login}>
                 {t(({ introduction }) => introduction.header.profile)}
               </button>
-            ) : (
-              <Link className={cn(styles.headerLink, styles.headerBuy)} to={Routes.Profile}>
-                {t(({ introduction }) => introduction.header.signIn)}
-              </Link>
             )}
           </ul>
         </div>

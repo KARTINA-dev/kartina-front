@@ -29,6 +29,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'jsx-quotes': [2, 'prefer-single'],
     'react/button-has-type': 'off',
+    'prefer-destructuring': 'off',
   },
   ignorePatterns: ['vite.config.ts', '*.js'],
 };
