@@ -1,0 +1,24 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  font-size: var(--font-size-s);
+  padding: 0 6rem;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--color-bg-default);
+    padding: 0 6rem;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+.loading {
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}

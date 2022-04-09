@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "target": "ESNext",
     "useDefineForClassFields": true,
     "jsx": "react-jsx",
@@ -20,23 +16,23 @@
     "noEmit": true,
     "outDir": "./",
     "rootDir": "./src",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "module": "esnext",
     "resolveJsonModule": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "types": ["vite/client", "vite-plugin-svgr/client", "node"],
+    "types": ["vite/client", "vite-plugin-svgr/client", "node"]
   },
   "plugins": [
     {
       "name": "typescript-plugin-css-modules"
     }
   ],
-  "include": [
-    "./src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"]
 }

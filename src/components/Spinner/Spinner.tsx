@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import { AiOutlineLoading } from 'react-icons/ai';
 
-import { Size } from '../../types/common';
+import { Size } from '@/types/common';
 
 import styles from './Spinner.module.scss';
 

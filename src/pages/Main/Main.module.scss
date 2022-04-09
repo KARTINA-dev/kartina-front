@@ -3,7 +3,14 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
+  padding: 0 6rem;
   font-size: var(--font-size-s);
+
+  .subtitle {
+    &Meta {
+      color: var(--color-typo-accent);
+    }
+  }
 }
 
 .loading {
@@ -16,10 +23,9 @@
   flex-direction: column;
   justify-content: space-between;
   background: var(--color-bg-default);
-  height: 80vh;
-  padding: 0 6rem;
   margin: 0 auto;
   width: 100%;
+  padding-top: 6rem;
 
   .header {
     display: grid;
@@ -32,18 +38,22 @@
       justify-content: center;
       gap: 1.125rem;
 
-      &Tools {
-        align-self: center;
+      &Info {
         align-items: center;
+      }
+
+      &Tools {
+        align-items: center;
+        justify-content: flex-end;
         flex-direction: row;
         gap: 1.125rem;
       }
     }
 
-    &Subtitle {
-      &Meta {
-        color: var(--color-typo-accent);
-      }
+
+
+    &Theme {
+      cursor: pointer;
     }
 
     &Languages {
@@ -51,6 +61,10 @@
       flex-direction: column;
       text-align: center;
       gap: 1.125rem;
+
+      &Item {
+        cursor: pointer;
+      }
     }
 
     &Link {

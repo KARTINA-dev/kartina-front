@@ -1,0 +1,50 @@
+.header {
+  display: grid;
+  padding: 4rem 0;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  &Column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.125rem;
+
+    &Info {
+      align-items: center;
+    }
+
+    &Tools {
+      align-items: center;
+      justify-content: flex-end;
+      flex-direction: row;
+      gap: 1.125rem;
+    }
+  }
+
+  &Subtitle {
+    &Meta {
+      color: var(--color-typo-accent);
+    }
+  }
+
+  &Languages {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1.125rem;
+
+    &Item {
+      cursor: pointer;
+    }
+  }
+
+  &Link {
+    cursor: pointer;
+    text-transform: uppercase;
+    color: var(--color-typo-primary);
+
+    &Accent {
+      color: var(--color-typo-accent);
+    }
+  }
+}

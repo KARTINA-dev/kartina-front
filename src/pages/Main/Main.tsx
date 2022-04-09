@@ -1,12 +1,14 @@
 import cn from 'classnames';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import * as fcl from '@onflow/fcl';
+import * as ft from '@onflow/types';
 
-import { ReactComponent as Logo } from '../../assets/logo.svg';
-import { ReactComponent as ThemeIcon } from '../../assets/icons/theme_24.svg';
-import { useTranslation } from '../../i18n';
-import { Spinner } from '../../components/Spinner/Spinner';
-import { Routes } from '../../constants/routes';
+import { ReactComponent as Logo } from '@/assets/logo.svg';
+import { useTranslation } from '@/i18n';
+import { Spinner } from '@/components/Spinner/Spinner';
+import { Size } from '@/types/common';
+import { Header } from '@/components/Header/Header';
+import { TRANSACTION_MARKET_PURCHASE } from '@/cadence/transactions/market/purchase';
 
 import { useAuthentication } from './hooks';
 import styles from './Main.module.scss';
@@ -16,77 +18,40 @@ const Main: React.VFC = () => {
 
   const { user, login, isLoading } = useAuthentication();
 
+  const purchase = async () => {
+    if (!user) {
+      return;
+    }
+
+    const listingId = 1;
+
+    const response = await fcl.mutate({
+      cadence: TRANSACTION_MARKET_PURCHASE,
+      args: [fcl.arg(Number(listingId), ft.UInt64), fcl.arg(user.addr, ft.Address)],
+      limit: 9999,
+    });
+
+    await fcl.tx(response).onceSealed();
+  };
+
   if (isLoading) {
     return (
       <div className={cn(styles.main, styles.loading)}>
-        <Spinner />
+        <Spinner size={Size.L} />
       </div>
     );
   }
 
   return (
     <div className={styles.main}>
+      <Header isAuthenticated={Boolean(user)} login={login}>
+        <span className={styles.subtitle}>
+          {t((d) => d.header.subtitle)}
+          <span className={styles.subtitleMeta}>{t((d) => d.header.meta)}</span>
+        </span>
+      </Header>
       <section className={styles.introduction}>
-        <div className={styles.header}>
-          <ul className={styles.headerColumn}>
-            <li className={styles.headerItem}>
-              <a href='/' className={styles.headerLink}>
-                {t(({ introduction }) => introduction.header.drops)}
-              </a>
-            </li>
-            <li className={styles.headerItem}>
-              <a href='/' className={styles.headerLink}>
-                {t(({ introduction }) => introduction.header.marketplace)}
-              </a>
-            </li>
-            <li className={styles.headerItem}>
-              <a href='/' className={styles.headerLink}>
-                {t(({ introduction }) => introduction.header.contact)}
-              </a>
-            </li>
-          </ul>
-          <ul className={styles.headerColumn}>
-            <li className={styles.headerItem}>
-              <a href='/' className={styles.headerLink}>
-                {t(({ introduction }) => introduction.header.faq)}
-              </a>
-            </li>
-            <li className={styles.headerItem}>
-              <a href='/' className={cn(styles.headerLink, styles.headerLinkAccent)}>
-                {t(({ introduction }) => introduction.header.galleries)}
-              </a>
-            </li>
-            <li className={styles.headerItem}>
-              <a href='/' className={styles.headerLink}>
-                {t(({ introduction }) => introduction.header.socials)}
-              </a>
-            </li>
-          </ul>
-          <ul className={styles.headerColumn}>
-            <span className={styles.headerSubtitle}>
-              {t(({ introduction }) => introduction.header.subtitle)}
-              <span className={styles.headerSubtitleMeta}>{t(({ introduction }) => introduction.header.meta)}</span>
-            </span>
-          </ul>
-          <ul className={cn(styles.headerColumn, styles.headerColumnTools)}>
-            <ThemeIcon />
-            <div className={styles.headerLanguages}>
-              <span className={styles.headerLanguage}>{t(({ introduction }) => introduction.header.ru)}</span>
-              <span className={styles.headerLanguage}>{t(({ introduction }) => introduction.header.jp)}</span>
-              <span className={styles.headerLanguage}>{t(({ introduction }) => introduction.header.en)}</span>
-            </div>
-            {user ? (
-              <button className={cn(styles.headerLink, styles.headerBuy)} onClick={login}>
-                {t(({ introduction }) => introduction.header.profile)}
-              </button>
-            ) : (
-              <Link className={cn(styles.headerLink, styles.headerBuy)} to={Routes.Profile}>
-                {t(({ introduction }) => introduction.header.signIn)}
-              </Link>
-            )}
-          </ul>
-        </div>
-        <Logo />
+        <Logo onClick={purchase} />
       </section>
     </div>
   );

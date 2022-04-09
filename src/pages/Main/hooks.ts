@@ -1,20 +1,21 @@
 import * as fcl from '@onflow/fcl';
 import { useEffect } from 'react';
 
-import { authActions } from '../../store/auth/store';
-import { useDispatch, useSelector } from '../../store/hooks';
-import { TUserInfo } from '../../store/auth/types';
+import { userActions } from '@/store/user/store';
+import { useDispatch, useSelector } from '@/store/hooks';
+import { TUser } from '@/store/user/types';
 
 export const useAuthentication = () => {
   const dispatch = useDispatch();
-  const { user, isLoading } = useSelector((state) => state.auth);
+  const { user, isLoading } = useSelector((state) => state.user);
 
   useEffect(() => {
-    fcl.currentUser().subscribe((currentUser: TUserInfo) => {
+    fcl.currentUser().subscribe((currentUser: TUser) => {
       const user = currentUser?.loggedIn ? currentUser : null;
-      dispatch(authActions.setState({ user, isLoading: false }));
+
+      dispatch(userActions.setState({ user, isLoading: false }));
     });
-  }, []);
+  }, [dispatch]);
 
   return {
     user,
