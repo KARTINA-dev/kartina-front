@@ -4,7 +4,11 @@ import { TUserState, TYPE_PREFIX } from './types';
 import * as sideEffects from './actions';
 
 const initialState: TUserState = {
-  user: null,
+  addr: null,
+  loggedIn: false,
+  balance: null,
+  items: [],
+  listings: [],
   isLoading: true,
 };
 
@@ -21,8 +25,10 @@ const slice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(sideEffects.getUserProfile.fulfilled, (state, { payload }) => {
-      state.user = { ...state.user, ...payload };
-      state.isLoading = false;
+      return { ...state, ...payload, isLoading: false };
+    });
+    builder.addCase(sideEffects.getUserListing.fulfilled, (state, { payload }) => {
+      return { ...state, ...payload, listings: payload, isLoading: false };
     });
   },
 });

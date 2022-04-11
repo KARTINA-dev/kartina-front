@@ -21,6 +21,7 @@ export default defineConfig(({ mode }) => {
         util: 'util',
         http: 'stream-http',
         https: 'https-browserify',
+        process: 'process/browser',
       },
     },
     root: 'src',

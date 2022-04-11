@@ -1,7 +1,8 @@
-import { TUser } from '@/store/user/types';
+import { TUserProfile } from '@/store/user/types';
 
 import { makeRequest } from './makeRequest';
 
 const getUrl = (rest = '') => `/users${rest}`;
 
-export const getUserProfile = (address: string) => makeRequest<TUser>({ method: 'POST', url: getUrl(`/${address}`) });
+export const getUserProfile = (address: string) =>
+  makeRequest<TUserProfile>({ method: 'GET', url: getUrl(`/${address}`) });
