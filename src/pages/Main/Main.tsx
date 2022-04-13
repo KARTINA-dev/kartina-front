@@ -9,6 +9,7 @@ import { Spinner } from '@/components/Spinner/Spinner';
 import { Size } from '@/types/common';
 import { Header } from '@/components/Header/Header';
 import { TRANSACTION_MARKET_PURCHASE } from '@/cadence/transactions/market/purchase';
+import { MintForm } from '@/components/MintForm/MintForm';
 
 import { useAuthentication } from './hooks';
 import styles from './Main.module.scss';
@@ -51,8 +52,10 @@ const Main: React.VFC = () => {
         </span>
       </Header>
       <section className={styles.introduction}>
+        {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
         <Logo onClick={purchase} />
       </section>
+      <MintForm />
     </div>
   );
 };

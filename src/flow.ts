@@ -9,6 +9,7 @@ import {
   NONFUNGIBLE_TOKEN_ADDRESS,
   STOREFRONT_ADDRESS,
   DISCOVERY_WALLET,
+  KARTINAITEMS_ADDRESS,
 } from './constants/env';
 
 config({
@@ -20,4 +21,5 @@ config({
   '0xMetadataViews': METADATA_ADDRESS,
   '0xStorefront': STOREFRONT_ADDRESS,
   '0xKittyItems': KITTYITEMS_ADDRESS,
+  '0xKartinaItems': KARTINAITEMS_ADDRESS,
 });
