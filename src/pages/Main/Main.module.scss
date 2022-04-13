@@ -1,6 +1,4 @@
 .main {
-  display: flex;
-  flex-direction: column;
   height: 100%;
   width: 100%;
   padding: 0 6rem;
@@ -24,8 +22,8 @@
   justify-content: space-between;
   background: var(--color-bg-default);
   margin: 0 auto;
+  padding: 2rem 0;
   width: 100%;
-  padding-top: 6rem;
 
   .header {
     display: grid;

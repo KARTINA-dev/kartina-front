@@ -3,22 +3,23 @@ import { useEffect } from 'react';
 
 import { userActions } from '@/store/user/store';
 import { useDispatch, useSelector } from '@/store/hooks';
-import { TUser } from '@/store/user/types';
+import { TUserProfile } from '@/store/user/types';
 
 export const useAuthentication = () => {
   const dispatch = useDispatch();
-  const { user, isLoading } = useSelector((state) => state.user);
+  const { isLoading, ...user } = useSelector((state) => state.user);
 
   useEffect(() => {
-    fcl.currentUser().subscribe((currentUser: TUser) => {
+    fcl.currentUser().subscribe((currentUser: TUserProfile) => {
       const user = currentUser?.loggedIn ? currentUser : null;
 
-      dispatch(userActions.setState({ user, isLoading: false }));
+      dispatch(userActions.setState({ ...user, isLoading: false }));
     });
   }, [dispatch]);
 
   return {
     user,
+    isAuthenticated: Boolean(user.addr),
     login: fcl.logIn,
     logout: fcl.unauthenticate,
     isLoading,

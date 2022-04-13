@@ -19,15 +19,15 @@
 
     <!--  Polyfill for nodejs builtin -->
     <script type="module">
-      import process from "process";
-      import { Buffer } from 'buffer'
-      import EventEmitter from 'events'
-      import url from 'url'
+      import process from 'process';
+      import { Buffer } from 'buffer';
+      import EventEmitter from 'events';
+      import url from 'url';
 
-      window.Buffer = Buffer
+      window.Buffer = Buffer;
       window.process = process;
-      window.EventEmitter = EventEmitter
-      window.url = url
+      window.EventEmitter = EventEmitter;
+      window.url = url;
     </script>
   </head>
 

@@ -11,7 +11,7 @@ export const FUNGIBLE_TOKEN_ADDRESS = import.meta.env.VITE_FUNGIBLE_TOKEN_ADDRES
 export const NONFUNGIBLE_TOKEN_ADDRESS = import.meta.env.VITE_NONFUNGIBLE_TOKEN_ADDRESS;
 export const FLOW_TOKEN_ADDRESS = import.meta.env.VITE_FLOW_TOKEN_ADDRESS;
 export const METADATA_ADDRESS = import.meta.env.VITE_METADATA_ADDRESS;
-export const STOREFRONT_ADDRESS = import.meta.env.VITE_FLOW_ADDRESS;
+export const STOREFRONT_ADDRESS = import.meta.env.VITE_STOREFRONT_ADDRESS;
 export const KITTYITEMS_ADDRESS = import.meta.env.VITE_KITTYITEMS_ADDRESS;
 export const KARTINAITEMS_ADDRESS = import.meta.env.VITE_KARTINAITEMS_ADDRESS;
 

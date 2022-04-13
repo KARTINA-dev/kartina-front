@@ -1,0 +1,40 @@
+.tabs {
+  color: var(--color-typo-primary);
+
+  :global {
+    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+      color: var(--color-typo-accent);
+    }
+
+    .ant-tabs-tab:hover {
+      color: var(--color-typo-accent);
+    }
+
+    .ant-tabs-ink-bar {
+      color: var(--color-accent);
+    }
+
+    .ant-tabs-tab + .ant-tabs-tab {
+      margin-left: 16px;
+    }
+
+    .ant-tabs-nav::before {
+      border-bottom: 1px solid var(--color-bg-border);
+    }
+
+    .ant-tabs-tab .ant-tabs-tab-btn,
+    .ant-tabs-tab-active .ant-tabs-tab-btn {
+      font-size: var(--font-size-s);
+      color: var(--color-typo-secondary);
+    }
+
+    .ant-tabs-tab-active .ant-tabs-tab-btn {
+      color: var(--color-typo-primary);
+      text-shadow: none;
+    }
+
+    .ant-tabs-ink-bar {
+      background: var(--color-control-bg-primary);
+    }
+  }
+}

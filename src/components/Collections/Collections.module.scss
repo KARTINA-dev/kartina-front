@@ -1,0 +1,43 @@
+.collections {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 10rem 0;
+
+  .collection {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-typo-primary);
+    gap: 1rem;
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .name {
+        display: flex;
+        font-size: var(--font-size-2xl);
+        font-weight: 700;
+        gap: 0.75rem;
+      }
+
+      .button {
+        font-size: var(--font-size-m);
+        cursor: pointer;
+      }
+    }
+
+    .gallery {
+      color: var(--color-typo-link);
+    }
+
+    .listings {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      overflow-x: scroll;
+      padding: 1rem 0;
+    }
+  }
+}

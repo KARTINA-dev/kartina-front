@@ -1,7 +1,5 @@
 import cn from 'classnames';
 import React from 'react';
-import * as fcl from '@onflow/fcl';
-import * as ft from '@onflow/types';
 
 import { ReactComponent as Logo } from '@/assets/logo.svg';
 import { useTranslation } from '@/i18n';
@@ -10,6 +8,7 @@ import { Size } from '@/types/common';
 import { Header } from '@/components/Header/Header';
 import { TRANSACTION_MARKET_PURCHASE } from '@/cadence/transactions/market/purchase';
 import { MintForm } from '@/components/MintForm/MintForm';
+import { Collections } from '@/components/Collections/Collections';
 
 import { useAuthentication } from './hooks';
 import styles from './Main.module.scss';
@@ -17,23 +16,7 @@ import styles from './Main.module.scss';
 const Main: React.VFC = () => {
   const { t } = useTranslation();
 
-  const { user, login, isLoading } = useAuthentication();
-
-  const purchase = async () => {
-    if (!user) {
-      return;
-    }
-
-    const listingId = 1;
-
-    const response = await fcl.mutate({
-      cadence: TRANSACTION_MARKET_PURCHASE,
-      args: [fcl.arg(Number(listingId), ft.UInt64), fcl.arg(user.addr, ft.Address)],
-      limit: 9999,
-    });
-
-    await fcl.tx(response).onceSealed();
-  };
+  const { isAuthenticated, login, isLoading } = useAuthentication();
 
   if (isLoading) {
     return (
@@ -45,7 +28,7 @@ const Main: React.VFC = () => {
 
   return (
     <div className={styles.main}>
-      <Header isAuthenticated={Boolean(user)} login={login}>
+      <Header isAuthenticated={isAuthenticated} login={login}>
         <span className={styles.subtitle}>
           {t((d) => d.header.subtitle)}
           <span className={styles.subtitleMeta}>{t((d) => d.header.meta)}</span>
@@ -53,9 +36,11 @@ const Main: React.VFC = () => {
       </Header>
       <section className={styles.introduction}>
         {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
-        <Logo onClick={purchase} />
+        <Logo />
+        <Logo />
       </section>
       <MintForm />
+      <Collections />
     </div>
   );
 };

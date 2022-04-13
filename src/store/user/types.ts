@@ -1,13 +1,31 @@
 export const TYPE_PREFIX = 'user';
 
-export type TUser = {
-  addr: string;
-  loggedIn: boolean;
-  balance: string;
-  items: null;
+export type TItem = {
+  name: string;
+  description: string;
+  imageCID: string;
+  itemID: number;
+  resourceID: number;
+  kind: {
+    rawValue: number;
+  };
+  rarity: {
+    rawValue: number;
+  };
+  owner: string;
+  price?: number;
 };
 
-export type TUserState = {
-  user: TUser | null;
+export type TListing = TItem;
+
+export type TUserProfile = {
+  addr: string | null;
+  loggedIn: boolean;
+  balance: string | null;
+  items: TItem[];
+  listings: TListing[];
+};
+
+export type TUserState = TUserProfile & {
   isLoading: boolean;
 };

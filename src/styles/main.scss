@@ -1,3 +1,4 @@
+@import 'antd/dist/antd.css';
 @import '../../node_modules/normalize.css/normalize';
 @import './typography';
 @import './colors';
@@ -13,7 +14,6 @@ div#root {
   height: 100%;
   -webkit-font-smoothing: subpixel-antialiased;
   -webkit-tap-highlight-color: transparent;
-  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -23,7 +23,6 @@ body {
   color: var(--color-typo-primary);
   background-color: var(--color-bg-default);
   font-size: var(--font-size-m);
-  overflow: hidden;
 }
 
 button {
@@ -35,6 +34,20 @@ a {
   cursor: pointer;
   color: var(--color-typo-link);
   text-decoration: none;
+
+  &:hover {
+    color: var(--color-typo-link);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-typo-primary);
+  margin: 0;
 }
 
 ul,

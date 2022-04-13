@@ -17,7 +17,28 @@ export const ru = {
     },
     introduction: {},
     profile: {
-      balance: '{{balance}} FLOW',
+      collection: {
+        title: 'Collection',
+        description: 'You can browse items available for purchase on the marketplace',
+      },
+      listed: {
+        title: 'Listed',
+        description: 'Your precious items for sale on the marketplace',
+      },
+      empty: {
+        title: 'No items',
+        description: 'You can browse items available for purchase on the marketplace',
+      },
+    },
+    collections: {
+      galleryPrefix: 'by {{gallery}}',
+      viewAll: 'View all',
+    },
+    item: {
+      list: 'List',
+    },
+    flow: {
+      amount: '₣{{amount}} FLOW',
     },
   },
 };

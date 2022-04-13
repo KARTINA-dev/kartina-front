@@ -1,4 +1,4 @@
-export const TRANSACTION_MARKET_PURCHASE = `
+export const MARKET_PURCHASE_LISTING = `
 import FungibleToken from 0xFungibleToken
 import NonFungibleToken from 0xNonFungibleToken
 import FlowToken from 0xFlowToken

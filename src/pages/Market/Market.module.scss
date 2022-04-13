@@ -4,7 +4,7 @@
   height: 100%;
   width: 100%;
   font-size: var(--font-size-s);
-  gap: 2rem;
+  gap: 4rem;
   padding: 0 6rem;
 
   .content {
@@ -13,13 +13,10 @@
     gap: 2rem;
     background: var(--color-bg-default);
 
-    &Tabs {
-      :global {
-        .ant-tabs-tab .ant-tabs-tab-btn {
-          font-size: var(--font-size-xl);
-          font-weight: 500;
-        }
-      }
+    &Title {
+      font-size: var(--font-size-2xl);
+      font-weight: 500;
+      margin: 0;
     }
 
     &Description {
@@ -33,7 +30,6 @@
     grid-template-columns: auto auto auto auto;
     justify-content: space-between;
     gap: 4rem;
-    margin-top: 2rem;
     background: var(--color-bg-default);
 
     &Title {
