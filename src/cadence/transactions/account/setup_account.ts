@@ -1,7 +1,7 @@
 export const SETUP_ACCOUNT = `
 import NonFungibleToken from 0xNonFungibleToken
 import KartinaItems from 0xKartinaItems
-import NFTStorefront from 0xStorefront
+import NFTStorefront from 0xNFTStorefront
 
 // This transaction configures an account to hold Kartina Items.
 

@@ -18,6 +18,6 @@ config({
   '0xNonFungibleToken': NONFUNGIBLE_TOKEN_ADDRESS,
   '0xFlowToken': FLOW_TOKEN_ADDRESS,
   '0xMetadataViews': METADATA_ADDRESS,
-  '0xStorefront': STOREFRONT_ADDRESS,
+  '0xNFTStorefront': STOREFRONT_ADDRESS,
   '0xKartinaItems': KARTINAITEMS_ADDRESS,
 });

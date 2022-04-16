@@ -2,6 +2,7 @@ import React from 'react';
 
 import { TItem } from '@/store/user/types';
 import { useTranslation } from '@/i18n';
+import { getIPFSImage } from '@/helpers/getIPFSImage';
 
 import styles from './ItemCard.module.scss';
 
@@ -10,12 +11,12 @@ interface IItemCard extends TItem {
 }
 
 export const ItemCard: React.FC<IItemCard> = (props) => {
-  const { name, thumbnail, itemID, owner, price, createListing } = props;
+  const { name, imageCID, imagePath, itemID, owner, price, createListing } = props;
   const { t } = useTranslation();
 
   return (
     <div className={styles.item}>
-      <img src={thumbnail} alt={`Item ${itemID}`} className={styles.image} />
+      <img src={getIPFSImage({ imageCID, imagePath })} alt={`Item ${itemID}`} className={styles.image} />
       <span className={styles.owner}>{owner}</span>
       <div className={styles.content}>
         <div className={styles.info}>

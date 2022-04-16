@@ -18,8 +18,8 @@ const MOCK_LISTING: TListing = {
   name: 'Green Tuk-Tuk',
   description: 'A green tuk-tuk with serial number 4',
   artist: 'G. Alfredo',
-  thumbnail:
-    'https://bafybeicyacwo7tlgyoye4hfktb4zpbsajrkhowllcl4sqfwvbqbya3aere.ipfs.dweb.link/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202022-04-14%20%D0%B2%2001.05.34.png',
+  imageCID: 'bafybeigvrdocvj633ymvtvr2ayy62agwp5k6fq3uu2ua4jg734xnjjtwbu',
+  imagePath: 'mbdtf.jpeg',
   itemID: 4,
   resourceID: 43173733,
   price: 300,

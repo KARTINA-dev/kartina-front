@@ -3,7 +3,8 @@ export const TYPE_PREFIX = 'user';
 export type TItem = {
   name: string;
   description: string;
-  thumbnail: string;
+  imageCID: string;
+  imagePath: string;
   artist: string;
   itemID: number;
   resourceID: number;

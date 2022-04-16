@@ -1,7 +1,8 @@
-export const TRANSACTION_ITEMS_MINT = `import NonFungibleToken from 0xNonFungibleToken
+export const TRANSACTION_ITEMS_MINT = `
+import NonFungibleToken from 0xNonFungibleToken
 import KartinaItems from 0xKartinaItems
 
-// This transction uses the NFTMinter resource to mint a new NFT.
+// This transaction uses the NFTMinter resource to mint a new NFT.
 //
 // It must be run with the account that has the minter resource
 // stored at path /storage/NFTMinter.

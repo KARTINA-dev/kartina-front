@@ -2,18 +2,19 @@ import React from 'react';
 
 import { TListing } from '@/store/user/types';
 import { useTranslation } from '@/i18n';
+import { getIPFSImage } from '@/helpers/getIPFSImage';
 
 import styles from './ListingCard.module.scss';
 
 type IListingCard = TListing;
 
 export const ListingCard: React.FC<IListingCard> = (props) => {
-  const { name, description, owner, price, thumbnail } = props;
+  const { name, description, owner, price, imagePath, imageCID } = props;
   const { t } = useTranslation();
 
   return (
     <div className={styles.listing}>
-      <img src={thumbnail} alt={`Listing ID Image`} className={styles.image} />
+      <img src={getIPFSImage({ imageCID, imagePath })} alt={`Listing ID Image`} className={styles.image} />
       <div className={styles.artist}>
         {/*<img src={//} className={styles.artistImg} alt="ListingCard Artist Avatar"/>*/}
         <span className={styles.artistName}>{owner}</span>
