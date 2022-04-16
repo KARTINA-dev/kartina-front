@@ -1,10 +1,11 @@
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { ReactComponent as ThemeIcon } from '@/assets/icons/theme_24.svg';
 import { Routes } from '@/constants/routes';
 import { useTranslation } from '@/i18n';
+import { ThemeContext } from '@/helpers/Theme/ThemeProvider';
 
 import styles from './Header.module.scss';
 
@@ -15,6 +16,7 @@ interface IHeader {
 
 export const Header: React.FC<IHeader> = (props) => {
   const { isAuthenticated, login, children } = props;
+  const { toggleMode } = useContext(ThemeContext);
   const { t } = useTranslation();
 
   return (
@@ -55,7 +57,7 @@ export const Header: React.FC<IHeader> = (props) => {
       </ul>
       <ul className={cn(styles.headerColumn, styles.headerColumnInfo)}>{children}</ul>
       <ul className={cn(styles.headerColumn, styles.headerColumnTools)}>
-        <ThemeIcon className={styles.headerTheme} />
+        <ThemeIcon className={styles.headerTheme} onClick={toggleMode} />
         <div className={styles.headerLanguages}>
           <span className={styles.headerLanguagesItem}>{t((d) => d.header.ru)}</span>
           <span className={styles.headerLanguagesItem}>{t((d) => d.header.jp)}</span>

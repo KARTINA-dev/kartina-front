@@ -27,6 +27,10 @@
     }
   }
 
+  &Theme {
+    cursor: pointer;
+  }
+
   &Languages {
     display: flex;
     flex-direction: column;

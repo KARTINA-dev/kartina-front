@@ -3,12 +3,16 @@ import { Provider } from 'react-redux';
 
 import { Root } from './pages/Root';
 import { store } from './store';
+import { ThemeProvider } from './helpers/Theme/ThemeProvider';
+
 import './flow';
 
 const App: React.VFC = () => (
   <React.StrictMode>
     <Provider store={store}>
-      <Root />
+      <ThemeProvider>
+        <Root />
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>
 );
