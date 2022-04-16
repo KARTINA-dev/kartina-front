@@ -2,24 +2,24 @@ export const MARKET_PURCHASE_LISTING = `
 import FungibleToken from 0xFungibleToken
 import NonFungibleToken from 0xNonFungibleToken
 import FlowToken from 0xFlowToken
-import KittyItems from 0xKittyItems
+import KartinaItems from 0xKartinaItems
 import NFTStorefront from 0xStorefront
 
-pub fun getOrCreateCollection(account: AuthAccount): &KittyItems.Collection{NonFungibleToken.Receiver} {
-    if let collectionRef = account.borrow<&KittyItems.Collection>(from: KittyItems.CollectionStoragePath) {
+pub fun getOrCreateCollection(account: AuthAccount): &KartinaItems.Collection{NonFungibleToken.Receiver} {
+    if let collectionRef = account.borrow<&KartinaItems.Collection>(from: KartinaItems.CollectionStoragePath) {
         return collectionRef
     }
 
     // create a new empty collection
-    let collection <- KittyItems.createEmptyCollection() as! @KittyItems.Collection
+    let collection <- KartinaItems.createEmptyCollection() as! @KartinaItems.Collection
 
-    let collectionRef = &collection as &KittyItems.Collection
+    let collectionRef = &collection as &KartinaItems.Collection
 
     // save it to the account
-    account.save(<-collection, to: KittyItems.CollectionStoragePath)
+    account.save(<-collection, to: KartinaItems.CollectionStoragePath)
 
     // create a public capability for the collection
-    account.link<&KittyItems.Collection{NonFungibleToken.CollectionPublic, KittyItems.KittyItemsCollectionPublic}>(KittyItems.CollectionPublicPath, target: KittyItems.CollectionStoragePath)
+    account.link<&KartinaItems.Collection{NonFungibleToken.CollectionPublic, KartinaItems.KartinaItemsCollectionPublic}>(KartinaItems.CollectionPublicPath, target: KartinaItems.CollectionStoragePath)
 
     return collectionRef
 }
@@ -27,7 +27,7 @@ pub fun getOrCreateCollection(account: AuthAccount): &KittyItems.Collection{NonF
 transaction(listingResourceID: UInt64, storefrontAddress: Address) {
 
     let paymentVault: @FungibleToken.Vault
-    let kittyItemsCollection: &KittyItems.Collection{NonFungibleToken.Receiver}
+    let KartinaItemsCollection: &KartinaItems.Collection{NonFungibleToken.Receiver}
     let storefront: &NFTStorefront.Storefront{NFTStorefront.StorefrontPublic}
     let listing: &NFTStorefront.Listing{NFTStorefront.ListingPublic}
 
@@ -49,7 +49,7 @@ transaction(listingResourceID: UInt64, storefrontAddress: Address) {
 
         self.paymentVault <- mainFLOWVault.withdraw(amount: price)
 
-        self.kittyItemsCollection = getOrCreateCollection(account: account)
+        self.KartinaItemsCollection = getOrCreateCollection(account: account)
     }
 
     execute {
@@ -57,7 +57,7 @@ transaction(listingResourceID: UInt64, storefrontAddress: Address) {
             payment: <-self.paymentVault
         )
 
-        self.kittyItemsCollection.deposit(token: <-item)
+        self.KartinaItemsCollection.deposit(token: <-item)
 
         self.storefront.cleanup(listingResourceID: listingResourceID)
     }

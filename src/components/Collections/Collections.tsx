@@ -17,15 +17,11 @@ type TCollection = {
 const MOCK_LISTING: TListing = {
   name: 'Green Tuk-Tuk',
   description: 'A green tuk-tuk with serial number 4',
-  imageCID: 'bafybeiaeixpd4htnngycs7ebktdt6crztvhyiu2js4nwvuot35gzvszchi',
+  artist: 'G. Alfredo',
+  imageCID: 'bafybeigvrdocvj633ymvtvr2ayy62agwp5k6fq3uu2ua4jg734xnjjtwbu',
+  imagePath: 'mbdtf.jpeg',
   itemID: 4,
   resourceID: 43173733,
-  kind: {
-    rawValue: 3,
-  },
-  rarity: {
-    rawValue: 1,
-  },
   price: 300,
   owner: '0xae902f62c22b8a83',
 };

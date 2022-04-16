@@ -4,14 +4,10 @@ export type TItem = {
   name: string;
   description: string;
   imageCID: string;
+  imagePath: string;
+  artist: string;
   itemID: number;
   resourceID: number;
-  kind: {
-    rawValue: number;
-  };
-  rarity: {
-    rawValue: number;
-  };
   owner: string;
   price?: number;
 };
