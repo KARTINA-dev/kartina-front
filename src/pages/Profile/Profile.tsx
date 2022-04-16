@@ -13,6 +13,7 @@ import { ItemCard } from '@/components/ItemCard/ItemCard';
 import { Tabs, TabsPane } from '@/components/Tabs/Tabs';
 import { ProfileTabs } from '@/pages/Profile/types';
 import { MARKET_CREATE_LISTING } from '@/cadence/transactions/market/create_listing';
+import { MintForm } from '@/components/MintForm/MintForm';
 
 import styles from './Profile.module.scss';
 
@@ -98,7 +99,7 @@ const Profile: React.VFC = () => {
               <>
                 <p className={styles.contentDescription}>{t((d) => d.profile.collection.description)}</p>
                 <div className={styles.collection}>
-                  {items.map((item) => (
+                  {listings.map((item) => (
                     <ItemCard key={item.itemID} {...item} />
                   ))}
                 </div>{' '}
@@ -109,6 +110,7 @@ const Profile: React.VFC = () => {
           </TabsPane>
         </Tabs>
       </div>
+      <MintForm />
     </div>
   );
 };

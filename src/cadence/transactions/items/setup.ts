@@ -2,7 +2,7 @@ export const TRANSACTION_SETUP_ITEMS = `
 import NonFungibleToken from 0xNonFungibleToken
 import KartinaItems from 0xKartinaItems
 
-// This transaction configures an account to hold Kitty Items.
+// This transaction configures an account to hold Kartina Items.
 
 transaction {
     prepare(signer: AuthAccount) {
