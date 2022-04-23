@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { userActions } from '@/store/user/store';
 import { useDispatch, useSelector } from '@/store/hooks';
 import { TUserProfile } from '@/store/user/types';
-import Routes from '@/constants/routes';
+import { Routes } from '@/constants/routes';
 
 export const useAuthentication = () => {
   const dispatch = useDispatch();

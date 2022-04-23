@@ -7,6 +7,8 @@ import { Header } from '@/components/Header/Header';
 import { Spinner } from '@/components/Spinner/Spinner';
 import { Size } from '@/types/common';
 import { getIPFSImage } from '@/helpers/getIPFSImage';
+import { useAuthentication } from '@/pages/Main/hooks';
+import { Routes } from '@/constants/routes';
 
 import { useItemInfo } from './hooks';
 import styles from './Item.module.scss';
@@ -15,6 +17,7 @@ const Item: React.VFC = () => {
   const { t } = useTranslation();
   const { address, itemID } = useParams();
   const { item, isLoading } = useItemInfo(address, Number(itemID));
+  const { isAuthenticated, login } = useAuthentication();
 
   if (isLoading || !item) {
     return (
@@ -24,11 +27,11 @@ const Item: React.VFC = () => {
     );
   }
 
-  const { imageCID, imagePath, owner, description, name, price } = item;
+  const { imageCID, imagePath, owner, description, name } = item;
 
   return (
     <div className={styles.itempage}>
-      <Header />
+      <Header isAuthenticated={isAuthenticated} login={login} pathname={Routes.Main} />
       <div className={styles.item}>
         <img src={getIPFSImage({ imageCID, imagePath })} alt={`Listing ID Image`} className={styles.image} />
         <div className={styles.content}>

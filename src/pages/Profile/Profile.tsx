@@ -14,7 +14,7 @@ import { Tabs, TabsPane } from '@/components/Tabs/Tabs';
 import { ProfileTabs } from '@/pages/Profile/types';
 import { MARKET_CREATE_LISTING } from '@/cadence/transactions/market/create_listing';
 import { MintForm } from '@/components/MintForm/MintForm';
-import Routes from '@/constants/routes';
+import { Routes } from '@/constants/routes';
 import { useAuthentication } from '@/pages/Main/hooks';
 
 import styles from './Profile.module.scss';

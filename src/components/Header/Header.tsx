@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import React, { useContext } from 'react';
 
 import { ReactComponent as ThemeIcon } from '@/assets/icons/theme_24.svg';
-import Routes from '@/constants/routes';
+import { Routes } from '@/constants/routes';
 import { useTranslation } from '@/i18n';
 import { ThemeContext } from '@/helpers/Theme/ThemeProvider';
 
