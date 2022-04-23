@@ -46,6 +46,11 @@
     cursor: pointer;
     text-transform: uppercase;
     color: var(--color-typo-primary);
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--color-typo-accent);
+    }
 
     &Accent {
       color: var(--color-typo-accent);

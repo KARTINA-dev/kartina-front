@@ -14,6 +14,7 @@ export const ru = {
       en: 'EN',
       login: 'Sign in',
       profile: 'Profile',
+      logout: 'Logout',
     },
     introduction: {},
     profile: {

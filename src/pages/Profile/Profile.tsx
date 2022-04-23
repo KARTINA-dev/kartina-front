@@ -14,6 +14,8 @@ import { Tabs, TabsPane } from '@/components/Tabs/Tabs';
 import { ProfileTabs } from '@/pages/Profile/types';
 import { MARKET_CREATE_LISTING } from '@/cadence/transactions/market/create_listing';
 import { MintForm } from '@/components/MintForm/MintForm';
+import Routes from '@/constants/routes';
+import { useAuthentication } from '@/pages/Main/hooks';
 
 import styles from './Profile.module.scss';
 
@@ -23,11 +25,12 @@ const Profile: React.VFC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState<ProfileTabs>(DEFAULT_ACTIVE_TAB);
+  const { logout, isAuthenticated } = useAuthentication();
 
   const { addr, balance, items, listings, isLoading } = useSelector((state) => state.user);
 
   const createListing = useCallback(
-    async (id: number) => {
+    async (id: number, price: string) => {
       if (!addr) {
         return;
       }
@@ -36,7 +39,7 @@ const Profile: React.VFC = () => {
 
       const response = await fcl.mutate({
         cadence: MARKET_CREATE_LISTING,
-        args: () => [fcl.arg(id, ft.UInt64), fcl.arg('1.0', ft.UFix64)],
+        args: () => [fcl.arg(id, ft.UInt64), fcl.arg(price, ft.UFix64)],
         limit: 9999,
       });
 
@@ -69,7 +72,7 @@ const Profile: React.VFC = () => {
 
   return (
     <div className={styles.profile}>
-      <Header>
+      <Header pathname={Routes.Profile} isAuthenticated={isAuthenticated} logout={logout}>
         <span>{addr}</span>
         <span> {t((d) => d.flow.amount, { amount: balance })}</span>
       </Header>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes as BaseRoutes, Route } from 'react-router-dom';
 
-import { Routes } from '@/constants/routes';
+import Routes from '@/constants/routes';
 import { PrivateRoute } from '@/utils/PrivateRoute';
 
 import Main from './Main/Main';

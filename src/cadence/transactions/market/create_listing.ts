@@ -3,7 +3,7 @@ import FungibleToken from 0xFungibleToken
 import NonFungibleToken from 0xNonFungibleToken
 import FlowToken from 0xFlowToken
 import KartinaItems from 0xKartinaItems
-import NFTStorefront from 0xStorefront
+import NFTStorefront from 0xNFTStorefront
 
 pub fun getOrCreateStorefront(account: AuthAccount): &NFTStorefront.Storefront {
     if let storefrontRef = account.borrow<&NFTStorefront.Storefront>(from: NFTStorefront.StorefrontStoragePath) {
