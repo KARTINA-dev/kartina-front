@@ -37,6 +37,7 @@ export const ru = {
     },
     item: {
       list: 'List',
+      buy: 'Buy',
     },
     flow: {
       amount: '₣{{amount}} FLOW',

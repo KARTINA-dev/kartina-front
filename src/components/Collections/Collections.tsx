@@ -32,13 +32,13 @@ const MOCK_COLLECTIONS: TCollection[] = [
   {
     id: 0,
     name: 'Megastructures of The Territory',
-    gallery: { name: 'Fontdana', addr: '0x94b06cfca1d8a476' },
+    gallery: { name: 'Fontdana', addr: '0xae902f62c22b8a83' },
     listings: MOCK_LISTINGS,
   },
   {
     id: 0,
     name: 'Vibes',
-    gallery: { name: 'Tanguy Jestin', addr: '0x94b06cfca1d8a476' },
+    gallery: { name: 'Tanguy Jestin', addr: '0xae902f62c22b8a83' },
     listings: MOCK_LISTINGS,
   },
 ];
