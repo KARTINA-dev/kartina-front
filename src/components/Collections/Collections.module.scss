@@ -9,6 +9,7 @@
     flex-direction: column;
     color: var(--color-typo-primary);
     gap: 1rem;
+    cursor: pointer;
 
     .header {
       display: flex;
@@ -37,7 +38,7 @@
       gap: 2rem;
       align-items: center;
       overflow-x: scroll;
-      padding: 1rem 0;
+      padding: 2rem 0;
     }
   }
 }

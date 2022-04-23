@@ -3,7 +3,7 @@ import FungibleToken from 0xFungibleToken
 import NonFungibleToken from 0xNonFungibleToken
 import FlowToken from 0xFlowToken
 import KartinaItems from 0xKartinaItems
-import NFTStorefront from 0xStorefront
+import NFTStorefront from 0xNFTStorefront
 
 pub fun getOrCreateCollection(account: AuthAccount): &KartinaItems.Collection{NonFungibleToken.Receiver} {
     if let collectionRef = account.borrow<&KartinaItems.Collection>(from: KartinaItems.CollectionStoragePath) {

@@ -19,6 +19,7 @@ const slice = createSlice({
     setState: (state, { payload }: PayloadAction<Partial<TUserState>>) => {
       Object.assign(state, payload);
     },
+    resetState: () => initialState,
   },
   extraReducers: (builder) => {
     builder.addCase(sideEffects.getUserProfile.pending, (state) => {

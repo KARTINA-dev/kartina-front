@@ -1,4 +1,4 @@
-import { TListing } from '@/store/user/types';
+import { TItem, TListing } from '@/store/user/types';
 
 import { makeRequest } from './makeRequest';
 
