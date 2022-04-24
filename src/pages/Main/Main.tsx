@@ -46,10 +46,6 @@ const Main: React.VFC = () => {
       <section className={styles.introduction}>
         <Logo />
       </section>
-      {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
-      <button style={{ background: '#133AFF', width: 140, height: 80, borderRadius: 10 }} onClick={setup}>
-        Setup Account
-      </button>
       <Collections />
     </div>
   );

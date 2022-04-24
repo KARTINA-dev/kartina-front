@@ -48,7 +48,7 @@
     }
 
     .buy {
-      color: var(--color-typo-accent);
+      color: var(--color-bg-delete);
       gap: 0.5rem;
       text-transform: uppercase;
       display: flex;
@@ -58,8 +58,8 @@
       font-size: var(--font-size-xl);
     }
 
-    .delete {
-      color: var(--color-bg-delete);
+    .remove {
+      color: var(--color-typo-accent);
       gap: 0.5rem;
       text-transform: uppercase;
       display: flex;
