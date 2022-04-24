@@ -12,23 +12,18 @@ import { getIPFSImage } from '@/helpers/getIPFSImage';
 import { Routes } from '@/constants/routes';
 import { MARKET_PURCHASE_LISTING } from '@/cadence/market/purchase_listing';
 import { MARKET_REMOVE_LISTING } from '@/cadence/market/remove_listing';
+import { useAuthentication } from '@/pages/Main/hooks';
 
 import { useListingInfo } from './hooks';
 import styles from './Listing.module.scss';
 
 const Listing: React.VFC = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const { address, listingID } = useParams();
   const { listing, isLoading } = useListingInfo(address, Number(listingID));
-  const navigate = useNavigate();
 
-  if (isLoading || !listing) {
-    return (
-      <div className={cn(styles.listingpage, styles.loading)}>
-        <Spinner size={Size.L} />
-      </div>
-    );
-  }
+  const { isAuthenticated, login } = useAuthentication();
 
   const buyListing = async (listingID: number, ownerAccount: string) => {
     const response = await fcl.mutate({
@@ -51,11 +46,19 @@ const Listing: React.VFC = () => {
     navigate(Routes.Profile);
   };
 
+  if (isLoading || !listing) {
+    return (
+      <div className={cn(styles.listingpage, styles.loading)}>
+        <Spinner size={Size.L} />
+      </div>
+    );
+  }
+
   const { imageCID, imagePath, owner, description, name, price, artist } = listing;
 
   return (
     <div className={styles.listingpage}>
-      <Header />
+      <Header isAuthenticated={isAuthenticated} login={login} pathname={Routes.Main} />
       <div className={styles.listing}>
         <img src={getIPFSImage({ imageCID, imagePath })} alt={`Listing ID Image`} className={styles.image} />
         <div className={styles.content}>
