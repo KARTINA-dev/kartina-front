@@ -1,19 +1,30 @@
-import React from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 import { TItem } from '@/store/user/types';
 import { useTranslation } from '@/i18n';
 import { getIPFSImage } from '@/helpers/getIPFSImage';
-
+import { Modal, Button } from 'antd';
 import styles from './ItemCard.module.scss';
 
 interface IItemCard extends TItem {
-  createListing?: (id: number) => Promise<void>;
+  createListing?: (id: number, price: string) => Promise<void>;
 }
 
 export const ItemCard: React.FC<IItemCard> = (props) => {
   const { name, imageCID, imagePath, itemID, owner, price, createListing } = props;
   const { t } = useTranslation();
+  const [listModalVisible, setListModalVisible] = useState<boolean>(false);
+  const [confirmLoading, setConfirmLoading] = useState<boolean>(false);
+  const [newListingPrice, setNewListingPrice] = useState<string>('0.0');
 
+  const handleConfirmList = async (itemId: number, newListingPrice: string) => {
+    setConfirmLoading(true);
+    await createListing!(itemId, newListingPrice);
+    setConfirmLoading(false);
+    setListModalVisible(false);
+  };
+
+  console.log(`confirmLoading: ${confirmLoading}`);
   return (
     <div className={styles.item}>
       <img src={getIPFSImage({ imageCID, imagePath })} alt={`Item ${itemID}`} className={styles.image} />
@@ -25,9 +36,26 @@ export const ItemCard: React.FC<IItemCard> = (props) => {
         </div>
         {price && <button className={styles.button}>{t((d) => d.flow.amount, { amount: price })}</button>}
         {createListing && (
-          <button className={styles.button} onClick={() => createListing(itemID)}>
-            {t((d) => d.item.list)}
-          </button>
+          <>
+            <button className={styles.button} onClick={() => setListModalVisible(true)}>
+              {t((d) => d.item.list)}
+            </button>
+            <Modal
+              visible={listModalVisible}
+              onOk={() => handleConfirmList(itemID, newListingPrice)}
+              confirmLoading={confirmLoading}
+              onCancel={() => setListModalVisible(false)}
+            >
+              <label>
+                Enter price:
+                <input
+                  type='number'
+                  value={newListingPrice}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => setNewListingPrice(e.target.value)}
+                />
+              </label>
+            </Modal>
+          </>
         )}
       </div>
     </div>
