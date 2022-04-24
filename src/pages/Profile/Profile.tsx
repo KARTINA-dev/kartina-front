@@ -12,8 +12,9 @@ import { Size } from '@/types/common';
 import { ItemCard } from '@/components/ItemCard/ItemCard';
 import { Tabs, TabsPane } from '@/components/Tabs/Tabs';
 import { ProfileTabs } from '@/pages/Profile/types';
-import { MARKET_CREATE_LISTING } from '@/cadence/transactions/market/create_listing';
+import { MARKET_CREATE_LISTING } from '@/cadence/market/create_listing';
 import { MintForm } from '@/components/MintForm/MintForm';
+import { ListingCard } from '@/components/ListingCard/ListingCard';
 
 import styles from './Profile.module.scss';
 
@@ -100,7 +101,7 @@ const Profile: React.VFC = () => {
                 <p className={styles.contentDescription}>{t((d) => d.profile.collection.description)}</p>
                 <div className={styles.collection}>
                   {listings.map((item) => (
-                    <ItemCard key={item.itemID} {...item} />
+                    <ListingCard key={item.listingID} {...item} />
                   ))}
                 </div>{' '}
               </>

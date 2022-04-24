@@ -8,7 +8,7 @@ import { Spinner } from '@/components/Spinner/Spinner';
 import { Size } from '@/types/common';
 import { Header } from '@/components/Header/Header';
 import { Collections } from '@/components/Collections/Collections';
-import { SETUP_ACCOUNT } from '@/cadence/transactions/account/setup_account';
+import { SETUP_ACCOUNT } from '@/cadence/account/setup_account';
 
 import { useAuthentication } from './hooks';
 import styles from './Main.module.scss';

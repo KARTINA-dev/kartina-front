@@ -3,7 +3,7 @@ import { NFTStorage } from 'nft.storage';
 import * as fcl from '@onflow/fcl';
 import * as ft from '@onflow/types';
 
-import { TRANSACTION_ITEMS_MINT } from '@/cadence/transactions/items/mint';
+import { TRANSACTION_ITEMS_MINT } from '@/cadence/items/mint';
 import { useSelector } from '@/store/hooks';
 import { TArtItem } from '@/store/items/types';
 

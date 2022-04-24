@@ -11,7 +11,7 @@ interface IItemCard extends TItem {
 }
 
 export const ItemCard: React.FC<IItemCard> = (props) => {
-  const { name, imageCID, imagePath, itemID, owner, price, createListing } = props;
+  const { name, imageCID, imagePath, itemID, owner, createListing, resourceID } = props;
   const { t } = useTranslation();
 
   return (
@@ -23,7 +23,6 @@ export const ItemCard: React.FC<IItemCard> = (props) => {
           <span className={styles.name}>{name}</span>
           <span>{`#${itemID}`}</span>
         </div>
-        {price && <button className={styles.button}>{t((d) => d.flow.amount, { amount: price })}</button>}
         {createListing && (
           <button className={styles.button} onClick={() => createListing(itemID)}>
             {t((d) => d.item.list)}

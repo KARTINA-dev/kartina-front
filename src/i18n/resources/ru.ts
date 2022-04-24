@@ -36,7 +36,10 @@ export const ru = {
     },
     item: {
       list: 'List',
+    },
+    listing: {
       buy: 'Buy',
+      remove: 'Remove',
     },
     flow: {
       amount: '₣{{amount}} FLOW',
