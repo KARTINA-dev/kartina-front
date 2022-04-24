@@ -8,6 +8,7 @@ import { Spinner } from '@/components/Spinner/Spinner';
 import { Size } from '@/types/common';
 import { Header } from '@/components/Header/Header';
 import { Collections } from '@/components/Collections/Collections';
+import { Routes } from '@/constants/routes';
 import { SETUP_ACCOUNT } from '@/cadence/account/setup_account';
 
 import { useAuthentication } from './hooks';
@@ -37,7 +38,7 @@ const Main: React.VFC = () => {
 
   return (
     <div className={styles.main}>
-      <Header isAuthenticated={isAuthenticated} login={login}>
+      <Header isAuthenticated={isAuthenticated} login={login} pathname={Routes.Main}>
         <span className={styles.subtitle}>
           {t((d) => d.header.subtitle)}
           <span className={styles.subtitleMeta}>{t((d) => d.header.meta)}</span>

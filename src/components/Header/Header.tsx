@@ -11,11 +11,13 @@ import styles from './Header.module.scss';
 
 interface IHeader {
   login?: () => void;
+  logout?: () => void;
   isAuthenticated?: boolean;
+  pathname: Routes;
 }
 
 export const Header: React.FC<IHeader> = (props) => {
-  const { isAuthenticated, login, children } = props;
+  const { isAuthenticated, login, logout, children, pathname } = props;
   const { toggleMode } = useContext(ThemeContext);
   const { t } = useTranslation();
 
@@ -63,11 +65,17 @@ export const Header: React.FC<IHeader> = (props) => {
           <span className={styles.headerLanguagesItem}>{t((d) => d.header.jp)}</span>
           <span className={styles.headerLanguagesItem}>{t((d) => d.header.en)}</span>
         </div>
-        {login ? (
+        {login || logout ? (
           isAuthenticated ? (
-            <Link className={cn(styles.headerLink, styles.headerBuy)} to={Routes.Profile}>
-              {t((d) => d.header.profile)}
-            </Link>
+            pathname === Routes.Profile ? (
+              <button className={cn(styles.headerLink, styles.headerBuy)} onClick={logout}>
+                {t((d) => d.header.logout)}
+              </button>
+            ) : (
+              <Link className={cn(styles.headerLink, styles.headerBuy)} to={Routes.Profile}>
+                {t((d) => d.header.profile)}
+              </Link>
+            )
           ) : (
             <button className={cn(styles.headerLink, styles.headerBuy)} onClick={login}>
               {t((d) => d.header.login)}
