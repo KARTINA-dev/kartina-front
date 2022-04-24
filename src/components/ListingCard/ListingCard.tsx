@@ -11,14 +11,14 @@ import styles from './ListingCard.module.scss';
 type IListingCard = TListing;
 
 export const ListingCard: React.FC<IListingCard> = (props) => {
-  const { itemID, name, description, owner, price, imagePath, imageCID } = props;
+  const { resourceID, name, description, owner, price, imagePath, imageCID, artist, listingID } = props;
   const { t } = useTranslation();
 
   return (
-    <Link to={`${Routes.Item}/${owner}/${itemID}`} className={styles.listing}>
+    <Link to={`${Routes.Listing}/${owner}/${listingID}`} className={styles.listing}>
       <img src={getIPFSImage({ imageCID, imagePath })} alt={`Listing ID Image`} className={styles.image} />
       <div className={styles.artist}>
-        <span className={styles.artistName}>{owner}</span>
+        <span className={styles.artistName}>{artist}</span>
       </div>
       <div className={styles.content}>
         <span className={styles.name}>{name}</span>

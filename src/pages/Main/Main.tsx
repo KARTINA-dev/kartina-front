@@ -8,8 +8,8 @@ import { Spinner } from '@/components/Spinner/Spinner';
 import { Size } from '@/types/common';
 import { Header } from '@/components/Header/Header';
 import { Collections } from '@/components/Collections/Collections';
-import { SETUP_ACCOUNT } from '@/cadence/transactions/account/setup_account';
 import { Routes } from '@/constants/routes';
+import { SETUP_ACCOUNT } from '@/cadence/account/setup_account';
 
 import { useAuthentication } from './hooks';
 import styles from './Main.module.scss';
@@ -47,10 +47,6 @@ const Main: React.VFC = () => {
       <section className={styles.introduction}>
         <Logo />
       </section>
-      {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
-      <button style={{ background: '#133AFF', width: 140, height: 80, borderRadius: 10 }} onClick={setup}>
-        Setup Account
-      </button>
       <Collections />
     </div>
   );

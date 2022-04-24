@@ -9,10 +9,19 @@ export type TItem = {
   itemID: number;
   resourceID: number;
   owner: string;
-  price?: number;
 };
 
-export type TListing = TItem;
+export type TListing = {
+  name: string;
+  description: string;
+  imageCID: string;
+  imagePath: string;
+  artist: string;
+  listingID: number;
+  resourceID: number;
+  owner: string;
+  price: number;
+};
 
 export type TUserProfile = {
   addr: string | null;

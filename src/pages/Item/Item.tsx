@@ -27,7 +27,7 @@ const Item: React.VFC = () => {
     );
   }
 
-  const { imageCID, imagePath, owner, description, name } = item;
+  const { imageCID, imagePath, owner, description, name, artist } = item;
 
   return (
     <div className={styles.itempage}>
@@ -37,7 +37,7 @@ const Item: React.VFC = () => {
         <div className={styles.content}>
           <div className={styles.links}>
             <span className={styles.artistName}>
-              <b>Artist</b> {owner}
+              <b>Artist</b> {artist}
             </span>
             <span className={styles.ownerName}>
               <b>Owner</b> {owner}
@@ -48,7 +48,7 @@ const Item: React.VFC = () => {
             <span className={styles.description}>{description}</span>
             <span className={styles.price}>{t((d) => d.flow.amount, { amount: 300 })}</span>
           </div>
-          <button className={styles.buy}>{t((d) => d.item.buy)}</button>
+          <button className={styles.buy}>{t((d) => d.item.list)}</button>
         </div>
       </div>
     </div>
