@@ -7,5 +7,5 @@ export enum Routes {
   Profile = '/profile',
   Market = '/market',
   Item = '/items',
-  Listing = '/listrings',
+  Listing = '/listings',
 }
