@@ -1,31 +1,46 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext, useContext, useCallback } from 'react';
+
+export enum Theme {
+  Light = 'light',
+  Dark = 'dark',
+}
 
 export type ITheme = {
-  isDarkTheme?: boolean;
-  toggleMode?: () => void;
+  theme?: Theme;
+  toggleTheme?: () => void;
 };
+
+const DEFAULT_THEME = Theme.Light;
 
 export const ThemeContext = createContext<ITheme>({});
 
 export const ThemeProvider: React.FC = ({ children }) => {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [theme, setTheme] = useState(Theme.Dark);
 
   useEffect(() => {
-    const localTheme = localStorage.getItem('isDarkTheme') === 'true';
+    const localTheme = localStorage.getItem('theme') || DEFAULT_THEME;
 
-    setIsDarkTheme(localTheme);
+    setTheme(localTheme as Theme);
 
-    const schemeAttribute = document.createAttribute('scheme');
+    const schemeAttribute = document.createAttribute('theme');
 
-    schemeAttribute.value = localTheme ? 'dark' : 'light';
+    schemeAttribute.value = localTheme;
     document.body.attributes.setNamedItem(schemeAttribute);
   }, []);
 
-  const toggleMode = () => {
-    localStorage.setItem('isDarkTheme', `${!isDarkTheme}`);
-    setIsDarkTheme(!isDarkTheme);
-    document.body.setAttribute('scheme', !isDarkTheme ? 'dark' : 'light');
-  };
+  const toggleTheme = useCallback(() => {
+    setTheme((theme) => {
+      const updatedTheme = theme === Theme.Light ? Theme.Dark : Theme.Light;
 
-  return <ThemeContext.Provider value={{ isDarkTheme, toggleMode }}>{children}</ThemeContext.Provider>;
+      document.body.setAttribute('theme', updatedTheme);
+
+      localStorage.setItem('theme', updatedTheme);
+
+      return updatedTheme;
+    });
+  }, []);
+
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 };
+
+export const useThemeContext = () => React.useContext(ThemeContext);

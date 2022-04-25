@@ -1,15 +1,14 @@
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 
 import { ReactComponent as Logo } from '@/assets/logo.svg';
 import { ReactComponent as MenuIcon } from '@/assets/icons/menu_24.svg';
 import { ReactComponent as ThemeIcon } from '@/assets/icons/theme_24.svg';
 import { Routes } from '@/constants/routes';
 import { useTranslation } from '@/i18n';
-import { ThemeContext } from '@/helpers/Theme/ThemeProvider';
+import { Theme, useThemeContext } from '@/helpers/Theme/ThemeProvider';
 import { SYSTEM_LANGUAGES } from '@/i18n/resources';
-import { Sidebar } from '@/components/Header/Sidebar/Sidebar';
 
 import styles from './Header.module.scss';
 
@@ -20,11 +19,17 @@ interface IHeader {
   pathname: Routes;
 }
 
+const TOKYO_AUDIO_SRC = 'https://dl1.mp3party.net/download/8422014';
+
 export const Header: React.FC<IHeader> = (props) => {
-  const { isAuthenticated, login, logout, children, pathname } = props;
-  const { toggleMode } = useContext(ThemeContext);
+  const { isAuthenticated, login, logout, pathname } = props;
+  const { theme, toggleTheme } = useThemeContext();
   const { t, i18n } = useTranslation();
+  const [isPlaying, setIsPlaying] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const audioEl = useRef(new Audio(TOKYO_AUDIO_SRC));
+
   const languages = useMemo(() => {
     const availableLanguages = SYSTEM_LANGUAGES.filter((lang) => lang !== i18n.language);
 
@@ -41,6 +46,13 @@ export const Header: React.FC<IHeader> = (props) => {
     await i18n.changeLanguage(lang);
   };
 
+  const toggleAudio = async () => {
+    audioEl.current.volume = 0.0345;
+    setIsPlaying((isPlaying) => !isPlaying);
+    audioEl.current.paused ? await audioEl.current.play() : audioEl.current.pause();
+    document.body.setAttribute('theme', 'tokyo');
+  };
+
   return (
     <>
       <header className={styles.header}>
@@ -51,7 +63,12 @@ export const Header: React.FC<IHeader> = (props) => {
           <Logo />
         </Link>
         <div className={cn(styles.info)}>
-          <ThemeIcon className={styles.infoTheme} onClick={toggleMode} />
+          {theme === Theme.Light && i18n.language === 'jp' && (
+            <span className={cn(styles.infoTokyo, { [styles.infoTokyoActive]: isPlaying })} onClick={toggleAudio}>
+              {t((d) => d.header.tokyo)}
+            </span>
+          )}
+          <ThemeIcon className={styles.infoTheme} onClick={toggleTheme} />
           <div className={styles.infoLanguages}>
             {languages.map((lang) => (
               <span

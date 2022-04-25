@@ -11,6 +11,7 @@ export const ru = {
       },
       login: 'Войти',
       profile: 'Профиль',
+      tokyo: 'Tokyo',
       logout: 'Выйти',
     },
     sidebar: {

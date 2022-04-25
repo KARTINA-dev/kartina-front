@@ -1,15 +1,12 @@
-import cn from 'classnames';
 import React from 'react';
-import * as fcl from '@onflow/fcl';
+import cn from 'classnames';
 
-import { ReactComponent as Logo } from '@/assets/logo.svg';
 import { useTranslation } from '@/i18n';
 import { Spinner } from '@/components/Spinner/Spinner';
 import { Size } from '@/types/common';
 import { Header } from '@/components/Header/Header';
 import { Collections } from '@/components/Collections/Collections';
 import { Routes } from '@/constants/routes';
-import { SETUP_ACCOUNT } from '@/cadence/account/setup_account';
 import { HottestDrops } from '@/components/HottestDrops/HottestDrops';
 
 import { useAuthentication } from './hooks';
@@ -17,17 +14,7 @@ import styles from './Main.module.scss';
 
 const Main: React.VFC = () => {
   const { t } = useTranslation();
-
   const { isAuthenticated, login, isLoading } = useAuthentication();
-
-  const setup = async () => {
-    const response = await fcl.mutate({
-      cadence: SETUP_ACCOUNT,
-      limit: 9999,
-    });
-
-    await fcl.tx(response).onceSealed();
-  };
 
   if (isLoading) {
     return (

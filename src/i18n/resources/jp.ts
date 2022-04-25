@@ -15,6 +15,7 @@ export const jp = {
       },
       login: 'サインイン',
       profile: 'プロフィール',
+      tokyo: 'Tokyo',
       logout: 'ログアウト',
     },
     footer: {
