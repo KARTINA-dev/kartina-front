@@ -1,9 +1,10 @@
 import React, { ChangeEvent, useState } from 'react';
+import { Modal } from 'antd';
 
 import { TItem } from '@/store/user/types';
 import { useTranslation } from '@/i18n';
 import { getIPFSImage } from '@/helpers/getIPFSImage';
-import { Modal, Button } from 'antd';
+
 import styles from './ItemCard.module.scss';
 
 interface IItemCard extends TItem {
@@ -24,7 +25,6 @@ export const ItemCard: React.FC<IItemCard> = (props) => {
     setListModalVisible(false);
   };
 
-  console.log(`confirmLoading: ${confirmLoading}`);
   return (
     <div className={styles.item}>
       <img src={getIPFSImage({ imageCID, imagePath })} alt={`Item ${itemID}`} className={styles.image} />

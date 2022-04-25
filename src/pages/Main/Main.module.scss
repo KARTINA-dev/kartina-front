@@ -9,70 +9,74 @@
       color: var(--color-typo-accent);
     }
   }
+
+  .subscribe {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 0;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    &Title {
+      display: flex;
+      max-width: 420px;
+      text-align: center;
+      line-height: 32px;
+      font-size: var(--font-size-2xl);
+    }
+
+    &Form {
+      display: flex;
+      align-items: center;
+    }
+
+    &Input {
+      display: flex;
+      padding: 8px 14px;
+      color: var(--color-bg-default);
+      min-width: 300px;
+      border: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &Button {
+      display: flex;
+      padding: 8px 14px;
+      background-color: var(--color-typo-accent);
+      cursor: pointer;
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    height: 192px;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid;
+    padding: 4rem 0;
+    margin-top: 4rem;
+
+    &Company {
+      display: flex;
+      width: 100%;
+      font-size: var(--font-size-4xl);
+    }
+
+    &Copyright {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+      padding: 2rem 0;
+    }
+  }
 }
 
 .loading {
   justify-content: center;
   align-items: center;
-}
-
-.introduction {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: var(--color-bg-default);
-  margin: 0 auto;
-  padding: 2rem 0;
-  width: 100%;
-
-  .header {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    padding: 4rem 0;
-
-    &Column {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 1.125rem;
-
-      &Info {
-        align-items: center;
-      }
-
-      &Tools {
-        align-items: center;
-        justify-content: flex-end;
-        flex-direction: row;
-        gap: 1.125rem;
-      }
-    }
-
-
-
-    &Theme {
-      cursor: pointer;
-    }
-
-    &Languages {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      gap: 1.125rem;
-
-      &Item {
-        cursor: pointer;
-      }
-    }
-
-    &Link {
-      cursor: pointer;
-      text-transform: uppercase;
-      color: var(--color-typo-primary);
-
-      &Accent {
-        color: var(--color-typo-accent);
-      }
-    }
-  }
 }

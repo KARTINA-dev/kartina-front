@@ -1,59 +1,80 @@
 .header {
   display: grid;
-  padding: 4rem 0;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  height: 192px;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid;
 
-  &Column {
+  .menuIcon {
     display: flex;
-    flex-direction: column;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    color: var(--color-typo-primary);
+  }
+
+  .info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
     gap: 1.125rem;
 
     &Info {
       align-items: center;
     }
 
-    &Tools {
-      align-items: center;
-      justify-content: flex-end;
-      flex-direction: row;
-      gap: 1.125rem;
-    }
-  }
-
-  &Subtitle {
-    &Meta {
-      color: var(--color-typo-accent);
-    }
-  }
-
-  &Theme {
-    cursor: pointer;
-  }
-
-  &Languages {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    gap: 1.125rem;
-
-    &Item {
+    &Theme {
       cursor: pointer;
     }
-  }
 
-  &Link {
-    cursor: pointer;
-    text-transform: uppercase;
-    color: var(--color-typo-primary);
-    transition: color 0.3s ease;
+    &Languages {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      gap: 1.125rem;
 
-    &:hover {
-      color: var(--color-typo-accent);
+      &Item {
+        display: flex;
+        cursor: pointer;
+        visibility: hidden;
+        transition: 0.3s ease;
+        opacity: 0;
+
+        &Active {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+
+      &:hover {
+        .infoLanguagesItem {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
     }
 
-    &Accent {
-      color: var(--color-typo-accent);
+    &Link {
+      cursor: pointer;
+      text-transform: uppercase;
+      color: var(--color-typo-primary);
+      transition: color 0.3s ease;
+      padding: 0;
+
+      &:hover {
+        color: var(--color-typo-accent);
+      }
+
+      &Accent {
+        color: var(--color-typo-accent);
+      }
     }
   }
 }

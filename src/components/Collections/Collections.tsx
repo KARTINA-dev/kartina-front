@@ -7,6 +7,7 @@ import { useTranslation } from '@/i18n';
 import { getListings } from '@/api/market';
 
 import styles from './Collections.module.scss';
+import { Size } from '@/types/common';
 
 type TCollection = {
   id: number;
@@ -23,7 +24,7 @@ const MOCK_LISTING: TListing = {
   imagePath: 'mbdtf.jpeg',
   listingID: 4,
   resourceID: 43173733,
-  price: 300,
+  price: '300',
   owner: '0xae902f62c22b8a83',
 };
 
@@ -52,21 +53,16 @@ export const Collections: React.VFC = () => {
 
   const collections = [
     {
-      id: 0,
-      name: 'YE albums covers',
-      gallery: { name: 'Yeezy', addr: '0xf18c70daf915e518' },
-      listings: firstListings,
-    },
-    {
       id: 1,
       name: 'UI KIT',
-      gallery: { name: 'G. Alfredo', addr: '10x0000000000' },
+      gallery: { name: '345 Gallery', addr: '10x0000000000' },
       listings: secondListings,
     },
   ];
 
   return (
     <div className={styles.collections}>
+      <h1 className={styles.title}>{t((d) => d.collections.title)}</h1>
       {collections.length &&
         collections.map(({ id, name, gallery, listings }) => (
           <div key={id} className={styles.collection}>

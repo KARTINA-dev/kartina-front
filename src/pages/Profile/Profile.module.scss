@@ -1,6 +1,4 @@
 .profile {
-  display: flex;
-  flex-direction: column;
   height: 100%;
   width: 100%;
   font-size: var(--font-size-s);
@@ -11,6 +9,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    padding: 2rem 0;
     background: var(--color-bg-default);
 
     &Tabs {

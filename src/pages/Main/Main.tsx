@@ -10,6 +10,7 @@ import { Header } from '@/components/Header/Header';
 import { Collections } from '@/components/Collections/Collections';
 import { Routes } from '@/constants/routes';
 import { SETUP_ACCOUNT } from '@/cadence/account/setup_account';
+import { HottestDrops } from '@/components/HottestDrops/HottestDrops';
 
 import { useAuthentication } from './hooks';
 import styles from './Main.module.scss';
@@ -38,16 +39,20 @@ const Main: React.VFC = () => {
 
   return (
     <div className={styles.main}>
-      <Header isAuthenticated={isAuthenticated} login={login} pathname={Routes.Main}>
-        <span className={styles.subtitle}>
-          {t((d) => d.header.subtitle)}
-          <span className={styles.subtitleMeta}>{t((d) => d.header.meta)}</span>
-        </span>
-      </Header>
-      <section className={styles.introduction}>
-        <Logo />
-      </section>
+      <Header isAuthenticated={isAuthenticated} login={login} pathname={Routes.Main} />
+      <HottestDrops />
       <Collections />
+      <div className={styles.subscribe}>
+        <h2 className={styles.subscribeTitle}>{t((d) => d.main.subscribeForm.title)}</h2>
+        <div className={styles.subscribeForm}>
+          <input className={styles.subscribeInput} type={'email'} placeholder={t((d) => d.main.subscribeForm.email)} />
+          <button className={styles.subscribeButton}>{t((d) => d.main.subscribeForm.subscribe)}</button>
+        </div>
+      </div>
+      <footer className={styles.footer}>
+        <span className={styles.footerCompany}>{t((d) => d.footer.company)}</span>
+        <span className={styles.footerCopyright}>{t((d) => d.footer.copyright)}</span>
+      </footer>
     </div>
   );
 };

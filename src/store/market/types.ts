@@ -9,7 +9,7 @@ export type TListing = {
   listingID: number;
   resourceID: number;
   owner: string;
-  price: number;
+  price: string;
 };
 
 export type TCollection = {

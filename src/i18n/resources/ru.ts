@@ -1,22 +1,37 @@
+import { Routes } from '@/constants/routes';
+
 export const ru = {
+  name: 'ru',
   translation: {
     header: {
-      drops: 'Drops',
-      marketplace: 'Marketplace',
-      contact: 'Contact',
-      faq: 'FAQ',
-      galleries: 'Get wow',
-      socials: 'Socials',
-      subtitle: 'we represent',
-      meta: ' the meta gallery',
-      ru: 'RU',
-      jp: '中文',
-      en: 'EN',
-      login: 'Sign in',
+      languages: {
+        ru: 'RU',
+        jp: '中文',
+        en: 'EN',
+      },
+      login: 'Войти',
       profile: 'Profile',
       logout: 'Logout',
     },
-    introduction: {},
+    sidebar: {
+      [Routes.Main]: 'Главная',
+      [Routes.Market]: 'Магазин',
+      [Routes.Profile]: 'Профиль',
+    },
+    footer: {
+      company: 'KARTINA.DIGITAL',
+      copyright: '2022 @ ITMO UNIVERSITY',
+    },
+    main: {
+      subscribeForm: {
+        title: 'Не пропускайте информацию о новых релизах',
+        email: 'Email',
+        subscribe: 'Подписаться',
+      },
+    },
+    hottestDrops: {
+      title: 'Новые релизы',
+    },
     profile: {
       collection: {
         title: 'Collection',
@@ -32,8 +47,9 @@ export const ru = {
       },
     },
     collections: {
-      galleryPrefix: 'by {{gallery}}',
-      viewAll: 'View all',
+      title: 'Коллекции',
+      galleryPrefix: 'от {{gallery}}',
+      viewAll: 'Посмотреть все',
     },
     item: {
       list: 'List',

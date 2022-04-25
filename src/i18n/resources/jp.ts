@@ -1,5 +1,5 @@
-export const en = {
-  name: 'en',
+export const jp = {
+  name: 'jp',
   translation: {
     header: {
       drops: 'Drops',

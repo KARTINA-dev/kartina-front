@@ -1,0 +1,16 @@
+.tab {
+  display: flex;
+  align-items: center;
+  padding: 26px 30px !important;
+  margin: 0 0 4px 0 !important;
+  position: relative;
+  cursor: pointer;
+  color: var(--color-control-typo-clear);
+  font-size: var(--font-size-m);
+
+  :global {
+    .ant-menu-item-icon {
+      color: var(--color-control-typo-clear);
+    }
+  }
+}
