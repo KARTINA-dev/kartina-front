@@ -75,12 +75,10 @@ const Listing: React.VFC = () => {
             <span className={styles.description}>{description}</span>
             <span className={styles.price}>{t((d) => d.flow.amount, { amount: price })}</span>
           </div>
-          {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
-          <button className={styles.remove} onClick={() => buyListing(Number(listingID), owner)}>
+          <button className={styles.remove} onClick={() => removeListing(Number(listingID))}>
             {t((d) => d.listing.remove)}
           </button>
-          {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
-          <button className={styles.buy} onClick={() => removeListing(Number(listingID))}>
+          <button className={styles.buy} onClick={() => buyListing(Number(listingID), owner)}>
             {t((d) => d.listing.buy)}
           </button>
         </div>

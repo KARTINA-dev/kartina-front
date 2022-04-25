@@ -7,46 +7,15 @@ import { useTranslation } from '@/i18n';
 import { getListings } from '@/api/market';
 
 import styles from './Collections.module.scss';
-import { Size } from '@/types/common';
-
-type TCollection = {
-  id: number;
-  name: string;
-  gallery: { name: string; addr: string };
-  listings: TListing[];
-};
-
-const MOCK_LISTING: TListing = {
-  name: 'Green Tuk-Tuk',
-  description: 'A green tuk-tuk with serial number 4',
-  artist: 'G. Alfredo',
-  imageCID: 'bafybeigvrdocvj633ymvtvr2ayy62agwp5k6fq3uu2ua4jg734xnjjtwbu',
-  imagePath: 'mbdtf.jpeg',
-  listingID: 4,
-  resourceID: 43173733,
-  price: '300',
-  owner: '0xae902f62c22b8a83',
-};
-
-const MOCK_LISTINGS = Array.from({ length: 10 }, () => MOCK_LISTING);
 
 export const Collections: React.VFC = () => {
   const { t } = useTranslation();
-  const [firstListings, setFirstListings] = useState<TListing[]>();
-  const [secondListings, setSecondListings] = useState<TListing[]>();
+  const [mockListings, setMockListings] = useState<TListing[]>();
 
   useEffect(() => {
-    getListings('0xf18c70daf915e518')
-      .then((resp) => {
-        setFirstListings(resp);
-        console.log(JSON.stringify(resp));
-      })
-      .catch((err) => console.log(JSON.stringify(err)));
-
     getListings('0x0b7878633a907c55')
       .then((resp) => {
-        setSecondListings(resp);
-        console.log(JSON.stringify(resp));
+        setMockListings(resp);
       })
       .catch((err) => console.log(JSON.stringify(err)));
   }, []);
@@ -56,7 +25,7 @@ export const Collections: React.VFC = () => {
       id: 1,
       name: 'UI KIT',
       gallery: { name: '345 Gallery', addr: '10x0000000000' },
-      listings: secondListings,
+      listings: mockListings,
     },
   ];
 

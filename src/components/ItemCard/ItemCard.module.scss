@@ -5,9 +5,9 @@
   max-width: max-content;
 
   .image {
-    width: 250px;
+    display: flex;
+    width: 200px;
     height: auto;
-    border-radius: 2rem;
   }
 
   .owner {
