@@ -94,6 +94,7 @@ module.exports = {
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-shadow': 'off',
     'react/prop-types': 'off',
+    '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
   },
   ignorePatterns: ['vite.config.ts', '*.js'],
 };

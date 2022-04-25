@@ -55,6 +55,7 @@ export const Header: React.FC<IHeader> = (props) => {
           <div className={styles.infoLanguages}>
             {languages.map((lang) => (
               <span
+                key={lang}
                 className={cn(styles.infoLanguagesItem, {
                   [styles.infoLanguagesItemActive]: i18n.language === lang,
                 })}
