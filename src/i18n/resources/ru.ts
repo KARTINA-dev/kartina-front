@@ -10,8 +10,8 @@ export const ru = {
         en: 'EN',
       },
       login: 'Войти',
-      profile: 'Profile',
-      logout: 'Logout',
+      profile: 'Профиль',
+      logout: 'Выйти',
     },
     sidebar: {
       [Routes.Main]: 'Главная',
@@ -33,17 +33,17 @@ export const ru = {
       title: 'Новые релизы',
     },
     profile: {
-      collection: {
-        title: 'Collection',
-        description: 'You can browse items available for purchase on the marketplace',
+      items: {
+        title: 'Коллекция',
+        description: 'Вы можете просматривать товары, доступные для покупки на торговой площадке',
       },
       listed: {
-        title: 'Listed',
-        description: 'Your precious items for sale on the marketplace',
+        title: 'Выставленные',
+        description: 'Ваши выставленные предметы на продажу, доступны в торговой площадке',
       },
       empty: {
-        title: 'No items',
-        description: 'You can browse items available for purchase on the marketplace',
+        title: 'Нет предметов',
+        description: 'Вы можете просматривать товары, доступные для покупки на торговой площадке',
       },
     },
     collections: {
@@ -52,11 +52,11 @@ export const ru = {
       viewAll: 'Посмотреть все',
     },
     item: {
-      list: 'List',
+      list: 'Список',
     },
     listing: {
-      buy: 'Buy',
-      remove: 'Remove',
+      buy: 'Купить',
+      remove: 'Удалить',
     },
     flow: {
       amount: '₣{{amount}} FLOW',

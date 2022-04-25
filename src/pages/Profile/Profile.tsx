@@ -84,11 +84,11 @@ const Profile: React.VFC = () => {
           onChange={(key) => setActiveTab(key as ProfileTabs)}
           activeKey={activeTab}
         >
-          <TabsPane key={ProfileTabs.Collection} tab={t((d) => d.profile.collection.title)}>
+          <TabsPane key={ProfileTabs.Collection} tab={t((d) => d.profile.items.title)}>
             {items?.length ? (
               <>
-                <p className={styles.contentDescription}>{t((d) => d.profile.collection.description)}</p>
-                <div className={styles.collection}>
+                <p className={styles.contentDescription}>{t((d) => d.profile.items.description)}</p>
+                <div className={styles.items}>
                   {items.map((item) => (
                     <ItemCard key={item.itemID} {...item} createListing={createListing} />
                   ))}
@@ -101,8 +101,8 @@ const Profile: React.VFC = () => {
           <TabsPane key={ProfileTabs.Listed} tab={t((d) => d.profile.listed.title)}>
             {listings?.length ? (
               <>
-                <p className={styles.contentDescription}>{t((d) => d.profile.collection.description)}</p>
-                <div className={styles.collection}>
+                <p className={styles.contentDescription}>{t((d) => d.profile.items.description)}</p>
+                <div className={styles.items}>
                   {listings.map((item) => (
                     <ListingCard key={item.listingID} {...item} />
                   ))}
