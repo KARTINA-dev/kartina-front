@@ -1,23 +1,113 @@
-name: Build and Deploy
+name: kartina frontend CI/CD
+
 on:
   push:
     branches:
       - main
+
+env:
+  FRONTEND_IMAGE: ghcr.io/kartina-dev/kartina-frontend:latest
+
 jobs:
-  build-and-deploy:
-    concurrency: ci-${{ github.ref }}
+  health-check:
+    name: Health Check
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install and Build 🔧
-        run: |
-          npm install --legacy-peer-deps
-          npm run build
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.2.3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
         with:
-          branch: gh-pages
-          folder: dist
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Packages
+        run: npm install
+
+      - name: Lint
+        run: npm run lint --if-present
+
+      - name: Fail - Send notification to Telegram
+        if: ${{ failure() }}
+        uses: appleboy/telegram-action@master
+        with:
+          message: ⚠️ Failed - Health Check Frontend
+          format: markdown
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+
+  package:
+    name: Build and Publish Dockerfile Image
+    runs-on: ubuntu-latest
+    needs: [health-check]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to GitHub Packages
+        run: echo ${{ secrets.TOKEN }} | docker login ghcr.io -u ThreshHNS --password-stdin
+
+      - name: Build images
+        run: |
+          docker-compose -f docker-compose.ci.yml build
+
+      - name: Push images
+        run: |
+          docker push ${{ env.FRONTEND_IMAGE }}
+
+      - name: Fail - Send notification to Telegram
+        if: ${{ failure() }}
+        uses: appleboy/telegram-action@master
+        with:
+          message: ⚠️ Failed - Build and Publish Dockerfile Images
+          format: markdown
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+
+  deploy:
+    name: Deploy to Host
+    runs-on: ubuntu-latest
+    needs: package
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Pull Images and execute Dockerfile Compose
+        uses: appleboy/ssh-action@master
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: 22
+          envs: TOKEN
+          script: |
+            echo ${TOKEN} | docker login ghcr.io -u ThreshHNS --password-stdin
+            cd kartina
+            docker-compose pull
+            docker-compose up -d
+            docker image prune -f
+
+      - name: Fail - Send notification to Telegram
+        if: ${{ failure() }}
+        uses: appleboy/telegram-action@master
+        with:
+          message: ⚠️ Failed - Deploy To Host
+          format: markdown
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+
+      - name: Success - Send notification to Telegram
+        if: ${{ success() }}
+        uses: appleboy/telegram-action@master
+        with:
+          message: ✅ Frontend new version was successfuly deployed
+          format: markdown
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}

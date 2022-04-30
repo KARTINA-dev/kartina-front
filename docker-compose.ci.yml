@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  frontend:
+    build: .
+    image: 'ghcr.io/kartina-dev/kartina-frontend'
+    container_name: frontend
+    restart: always
+    volumes:
+      - certbot:/certbot
+      - certs:/etc/letsencrypt
+    ports:
+      - 443:443
+      - 80:80
+    networks:
+      - nginx_network
+
+
+networks:
+  nginx_network:
+    driver: bridge
+
+volumes:
+  certbot:
+  certs:
