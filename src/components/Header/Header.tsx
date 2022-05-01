@@ -19,7 +19,7 @@ interface IHeader {
   pathname: Routes;
 }
 
-const TOKYO_AUDIO_SRC = 'https://dl1.mp3party.net/download/8422014';
+const TOKYO_AUDIO_SRC = 'https://dl.sonq.ru/music/11773/Teriyaki-Boyz_-_Tokyo-Drift-Fast-Furious_sonq.ru.mp3';
 
 export const Header: React.FC<IHeader> = (props) => {
   const { isAuthenticated, login, logout, pathname } = props;
