@@ -20,7 +20,7 @@ export const ItemCard: React.FC<IItemCard> = (props) => {
 
   const handleConfirmList = async (itemId: number, newListingPrice: string) => {
     setConfirmLoading(true);
-    await createListing!(itemId, newListingPrice);
+    await createListing!(itemId, parseFloat(newListingPrice).toFixed(3).toString());
     setConfirmLoading(false);
     setListModalVisible(false);
   };

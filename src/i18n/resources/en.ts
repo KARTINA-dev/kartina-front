@@ -34,9 +34,9 @@ export const en = {
       title: 'Hottest Drops',
     },
     profile: {
-      collection: {
+      items: {
         title: 'Collection',
-        description: 'You can browse items available for purchase on the marketplace',
+        description: 'Your precious items that you can list on marketplace',
       },
       listed: {
         title: 'Listed',
@@ -56,8 +56,12 @@ export const en = {
       list: 'List',
     },
     listing: {
-      buy: 'Buy',
+      buy: 'Buy Now',
       remove: 'Remove',
+      offer: 'Make Offer',
+      details: 'Details',
+      description: 'Description',
+      price: 'Price',
     },
     flow: {
       amount: '₣{{amount}} FLOW',

@@ -101,7 +101,7 @@ const Profile: React.VFC = () => {
           <TabsPane key={ProfileTabs.Listed} tab={t((d) => d.profile.listed.title)}>
             {listings?.length ? (
               <>
-                <p className={styles.contentDescription}>{t((d) => d.profile.items.description)}</p>
+                <p className={styles.contentDescription}>{t((d) => d.profile.listed.description)}</p>
                 <div className={styles.items}>
                   {listings.map((item) => (
                     <ListingCard key={item.listingID} {...item} />
