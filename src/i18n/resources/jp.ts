@@ -55,8 +55,12 @@ export const jp = {
       list: 'リスト',
     },
     listing: {
-      buy: '購入',
+      buy: '今買う',
       remove: '削除',
+      offer: '価格を提供する',
+      details: '詳細',
+      description: '説明',
+      price: '価格',
     },
     flow: {
       amount: '₣{{amount}} FLOW',
