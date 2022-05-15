@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import { ReactComponent as Logo } from '@/assets/logo.svg';
 import { ReactComponent as MenuIcon } from '@/assets/icons/menu_24.svg';
@@ -9,6 +9,7 @@ import { Routes } from '@/constants/routes';
 import { useTranslation } from '@/i18n';
 import { Theme, useThemeContext } from '@/helpers/Theme/ThemeProvider';
 import { SYSTEM_LANGUAGES } from '@/i18n/resources';
+import { ProfileTabs } from '@/pages/Profile/types';
 
 import styles from './Header.module.scss';
 
@@ -28,7 +29,7 @@ export const Header: React.FC<IHeader> = (props) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const audioEl = useRef(new Audio(TOKYO_AUDIO_SRC));
+  // const audioEl = useRef(new Audio(TOKYO_AUDIO_SRC));
 
   const languages = useMemo(() => {
     const availableLanguages = SYSTEM_LANGUAGES.filter((lang) => lang !== i18n.language);
@@ -46,12 +47,12 @@ export const Header: React.FC<IHeader> = (props) => {
     await i18n.changeLanguage(lang);
   };
 
-  const toggleAudio = async () => {
-    audioEl.current.volume = 0.0345;
-    setIsPlaying((isPlaying) => !isPlaying);
-    audioEl.current.paused ? await audioEl.current.play() : audioEl.current.pause();
-    document.body.setAttribute('theme', 'tokyo');
-  };
+  // const toggleAudio = async () => {
+  //   // audioEl.current.volume = 0.0345;
+  //   setIsPlaying((isPlaying) => !isPlaying);
+  //   // audioEl.current.paused ? await audioEl.current.play() : audioEl.current.pause();
+  //   document.body.setAttribute('theme', 'tokyo');
+  // };
 
   return (
     <>
@@ -64,7 +65,7 @@ export const Header: React.FC<IHeader> = (props) => {
         </Link>
         <div className={cn(styles.info)}>
           {theme === Theme.Light && i18n.language === 'jp' && (
-            <span className={cn(styles.infoTokyo, { [styles.infoTokyoActive]: isPlaying })} onClick={toggleAudio}>
+            <span className={cn(styles.infoTokyo, { [styles.infoTokyoActive]: isPlaying })}>
               {t((d) => d.header.tokyo)}
             </span>
           )}
@@ -89,7 +90,11 @@ export const Header: React.FC<IHeader> = (props) => {
                   {t((d) => d.header.logout)}
                 </button>
               ) : (
-                <Link className={cn(styles.infoLink, styles.infoBuy)} to={Routes.Profile}>
+                <Link
+                  className={cn(styles.infoLink, styles.infoBuy)}
+                  to={Routes.Profile}
+                  state={{ activeTab: ProfileTabs.Collection }}
+                >
                   {t((d) => d.header.profile)}
                 </Link>
               )

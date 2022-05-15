@@ -1,9 +1,11 @@
 import React, { ChangeEvent, useState } from 'react';
 import { Modal } from 'antd';
+import { Link } from 'react-router-dom';
 
 import { TItem } from '@/store/user/types';
 import { useTranslation } from '@/i18n';
 import { getIPFSImage } from '@/helpers/getIPFSImage';
+import { Routes } from '@/constants/routes';
 
 import styles from './ItemCard.module.scss';
 
@@ -26,37 +28,39 @@ export const ItemCard: React.FC<IItemCard> = (props) => {
   };
 
   return (
-    <div className={styles.item}>
-      <img src={getIPFSImage({ imageCID, imagePath })} alt={`Item ${itemID}`} className={styles.image} />
-      <span className={styles.owner}>{owner}</span>
-      <div className={styles.content}>
-        <div className={styles.info}>
-          <span className={styles.name}>{name}</span>
-          <span>{`#${itemID}`}</span>
+    <Link to={`${Routes.Item}/${owner}/${itemID}`}>
+      <div className={styles.item}>
+        <img src={getIPFSImage({ imageCID, imagePath })} alt={`Item ${itemID}`} className={styles.image} />
+        <span className={styles.owner}>{owner}</span>
+        <div className={styles.content}>
+          <div className={styles.info}>
+            <span className={styles.name}>{name}</span>
+            <span>{`#${itemID}`}</span>
+          </div>
+          {createListing && (
+            <>
+              <button className={styles.button} onClick={() => setListModalVisible(true)}>
+                {t((d) => d.item.list)}
+              </button>
+              <Modal
+                visible={listModalVisible}
+                onOk={() => handleConfirmList(itemID, newListingPrice)}
+                confirmLoading={confirmLoading}
+                onCancel={() => setListModalVisible(false)}
+              >
+                <label>
+                  Enter price:
+                  <input
+                    type='number'
+                    value={newListingPrice}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setNewListingPrice(e.target.value)}
+                  />
+                </label>
+              </Modal>
+            </>
+          )}
         </div>
-        {createListing && (
-          <>
-            <button className={styles.button} onClick={() => setListModalVisible(true)}>
-              {t((d) => d.item.list)}
-            </button>
-            <Modal
-              visible={listModalVisible}
-              onOk={() => handleConfirmList(itemID, newListingPrice)}
-              confirmLoading={confirmLoading}
-              onCancel={() => setListModalVisible(false)}
-            >
-              <label>
-                Enter price:
-                <input
-                  type='number'
-                  value={newListingPrice}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) => setNewListingPrice(e.target.value)}
-                />
-              </label>
-            </Modal>
-          </>
-        )}
       </div>
-    </div>
+    </Link>
   );
 };

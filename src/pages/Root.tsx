@@ -3,12 +3,14 @@ import { BrowserRouter, Routes as BaseRoutes, Route } from 'react-router-dom';
 
 import { ADDRESS_PARAM, ITEMS_ITEM_ID_PARAM, MARKET_LISTING_ID_PARAM, Routes } from '@/constants/routes';
 import { PrivateRoute } from '@/utils/PrivateRoute';
+import ListingConfirmation from '@/pages/ListingConfirmation/ListingConfirmation';
 
 import Main from './Main/Main';
 import Market from './Market/Market';
 import Profile from './Profile/Profile';
 import Item from './Item/Item';
 import Listing from './Listing/Listing';
+import PurchaseConfirmation from './PurchaseConfirmation/PurchaseConfirmation';
 
 export const Root: React.VFC = () => (
   <BrowserRouter>
@@ -17,6 +19,8 @@ export const Root: React.VFC = () => (
       <Route path={Routes.Market} element={<Market />} />
       <Route path={`${Routes.Item}${ADDRESS_PARAM}${ITEMS_ITEM_ID_PARAM}`} element={<Item />} />
       <Route path={`${Routes.Listing}${ADDRESS_PARAM}${MARKET_LISTING_ID_PARAM}`} element={<Listing />} />
+      <Route path={`${Routes.Purchase}${ADDRESS_PARAM}${MARKET_LISTING_ID_PARAM}`} element={<PurchaseConfirmation />} />
+      <Route path={`${Routes.List}${ADDRESS_PARAM}${ITEMS_ITEM_ID_PARAM}`} element={<ListingConfirmation />} />
       <Route path={Routes.Profile} element={<PrivateRoute component={Profile} />} />
     </BaseRoutes>
   </BrowserRouter>

@@ -8,4 +8,6 @@ export enum Routes {
   Market = '/market',
   Item = '/items',
   Listing = '/listings',
+  Purchase = '/purchase',
+  List = '/list',
 }

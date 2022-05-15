@@ -1,0 +1,13 @@
+.progressBar {
+  width: 100%;
+  height: 20px;
+  border: solid var(--color-typo-primary);
+  border-radius: 6px;
+
+  &Indicator {
+    height: 100%;
+    background-color: var(--color-typo-primary);
+    transition: width 1s;
+    will-change: width;
+  }
+}
