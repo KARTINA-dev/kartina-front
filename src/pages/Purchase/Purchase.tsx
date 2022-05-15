@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import cn from 'classnames';
 import * as fcl from '@onflow/fcl';
 import * as ft from '@onflow/types';
@@ -30,7 +30,7 @@ const Purchase: React.FC = () => {
   const { listing, isLoading } = useListingInfo(address, Number(listingID));
   const navigate = useNavigate();
 
-  const buyListing = async (listingID: number, ownerAccount: string) => {
+  const buyListing = useCallback(async (listingID: number, ownerAccount: string) => {
     setIsProceeding(true);
 
     let response = '';
@@ -63,7 +63,7 @@ const Purchase: React.FC = () => {
     } catch (err) {
       setTxErrors((prevState) => [...prevState, JSON.stringify(err)]);
     }
-  };
+  }, []);
 
   if (isLoading || !listing) {
     return (
@@ -72,6 +72,8 @@ const Purchase: React.FC = () => {
       </div>
     );
   }
+
+  const isButtonVisible = txStatus !== TransactionStatus.Sealed || Boolean(txErrors.length);
 
   const { imageCID, imagePath, owner, name, price, artist, itemID } = listing;
 
@@ -173,7 +175,7 @@ const Purchase: React.FC = () => {
                 </div>
               </div>
               <div className={styles.detailsBlock}>
-                {(txStatus !== TransactionStatus.Sealed || Boolean(txErrors.length)) && (
+                {isButtonVisible && (
                   <button
                     className={cn(styles.buy, { [styles.proceedingButton]: isProceeding })}
                     onClick={() => buyListing(Number(listingID), owner)}

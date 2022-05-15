@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import cn from 'classnames';
 import * as fcl from '@onflow/fcl';
 import * as ft from '@onflow/types';
@@ -39,7 +39,7 @@ const List: React.FC = () => {
   const locationState = useLocation().state as ListLocationState;
   const price = locationState.price;
 
-  const list = async (itemID: number, price: string) => {
+  const list = useCallback(async (itemID: number, price: string) => {
     setIsProceeding(true);
 
     let response = '';
@@ -73,7 +73,7 @@ const List: React.FC = () => {
     } catch (err) {
       setTxErrors((prevState) => [...prevState, JSON.stringify(err)]);
     }
-  };
+  }, []);
 
   if (isLoading || !item) {
     return (
@@ -82,6 +82,8 @@ const List: React.FC = () => {
       </div>
     );
   }
+
+  const isButtonVisible = txStatus !== TransactionStatus.Sealed || Boolean(txErrors.length);
 
   const { imageCID, imagePath, name, artist } = item;
 
@@ -186,7 +188,7 @@ const List: React.FC = () => {
                 </div>
               </div>
               <div className={styles.detailsBlock}>
-                {(txStatus !== TransactionStatus.Sealed || Boolean(txErrors.length)) && (
+                {isButtonVisible && (
                   <button
                     className={cn(styles.buy, { [styles.proceedingButton]: isProceeding })}
                     onClick={() => list(Number(itemID), price)}
