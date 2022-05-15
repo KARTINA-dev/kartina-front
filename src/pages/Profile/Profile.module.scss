@@ -24,6 +24,44 @@
     &Description {
       margin: 0;
     }
+
+    .userInfo {
+      width: 500px;
+      padding: 1rem;
+      gap: 1rem;
+      border: solid 1px var(--color-typo-primary);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+
+      .field {
+        display: flex;
+        justify-content: space-between;
+
+        &Name {
+          color: var(--color-typo-secondary);
+        }
+
+        &Value {
+          font-weight: 500;
+        }
+      }
+
+      .balance {
+        display: flex;
+        gap: 0.2rem;
+        align-items: center;
+
+        .currencyLogo {
+          height: 20px;
+          margin-left: -1px;
+        }
+        .amount {
+          margin-top: 3px;
+        }
+      }
+
+    }
   }
 
   .items {
