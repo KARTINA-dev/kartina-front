@@ -7,6 +7,7 @@ import { useTranslation } from '@/i18n';
 import { Routes } from '@/constants/routes';
 import { getIPFSImage } from '@/helpers/getIPFSImage';
 import { Size } from '@/types/common';
+import { ReactComponent as FlowLogo } from '@/assets/flowLogo.svg';
 
 import styles from './ListingCard.module.scss';
 
@@ -22,9 +23,14 @@ export const ListingCard: React.FC<IListingCard> = (props) => {
     <Link to={`${Routes.Listing}/${owner}/${listingID}`} className={cn(styles.listing, styles[`listingSize${size}`])}>
       <img src={getIPFSImage({ imageCID, imagePath })} alt={`Listing ID Image`} className={styles.image} />
       <div className={styles.content}>
-        <span className={styles.name}>{name}</span>
-        <span className={styles.artistName}>{artist}</span>
-        <span className={styles.price}>{t((d) => d.flow.amount, { amount: parseFloat(price).toFixed(3) })}</span>
+        <div className={styles.info}>
+          <span className={styles.name}>{name}</span>
+          <span className={styles.artist}>{artist}</span>
+        </div>
+        <div className={styles.price}>
+          <FlowLogo className={styles.currencyLogo} />
+          <span className={styles.amount}>{t((d) => d.flow.amount, { amount: parseFloat(price).toFixed(3) })}</span>
+        </div>
       </div>
     </Link>
   );

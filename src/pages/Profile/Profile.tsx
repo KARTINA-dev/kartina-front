@@ -1,8 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import cn from 'classnames';
-import * as fcl from '@onflow/fcl';
-import * as ft from '@onflow/types';
-import { useLocation } from 'react-router-dom';
 
 import { useDispatch, useSelector } from '@/store/hooks';
 import { userActions } from '@/store/user/store';
@@ -18,41 +15,19 @@ import { MintForm } from '@/components/MintForm/MintForm';
 import { ListingCard } from '@/components/ListingCard/ListingCard';
 import { Routes } from '@/constants/routes';
 import { useAuthentication } from '@/pages/Main/hooks';
+import { ReactComponent as FlowLogo } from '@/assets/flowLogo.svg';
 
 import styles from './Profile.module.scss';
 
 const DEFAULT_ACTIVE_TAB = ProfileTabs.Collection;
 
-interface ProfileLocationState {
-  activeTab: ProfileTabs;
-}
-
 const Profile: React.VFC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { state } = useLocation();
-  const activeTabValue = (state as ProfileLocationState).activeTab ?? DEFAULT_ACTIVE_TAB;
-  const [activeTab, setActiveTab] = useState(activeTabValue);
+  const [activeTab, setActiveTab] = useState<ProfileTabs>(DEFAULT_ACTIVE_TAB);
   const { logout, isAuthenticated } = useAuthentication();
 
   const { addr, balance, items, listings, isLoading } = useSelector((state) => state.user);
-
-  const createListing = useCallback(
-    async (id: number, price: string) => {
-      if (!addr) {
-        return;
-      }
-
-      const response = await fcl.mutate({
-        cadence: MARKET_CREATE_LISTING,
-        args: () => [fcl.arg(id, ft.UInt64), fcl.arg(price, ft.UFix64)],
-        limit: 9999,
-      });
-
-      await fcl.tx(response).onceSealed();
-    },
-    [addr],
-  );
 
   useEffect(() => {
     if (addr) {
@@ -80,9 +55,24 @@ const Profile: React.VFC = () => {
         <span>{addr}</span>
         <span> {t((d) => d.flow.amount, { amount: balance })}</span>
       </Header>
-      <div>Address: {addr}</div>
-      <span>Balance: {t((d) => d.flow.amount, { amount: balance })}</span>
       <div className={styles.content}>
+        <div className={styles.userInfo}>
+          <span className={styles.field}>
+            <span className={styles.fieldName}>Your address:</span>
+            <span className={styles.fieldValue}>{addr}</span>
+          </span>
+          <span className={styles.field}>
+            <span className={styles.fieldName}>Your balance</span>{' '}
+            {
+              <div className={styles.balance}>
+                <FlowLogo className={styles.currencyLogo} />
+                <span className={cn(styles.amount, styles.fieldValue)}>
+                  {t((d) => d.flow.amount, { amount: parseFloat(balance ?? '0.000').toFixed(3) })}
+                </span>
+              </div>
+            }
+          </span>
+        </div>
         <Tabs
           className={styles.contentTabs}
           defaultActiveKey={DEFAULT_ACTIVE_TAB}
@@ -95,7 +85,7 @@ const Profile: React.VFC = () => {
                 <p className={styles.contentDescription}>{t((d) => d.profile.items.description)}</p>
                 <div className={styles.items}>
                   {items.map((item) => (
-                    <ItemCard key={item.itemID} {...item} createListing={createListing} />
+                    <ItemCard key={item.itemID} {...item} />
                   ))}
                 </div>
               </>
@@ -119,7 +109,7 @@ const Profile: React.VFC = () => {
           </TabsPane>
         </Tabs>
       </div>
-      <MintForm />
+      {/*<MintForm />*/}
     </div>
   );
 };
