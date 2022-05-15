@@ -36,7 +36,7 @@ export const ru = {
     profile: {
       items: {
         title: 'Коллекция',
-        description: 'Ваши предметы, которые вы можете выложить на продажу',
+        description: 'Ваши предметы, которые вы можете выставить на продажу',
       },
       listed: {
         title: 'Выставленные',
@@ -64,7 +64,7 @@ export const ru = {
       price: 'Цена',
     },
     flow: {
-      amount: '₣{{amount}} FLOW',
+      amount: '{{amount}} FLOW',
     },
   },
 };

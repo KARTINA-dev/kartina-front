@@ -1,7 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
-import * as fcl from '@onflow/fcl';
-import * as ft from '@onflow/types';
 
 import { useDispatch, useSelector } from '@/store/hooks';
 import { userActions } from '@/store/user/store';
@@ -12,11 +10,11 @@ import { Size } from '@/types/common';
 import { ItemCard } from '@/components/ItemCard/ItemCard';
 import { Tabs, TabsPane } from '@/components/Tabs/Tabs';
 import { ProfileTabs } from '@/pages/Profile/types';
-import { MARKET_CREATE_LISTING } from '@/cadence/market/create_listing';
 import { MintForm } from '@/components/MintForm/MintForm';
 import { ListingCard } from '@/components/ListingCard/ListingCard';
 import { Routes } from '@/constants/routes';
 import { useAuthentication } from '@/pages/Main/hooks';
+import { ReactComponent as FlowLogo } from '@/assets/flowLogo.svg';
 
 import styles from './Profile.module.scss';
 
@@ -29,27 +27,6 @@ const Profile: React.VFC = () => {
   const { logout, isAuthenticated } = useAuthentication();
 
   const { addr, balance, items, listings, isLoading } = useSelector((state) => state.user);
-
-  const createListing = useCallback(
-    async (id: number, price: string) => {
-      if (!addr) {
-        return;
-      }
-
-      console.log(id);
-
-      const response = await fcl.mutate({
-        cadence: MARKET_CREATE_LISTING,
-        args: () => [fcl.arg(id, ft.UInt64), fcl.arg(price, ft.UFix64)],
-        limit: 9999,
-      });
-
-      console.log(response);
-
-      console.log(await fcl.tx(response).onceSealed());
-    },
-    [addr],
-  );
 
   useEffect(() => {
     if (addr) {
@@ -78,6 +55,23 @@ const Profile: React.VFC = () => {
         <span> {t((d) => d.flow.amount, { amount: balance })}</span>
       </Header>
       <div className={styles.content}>
+        <div className={styles.userInfo}>
+          <span className={styles.field}>
+            <span className={styles.fieldName}>Your address:</span>
+            <span className={styles.fieldValue}>{addr}</span>
+          </span>
+          <span className={styles.field}>
+            <span className={styles.fieldName}>Your balance</span>{' '}
+            {
+              <div className={styles.balance}>
+                <FlowLogo className={styles.currencyLogo} />
+                <span className={cn(styles.amount, styles.fieldValue)}>
+                  {t((d) => d.flow.amount, { amount: parseFloat(balance ?? '0.000').toFixed(3) })}
+                </span>
+              </div>
+            }
+          </span>
+        </div>
         <Tabs
           className={styles.contentTabs}
           defaultActiveKey={DEFAULT_ACTIVE_TAB}
@@ -90,7 +84,7 @@ const Profile: React.VFC = () => {
                 <p className={styles.contentDescription}>{t((d) => d.profile.items.description)}</p>
                 <div className={styles.items}>
                   {items.map((item) => (
-                    <ItemCard key={item.itemID} {...item} createListing={createListing} />
+                    <ItemCard key={item.itemID} {...item} />
                   ))}
                 </div>
               </>
@@ -114,7 +108,7 @@ const Profile: React.VFC = () => {
           </TabsPane>
         </Tabs>
       </div>
-      <MintForm />
+      {/*<MintForm />*/}
     </div>
   );
 };
