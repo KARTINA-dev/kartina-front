@@ -29,14 +29,14 @@
       height: 100%;
       display: flex;
       gap: 3rem;
+      padding-top: 1rem;
 
       .transaction {
         display: flex;
         flex-direction: column;
         height: 100%;
         width: 100%;
-        border: solid 1px var(--color-typo-primary);
-        padding: 2rem;
+        padding-right: 15rem;
         gap: 3rem;
 
         .row {
