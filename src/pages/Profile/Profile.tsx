@@ -30,9 +30,9 @@ interface ProfileLocationState {
 const Profile: React.VFC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const locationState = useLocation().state as ProfileLocationState;
-  const initialActiveTab = locationState.activeTab;
-  const [activeTab, setActiveTab] = useState<ProfileTabs>(initialActiveTab);
+  const { state } = useLocation();
+  const activeTabValue = (state as ProfileLocationState).activeTab ?? DEFAULT_ACTIVE_TAB;
+  const [activeTab, setActiveTab] = useState(activeTabValue);
   const { logout, isAuthenticated } = useAuthentication();
 
   const { addr, balance, items, listings, isLoading } = useSelector((state) => state.user);

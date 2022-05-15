@@ -2,52 +2,43 @@ import React, { useState } from 'react';
 import cn from 'classnames';
 import * as fcl from '@onflow/fcl';
 import * as ft from '@onflow/types';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { Routes } from '@/constants/routes';
 import { Header } from '@/components/Header/Header';
 import { useAuthentication } from '@/pages/Main/hooks';
 import { Spinner } from '@/components/Spinner/Spinner';
 import { Size } from '@/types/common';
-import { useTranslation } from '@/i18n';
+import { MARKET_PURCHASE_LISTING } from '@/cadence/market/purchase_listing';
+import { useListingInfo } from '@/pages/Listing/hooks';
 import { ReactComponent as BackIcon } from '@/assets/icons/back.svg';
 import { ReactComponent as QuestionIcon } from '@/assets/icons/question.svg';
 import { ReactComponent as OpenIcon } from '@/assets/icons/open.svg';
 import { getIPFSImage } from '@/helpers/getIPFSImage';
-import { TransactionStatus, TTransaction } from '@/pages/PurchaseConfirmation/types';
+import { TransactionStatus, TTransaction } from '@/pages/Purchase/types';
 import ProgressBar from '@/components/ProgressBar/ProgressBar';
-import { useItemInfo } from '@/pages/Item/hooks';
-import { MARKET_CREATE_LISTING } from '@/cadence/market/create_listing';
-import { ProfileTabs } from '@/pages/Profile/types';
 
-import styles from './ListingConfirmation.module.scss';
+import styles from './Purchase.module.scss';
 
-interface ListLocationState {
-  price: string;
-}
-
-const PurchaseConfirmation: React.FC = () => {
+const Purchase: React.FC = () => {
   const { isAuthenticated, login } = useAuthentication();
   const [isProceeding, setIsProceeding] = useState<boolean>(false);
   const [txStatus, setTxStatus] = useState<TransactionStatus>(TransactionStatus.Unknown);
   const [txID, setTxID] = useState<string>('');
   const [txErrors, setTxErrors] = useState<string[]>([]);
-  const { address, itemID } = useParams();
-  const { t } = useTranslation();
-  const { item, isLoading } = useItemInfo(address, Number(itemID));
+  const { address, listingID } = useParams();
+  const { listing, isLoading } = useListingInfo(address, Number(listingID));
   const navigate = useNavigate();
-  const locationState = useLocation().state as ListLocationState;
-  const price = locationState.price;
 
-  const list = async (itemID: number, price: string) => {
+  const buyListing = async (listingID: number, ownerAccount: string) => {
     setIsProceeding(true);
 
     let response = '';
 
     try {
       response = await fcl.mutate({
-        cadence: MARKET_CREATE_LISTING,
-        args: () => [fcl.arg(itemID, ft.UInt64), fcl.arg(price, ft.UFix64)],
+        cadence: MARKET_PURCHASE_LISTING,
+        args: () => [fcl.arg(listingID, ft.UInt64), fcl.arg(ownerAccount, ft.Address)],
         limit: 9999,
       });
 
@@ -68,14 +59,13 @@ const PurchaseConfirmation: React.FC = () => {
           }
         }
       });
-
       await fcl.tx(response).onceSealed();
     } catch (err) {
       setTxErrors((prevState) => [...prevState, JSON.stringify(err)]);
     }
   };
 
-  if (isLoading || !item) {
+  if (isLoading || !listing) {
     return (
       <div className={cn(styles.checkoutPage, styles.loading)}>
         <Spinner size={Size.L} />
@@ -83,7 +73,7 @@ const PurchaseConfirmation: React.FC = () => {
     );
   }
 
-  const { imageCID, imagePath, name, artist } = item;
+  const { imageCID, imagePath, owner, name, price, artist, itemID } = listing;
 
   return (
     <div className={styles.checkoutPage}>
@@ -91,7 +81,7 @@ const PurchaseConfirmation: React.FC = () => {
       <div className={styles.content}>
         <button className={styles.back} onClick={() => navigate(-1)}>
           <BackIcon className={styles.backIcon} />
-          <span className={styles.backText}>Back to item</span>
+          <span className={styles.backText}>Back to listing</span>
         </button>
         <div className={styles.info}>
           <div className={styles.transaction}>
@@ -102,12 +92,12 @@ const PurchaseConfirmation: React.FC = () => {
                 <span>{itemID}</span>
               </div>
               <div className={styles.col}>
-                <span className={styles.colTitle}>Item type</span>
-                <span>KartinaItem</span>
+                <span className={styles.colTitle}>Owned by</span>
+                <span>{owner}</span>
               </div>
               <div className={styles.col}>
                 <span className={styles.colTitle}>Contract</span>
-                <span>NFTStorefront</span>
+                <span>KartinaItems</span>
               </div>
               <div className={styles.col}>
                 <span className={styles.colTitle}>Blockchain</span>
@@ -148,11 +138,8 @@ const PurchaseConfirmation: React.FC = () => {
                 </div>
               ) : (
                 <div className={styles.congrats}>
-                  Поздравляем! Вы выставили NFT "{name}".{' '}
-                  <Link to={`${Routes.Profile}`} state={{ activeTab: ProfileTabs.Listed }}>
-                    Нажмите
-                  </Link>
-                  , чтобы перейти к своему маркетплейсу
+                  Поздравляем! Вы купили NFT "{name}". <Link to={`${Routes.Profile}`}>Нажмите</Link>, чтобы перейти к
+                  своей коллекции
                 </div>
               ))}
           </div>
@@ -189,12 +176,12 @@ const PurchaseConfirmation: React.FC = () => {
                 {(txStatus !== TransactionStatus.Sealed || Boolean(txErrors.length)) && (
                   <button
                     className={cn(styles.buy, { [styles.proceedingButton]: isProceeding })}
-                    onClick={() => list(Number(itemID), price)}
+                    onClick={() => buyListing(Number(listingID), owner)}
                   >
                     {isProceeding ? (
                       <Spinner className={styles.proceedingLoader} size={Size.M} />
                     ) : (
-                      t((d) => d.item.list)
+                      <span>Купить сейчас</span>
                     )}
                   </button>
                 )}
@@ -208,4 +195,4 @@ const PurchaseConfirmation: React.FC = () => {
   );
 };
 
-export default PurchaseConfirmation;
+export default Purchase;

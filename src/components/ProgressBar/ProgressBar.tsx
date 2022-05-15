@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
-import { TransactionStatus } from '@/pages/PurchaseConfirmation/types';
+import { TransactionStatus } from '@/pages/Purchase/types';
 
 import styles from './ProgressBar.module.scss';
 
@@ -9,7 +9,7 @@ interface IProgressBarProps {
 }
 
 const ProgressBar: React.FC<IProgressBarProps> = ({ status }) => {
-  const getTxProgress = (status: TransactionStatus): string => {
+  const width = useMemo(() => {
     switch (status) {
       case TransactionStatus.Unknown:
         return '0%';
@@ -22,11 +22,11 @@ const ProgressBar: React.FC<IProgressBarProps> = ({ status }) => {
       default:
         return '100%';
     }
-  };
+  }, [status]);
 
   return (
     <div className={styles.progressBar}>
-      <div style={{ width: getTxProgress(status) }} className={styles.progressBarIndicator} />
+      <div style={{ width }} className={styles.progressBarIndicator} />
     </div>
   );
 };
