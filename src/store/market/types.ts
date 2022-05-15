@@ -10,6 +10,7 @@ export type TListing = {
   resourceID: number;
   owner: string;
   price: string;
+  itemID: number;
 };
 
 export type TCollection = {

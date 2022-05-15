@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import { ListingCard } from '@/components/ListingCard/ListingCard';
 import { TListing } from '@/store/user/types';
@@ -26,6 +25,7 @@ const MOCK_LISTING: TListing = {
   resourceID: 43173733,
   price: '300',
   owner: '0xae902f62c22b8a83',
+  itemID: 43173733,
 };
 
 const cardsSizesOrder = [Size.M, Size.S, Size.L];
