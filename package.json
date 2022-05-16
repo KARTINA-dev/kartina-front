@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "start": "vite --mode testnet",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build --mode mainnet",
     "preview": "vite preview",
     "lint:js": "eslint --color ./src --ext .js,.ts,.tsx",
     "lint:css": "stylelint \"**/*.scss\"",

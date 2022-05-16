@@ -1,8 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import { IS_PROD } from '@/constants/env';
-
 import { ru, en, jp } from './resources';
 import { useTranslation } from './hooks';
 
