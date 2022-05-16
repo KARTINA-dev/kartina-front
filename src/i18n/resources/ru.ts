@@ -69,6 +69,7 @@ export const ru = {
         [RequestStatus.Declined]: 'Отклонено',
         [RequestStatus.Waiting]: 'Ожидает',
         [RequestStatus.Listed]: 'Выставлено',
+        [RequestStatus.Hottest]: 'Актуальная',
       },
       upload: {
         label: 'Добавить картины',

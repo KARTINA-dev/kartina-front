@@ -10,6 +10,7 @@ import { Routes } from '@/constants/routes';
 import { HottestDrops } from '@/components/HottestDrops/HottestDrops';
 import { useAuthentication } from '@/helpers/useAuthentication';
 
+import { EmailSubscribe } from './components/EmailSubscribe';
 import styles from './Main.module.scss';
 
 const Main: React.VFC = () => {
@@ -29,13 +30,7 @@ const Main: React.VFC = () => {
       <Header isAuthenticated={isAuthenticated} login={login} pathname={Routes.Main} />
       <HottestDrops />
       <Collections />
-      <div className={styles.subscribe}>
-        <h2 className={styles.subscribeTitle}>{t((d) => d.main.subscribeForm.title)}</h2>
-        <div className={styles.subscribeForm}>
-          <input className={styles.subscribeInput} type={'email'} placeholder={t((d) => d.main.subscribeForm.email)} />
-          <button className={styles.subscribeButton}>{t((d) => d.main.subscribeForm.subscribe)}</button>
-        </div>
-      </div>
+      <EmailSubscribe />
       <footer className={styles.footer}>
         <span className={styles.footerCompany}>{t((d) => d.footer.company)}</span>
         <span className={styles.footerCopyright}>{t((d) => d.footer.copyright)}</span>
