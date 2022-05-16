@@ -1,40 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { ListingCard } from '@/components/ListingCard/ListingCard';
-import { TListing } from '@/store/user/types';
 import { useTranslation } from '@/i18n';
-import { getListings } from '@/api/market';
+import { useCollections } from '@/components/Collections/hooks';
 
 import styles from './Collections.module.scss';
 
 export const Collections: React.VFC = () => {
   const { t } = useTranslation();
-  const [mockListings, setMockListings] = useState<TListing[]>();
-
-  useEffect(() => {
-    getListings('0x0b7878633a907c55')
-      .then((resp) => {
-        setMockListings(resp);
-      })
-      .catch((err) => console.log(JSON.stringify(err)));
-  }, []);
-
-  const collections = [
-    {
-      id: 1,
-      name: 'UI KIT',
-      gallery: { name: '345 Gallery', addr: '10x0000000000' },
-      listings: mockListings,
-    },
-  ];
+  const { collections } = useCollections();
 
   return (
     <div className={styles.collections}>
       <h1 className={styles.title}>{t((d) => d.collections.title)}</h1>
-      {collections.length &&
-        collections.map(({ id, name, gallery, listings }) => (
-          <div key={id} className={styles.collection}>
+      {collections.length > 0 &&
+        collections.map(({ _id, name, gallery, listings }) => (
+          <div key={_id} className={styles.collection}>
             <div className={styles.header}>
               <h3 className={styles.name}>
                 {name}
