@@ -19,7 +19,7 @@ div#root {
 }
 
 body {
-  line-height: 1.15;
+  line-height: 1.5715;
   font-family: 'HelveticaNeueCyr', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   color: var(--color-typo-primary);
@@ -60,4 +60,8 @@ ul ul li {
   padding: 0;
   text-indent: 0;
   list-style: none;
+}
+
+p {
+  margin: 0;
 }
