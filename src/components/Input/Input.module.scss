@@ -1,0 +1,114 @@
+.input {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: var(--color-control-primary);
+
+  &Size {
+    &L {
+      height: 48px;
+      padding: 0 12px;
+      font-size: var(--font-size-l);
+    }
+
+    &M {
+      height: 40px;
+      padding: 0 10px;
+      font-size: var(--font-size-m);
+    }
+
+    &S {
+      height: 30px;
+      padding: 0 8px;
+      font-size: var(--font-size-s);
+    }
+
+    &XS {
+      height: 24px;
+      padding: 0 6px;
+      font-size: var(--font-size-xs);
+    }
+  }
+
+  &View {
+    &Default {
+      --border-color: var(--color-bg-border);
+      --background-color: var(--color-bg-default);
+      --typo-color: var(--color-typo-default);
+    }
+  }
+
+  &Form {
+    &Brick {
+      border-radius: 0;
+    }
+  }
+
+  &Disabled {
+    cursor: initial;
+
+    --border-color: var(--color-control-bg-border-disable) !important;
+    --background-color: var(--color-control-bg-disable) !important;
+    --typo-color: var(--color-control-typo-disable) !important;
+  }
+
+  :global {
+    .ant-input {
+      color: inherit;
+      font-size: inherit;
+    }
+
+    .ant-input::placeholder {
+      color: var(--color-typo-secondary);
+    }
+
+    .ant-input-prefix,
+    .ant-input-suffix {
+      color: var(--color-typo-secondary);
+    }
+
+    .ant-input-number-affix-wrapper {
+      border: none;
+    }
+  }
+}
+
+.textarea {
+  padding: 4px 8px;
+}
+
+:global {
+  .ant-input:focus,
+  .ant-input-focused {
+    border-color: var(--color-accent);
+    box-shadow: none;
+  }
+
+  .ant-input:hover {
+    border-color: var(--color-accent);
+  }
+
+  .ant-input-number-affix-wrapper > div.ant-input-number {
+    height: calc(100% - 2px);
+  }
+
+  .ant-input-number-affix-wrapper:not(.ant-input-number-affix-wrapper-disabled):hover {
+    border-color: var(--color-accent);
+  }
+
+  .ant-input-number-affix-wrapper:focus,
+  .ant-input-number-affix-wrapper-focused,
+  .ant-input-affix-wrapper:focus,
+  .ant-input-affix-wrapper-focused {
+    border-color: var(--color-accent);
+    box-shadow: none;
+  }
+
+  .ant-input-number-out-of-range input {
+    color: var(--color-error);
+  }
+
+  .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+    border-color: var(--color-accent);
+  }
+}
