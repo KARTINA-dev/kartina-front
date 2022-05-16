@@ -1,8 +1,8 @@
 import cn from 'classnames';
 import { Link, NavLink } from 'react-router-dom';
 import React, { useMemo, useState } from 'react';
+import { Turn as Hamburger } from 'hamburger-react';
 
-import { ReactComponent as MenuIcon } from '@/assets/icons/menu_24.svg';
 import { ReactComponent as ThemeIcon } from '@/assets/icons/theme_24.svg';
 import { Routes } from '@/constants/routes';
 import { useTranslation } from '@/i18n';
@@ -58,9 +58,9 @@ export const Header: React.FC<IHeader> = (props) => {
   return (
     <header className={cn(styles.header, { [styles.headerMenuOpen]: menuOpen })}>
       <div className={styles.menu}>
-        <button className={styles.menuIcon} onClick={toggleMenu}>
-          <MenuIcon />
-        </button>
+        <div className={styles.burgerContainer}>
+          <Hamburger toggled={menuOpen} size={23} distance={'sm'} onToggle={toggleMenu} />
+        </div>
         <div className={styles.menuLinks}>
           <ThemeIcon className={styles.menuLinksItem} onClick={toggleTheme} />
           <div className={styles.infoLanguages}>

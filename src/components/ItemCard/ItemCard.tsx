@@ -1,12 +1,11 @@
 import React, { ChangeEvent, useState } from 'react';
 import { Modal } from 'antd';
 import { Link } from 'react-router-dom';
-import cn from 'classnames';
 
+import { Routes } from '@/constants/routes';
 import { TItem } from '@/store/user/types';
 import { useTranslation } from '@/i18n';
 import { getIPFSImage } from '@/helpers/getIPFSImage';
-import { Routes } from '@/constants/routes';
 
 import styles from './ItemCard.module.scss';
 

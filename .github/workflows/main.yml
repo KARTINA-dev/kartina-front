@@ -29,8 +29,8 @@ jobs:
       - name: Install Packages
         run: npm install
 
-      - name: Lint
-        run: npm run lint --if-present
+#      - name: Lint
+#        run: npm run lint --if-present
 
       - name: Fail - Send notification to Telegram
         if: ${{ failure() }}
