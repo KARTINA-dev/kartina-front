@@ -1,8 +1,7 @@
 import cn from 'classnames';
 import { Link, NavLink } from 'react-router-dom';
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
-import { ReactComponent as Logo } from '@/assets/logo.svg';
 import { ReactComponent as MenuIcon } from '@/assets/icons/menu_24.svg';
 import { ReactComponent as ThemeIcon } from '@/assets/icons/theme_24.svg';
 import { Routes } from '@/constants/routes';
@@ -20,22 +19,20 @@ interface IHeader {
   pathname: Routes;
 }
 
-const TOKYO_AUDIO_SRC = 'https://dl.sonq.ru/music/11773/Teriyaki-Boyz_-_Tokyo-Drift-Fast-Furious_sonq.ru.mp3';
-
-const HEADER_MENU_ROUTES = [
-  { route: Routes.Main, label: 'Главная' },
-  { route: Routes.Market, label: 'Маркетплейс' },
-  { route: Routes.Manage, label: 'Галереи' },
-];
-
 export const Header: React.FC<IHeader> = (props) => {
   const { isAuthenticated, login, logout, pathname, galleryName } = props;
   const { theme, toggleTheme } = useThemeContext();
   const { t, i18n } = useTranslation();
-  const [isPlaying, setIsPlaying] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const audioEl = useRef(new Audio(TOKYO_AUDIO_SRC));
+  const HEADER_MENU_ROUTES = useMemo(
+    () => [
+      { route: Routes.Main, label: t((d) => d.header.links[Routes.Main]) },
+      { route: Routes.Market, label: t((d) => d.header.links[Routes.Market]) },
+      { route: Routes.Manage, label: t((d) => d.header.links[Routes.Manage]) },
+    ],
+    [t],
+  );
 
   const languages = useMemo(() => {
     const availableLanguages = SYSTEM_LANGUAGES.filter((lang) => lang !== i18n.language);
@@ -53,10 +50,7 @@ export const Header: React.FC<IHeader> = (props) => {
     await i18n.changeLanguage(lang);
   };
 
-  const toggleAudio = async () => {
-    audioEl.current.volume = 0.0345;
-    setIsPlaying((isPlaying) => !isPlaying);
-    audioEl.current.paused ? await audioEl.current.play() : audioEl.current.pause();
+  const toggleTokyo = () => {
     document.body.setAttribute('theme', 'tokyo');
   };
 
@@ -91,10 +85,7 @@ export const Header: React.FC<IHeader> = (props) => {
             </NavLink>
           ))}
           {theme === Theme.Light && i18n.language === 'jp' && (
-            <span
-              className={cn(styles.menuLinksItem, { [styles.menuLinksItemActive]: isPlaying })}
-              onClick={toggleAudio}
-            >
+            <span className={cn(styles.menuLinksItem)} onClick={toggleTokyo}>
               {t((d) => d.header.tokyo)}
             </span>
           )}

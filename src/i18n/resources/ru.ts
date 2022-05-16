@@ -10,15 +10,15 @@ export const ru = {
         jp: '中文',
         en: 'EN',
       },
+      links: {
+        [Routes.Main]: 'Главная',
+        [Routes.Market]: 'Маркетплейс',
+        [Routes.Manage]: 'Галерея',
+      },
       login: 'Войти',
       profile: 'Профиль',
       tokyo: 'Tokyo',
       logout: 'Выйти',
-    },
-    sidebar: {
-      [Routes.Main]: 'Главная',
-      [Routes.Market]: 'Магазин',
-      [Routes.Profile]: 'Профиль',
     },
     footer: {
       company: 'KARTINA.DIGITAL',
