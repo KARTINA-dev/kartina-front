@@ -1,4 +1,5 @@
 import { Routes } from '@/constants/routes';
+import { RequestStatus } from '@/store/gallery/types';
 
 export const ru = {
   name: 'ru',
@@ -51,6 +52,53 @@ export const ru = {
       title: 'Коллекции',
       galleryPrefix: 'от {{gallery}}',
       viewAll: 'Посмотреть все',
+    },
+    market: {
+      filter: {
+        label: 'Фильтры',
+        artist: 'Художник',
+        country: 'Страна',
+        price: 'Цена',
+        searchPlaceholder: 'Найти NFT',
+      },
+    },
+    manage: {
+      requests: 'Заявки',
+      create: 'Создать',
+      status: {
+        [RequestStatus.Declined]: 'Отклонено',
+        [RequestStatus.Waiting]: 'Ожидает',
+        [RequestStatus.Listed]: 'Выставлено',
+      },
+      upload: {
+        label: 'Добавить картины',
+        help: 'Перетащите или загрузите фотографии картин для создания коллекции',
+      },
+      form: {
+        image: {
+          label: 'Создание картины',
+          name: 'Картина',
+          namePlaceholder: 'Название картины',
+          artist: 'Художник',
+          artistPlaceholder: 'Имя художника',
+          description: 'Описание',
+          descriptionPlaceholder: 'Описание картины',
+          price: 'Цена',
+        },
+        collection: {
+          name: 'Коллекция',
+          namePlaceholder: 'Название коллекции',
+          description: 'Описание',
+          descriptionPlaceholder: 'Описание коллекции',
+        },
+        next: 'Далее',
+        sendRequest: 'Отправить заявку',
+        createCollection: 'Создание коллекции',
+      },
+      login: {
+        label: 'Управление галереей',
+        button: 'Войти',
+      },
     },
     item: {
       list: 'Выставить',
