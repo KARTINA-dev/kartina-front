@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 
 import { useDispatch, useSelector } from '@/store/hooks';
@@ -10,12 +10,10 @@ import { Size } from '@/types/common';
 import { ItemCard } from '@/components/ItemCard/ItemCard';
 import { Tabs, TabsPane } from '@/components/Tabs/Tabs';
 import { ProfileTabs } from '@/pages/Profile/types';
-import { MARKET_CREATE_LISTING } from '@/cadence/market/create_listing';
-import { MintForm } from '@/components/MintForm/MintForm';
 import { ListingCard } from '@/components/ListingCard/ListingCard';
 import { Routes } from '@/constants/routes';
-import { useAuthentication } from '@/pages/Main/hooks';
-import { ReactComponent as FlowLogo } from '@/assets/flowLogo.svg';
+import { useAuthentication } from '@/helpers/useAuthentication';
+import { ReactComponent as FlowIcon } from '@/assets/icons/flow_12.svg';
 
 import styles from './Profile.module.scss';
 
@@ -37,7 +35,7 @@ const Profile: React.VFC = () => {
 
   useEffect(() => {
     if (addr && activeTab === ProfileTabs.Listed) {
-      void dispatch(userActions.sideEffects.getUserListing(addr));
+      void dispatch(userActions.sideEffects.getUserListing({ address: addr }));
     }
   }, [addr, activeTab, dispatch]);
 
@@ -58,14 +56,14 @@ const Profile: React.VFC = () => {
       <div className={styles.content}>
         <div className={styles.userInfo}>
           <span className={styles.field}>
-            <span className={styles.fieldName}>Your address:</span>
+            <span className={styles.fieldName}>Address</span>
             <span className={styles.fieldValue}>{addr}</span>
           </span>
           <span className={styles.field}>
-            <span className={styles.fieldName}>Your balance</span>{' '}
+            <span className={styles.fieldName}>Balance</span>
             {
               <div className={styles.balance}>
-                <FlowLogo className={styles.currencyLogo} />
+                <FlowIcon />
                 <span className={cn(styles.amount, styles.fieldValue)}>
                   {t((d) => d.flow.amount, { amount: parseFloat(balance ?? '0.000').toFixed(3) })}
                 </span>
@@ -74,7 +72,6 @@ const Profile: React.VFC = () => {
           </span>
         </div>
         <Tabs
-          className={styles.contentTabs}
           defaultActiveKey={DEFAULT_ACTIVE_TAB}
           onChange={(key) => setActiveTab(key as ProfileTabs)}
           activeKey={activeTab}
@@ -101,7 +98,7 @@ const Profile: React.VFC = () => {
                   {listings.map((item) => (
                     <ListingCard key={item.listingID} {...item} />
                   ))}
-                </div>{' '}
+                </div>
               </>
             ) : (
               <p className={styles.contentDescription}>{t((d) => d.profile.empty.description)}</p>

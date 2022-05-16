@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
-import { TListing } from '@/store/user/types';
 import { useTranslation } from '@/i18n';
 import { Routes } from '@/constants/routes';
 import { getIPFSImage } from '@/helpers/getIPFSImage';
 import { Size } from '@/types/common';
-import { ReactComponent as FlowLogo } from '@/assets/flowLogo.svg';
+import { ReactComponent as FlowIcon } from '@/assets/icons/flow_12.svg';
+import { TListing } from '@/store/market/types';
 
 import styles from './ListingCard.module.scss';
 
@@ -28,7 +28,7 @@ export const ListingCard: React.FC<IListingCard> = (props) => {
           <span className={styles.artist}>{artist}</span>
         </div>
         <div className={styles.price}>
-          <FlowLogo className={styles.currencyLogo} />
+          <FlowIcon />
           <span className={styles.amount}>{t((d) => d.flow.amount, { amount: parseFloat(price).toFixed(3) })}</span>
         </div>
       </div>

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 import { ListingCard } from '@/components/ListingCard/ListingCard';
-import { TListing } from '@/store/user/types';
 import { useTranslation } from '@/i18n';
 import { getListings } from '@/api/market';
 import { Size } from '@/types/common';
+import { TListing } from '@/store/market/types';
 
 import styles from './HottestDrops.module.scss';
 
@@ -35,7 +35,7 @@ export const HottestDrops: React.VFC = () => {
   const [firstListings, setFirstListings] = useState<TListing[]>();
 
   useEffect(() => {
-    getListings('0xf18c70daf915e518')
+    getListings({ address: '0xf18c70daf915e518' })
       .then((resp) => {
         setFirstListings(resp);
         console.log(JSON.stringify(resp));

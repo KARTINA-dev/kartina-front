@@ -12,31 +12,19 @@
     padding: 2rem 0;
     background: var(--color-bg-default);
 
-    &Tabs {
-      :global {
-        .ant-tabs-tab .ant-tabs-tab-btn {
-          font-size: var(--font-size-xl);
-          font-weight: 500;
-        }
-      }
-    }
-
     &Description {
       margin: 0;
     }
 
     .userInfo {
-      width: 500px;
-      padding: 1rem;
+      width: max-content;
       gap: 1rem;
-      border: solid 1px var(--color-typo-primary);
-      border-radius: 6px;
       display: flex;
       flex-direction: column;
 
       .field {
         display: flex;
-        justify-content: space-between;
+        gap: 0.75rem;
 
         &Name {
           color: var(--color-typo-secondary);
@@ -51,26 +39,15 @@
         display: flex;
         gap: 0.2rem;
         align-items: center;
-
-        .currencyLogo {
-          height: 20px;
-          margin-left: -1px;
-        }
-        .amount {
-          margin-top: 3px;
-        }
       }
-
     }
   }
 
   .items {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     padding: 2rem 0;
-    grid-template-columns: auto auto auto auto;
-    justify-content: space-between;
     gap: 4rem;
-    margin-top: 2rem;
     background: var(--color-bg-default);
 
     &Title {

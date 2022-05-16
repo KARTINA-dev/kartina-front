@@ -72,19 +72,19 @@
       gap: 20px;
 
       .button {
-        height: 47px;
-        min-width: 172px;
-        border-radius: 6px;
         display: flex;
+        padding: 0.5rem 0.75rem;
+        width: 100%;
         justify-content: center;
         align-items: center;
-        font-size: var(--font-size-l);
-        padding: 0 10px;
+        font-weight: 500;
+        font-size: var(--font-size-m);
         color: var(--color-typo-primary);
 
         &Primary {
           background-color: var(--color-accent);
         }
+
         &Secondary {
           background-color: var(--color-bg-secondary);
         }
@@ -132,12 +132,6 @@
           }
         }
       }
-    }
-
-    &__subtitle {
-      font-weight: 300;
-      font-size: var(--font-size-xl);
-      margin-bottom: 10px;
     }
   }
 }

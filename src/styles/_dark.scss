@@ -1,14 +1,19 @@
 body[theme='dark'] {
   --color-accent: #143aff;
+  --color-error: #ff5151;
 
   // фон
   --color-bg-default: #000;
+  --color-bg-secondary: #fff;
   --color-bg-delete: #00c600;
-  --color-bg-secondary: #6b6b6b;
+  --color-bg-border: #fff;
 
   // типографика
   --color-typo-primary: #fff;
+  --color-typo-secondary: #757575;
   --color-typo-accent: #143aff;
   --color-typo-link: #143aff;
-  --color-typo-secondary: #969696;
+
+  // контролы
+  --color-control-primary: #000;
 }
