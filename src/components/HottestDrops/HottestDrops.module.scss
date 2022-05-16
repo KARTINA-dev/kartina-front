@@ -1,11 +1,11 @@
 .hottest {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
-  padding: 4rem 0;
+  gap: 2rem;
+  padding: 3rem 0;
 
   .title {
-    font-size: var(--font-size-4xl);
+    font-size: var(--font-size-3xl);
   }
 
   .drop {

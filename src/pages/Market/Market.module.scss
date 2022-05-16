@@ -1,40 +1,130 @@
-.profile {
-  display: flex;
-  flex-direction: column;
+.market {
   height: 100%;
   width: 100%;
-  font-size: var(--font-size-s);
-  gap: 4rem;
   padding: 0 6rem;
+  font-size: var(--font-size-s);
 
   .content {
+    display: grid;
+    grid-template-columns: 304px 1fr;
+  }
+
+  .listings {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+    gap: 2rem;
+  }
+
+  .list {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    background: var(--color-bg-default);
+    padding: 2rem 0;
+  }
 
-    &Title {
-      font-size: var(--font-size-2xl);
-      font-weight: 500;
-      margin: 0;
-    }
+  .search {
+    display: flex;
+    width: 300px;
+  }
 
-    &Description {
-      margin: 0;
+  .slider {
+    margin: 0;
+
+    :global {
+      .ant-slider-track {
+        background-color: var(--color-accent);
+      }
+
+      .ant-slider-handle {
+        border: 2px solid var(--color-accent);
+      }
     }
   }
 
-  .collection {
-    display: grid;
+  .checkboxGroup {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-typo-primary);
+
+    :global {
+      .ant-checkbox-wrapper {
+        color: var(--color-typo-primary);
+      }
+
+      .ant-checkbox-checked .ant-checkbox-inner {
+        background-color: var(--color-accent);
+        border-color: var(--color-accent);
+      }
+    }
+  }
+
+  .filter {
+    display: flex;
+    flex-direction: column;
     padding: 2rem 0;
-    grid-template-columns: auto auto auto auto;
-    justify-content: space-between;
-    gap: 4rem;
-    background: var(--color-bg-default);
+    gap: 1rem;
+    margin-right: 3rem;
+
+    &Label {
+      font-weight: 500;
+    }
+
+    &Item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-bg-border);
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
+
+    &Header {
+      display: flex;
+      align-items: center;
+    }
 
     &Title {
+      display: flex;
       font-size: var(--font-size-2xl);
-      font-weight: 500;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    &Input {
+      width: 100%;
+    }
+
+    &List {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    height: 192px;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid var(--color-bg-border);
+    padding: 4rem 0;
+    margin-top: 4rem;
+
+    &Company {
+      display: flex;
+      width: 100%;
+      font-size: var(--font-size-4xl);
+    }
+
+    &Copyright {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+      padding: 2rem 0;
     }
   }
 }
@@ -42,5 +132,4 @@
 .loading {
   justify-content: center;
   align-items: center;
-  padding: 0;
 }

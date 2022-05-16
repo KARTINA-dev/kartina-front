@@ -1,0 +1,134 @@
+.create {
+  display: flex;
+  padding: 2rem 0;
+  gap: 2rem;
+
+  &Form {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    width: 100%;
+    gap: 1rem;
+    color: var(--color-typo-primary);
+
+    &Error {
+      display: flex;
+      margin-top: 0.5rem;
+      color: var(--color-error);
+    }
+
+    &Item {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 0.75rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-bg-border);
+      font-weight: 500;
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
+
+    &Button {
+      display: flex;
+      padding: 0.5rem;
+      background-color: var(--color-typo-accent);
+      color: var(--color-typo-primary);
+      cursor: pointer;
+    }
+  }
+
+  &Upload {
+    display: flex;
+    flex-direction: column;
+
+    &Drag {
+      &Label {
+        font-size: var(--font-size-l);
+      }
+
+      &Help {
+        color: var(--color-typo-secondary);
+      }
+    }
+
+    &Image {
+      width: 380px;
+      height: 380px;
+    }
+
+    &Description {
+      display: flex;
+      margin-top: 0.5rem;
+      gap: 0.35rem;
+    }
+
+    &Filename {
+      color: var(--color-typo-primary);
+      align-items: center;
+    }
+
+    &Icon {
+      width: 16px;
+      height: 16px;
+      color: var(--color-typo-primary);
+    }
+
+    :global {
+      .ant-upload-list {
+        color: var(--color-typo-primary);
+      }
+
+      .ant-upload-list-item-info {
+        padding: 0;
+      }
+
+      .ant-upload.ant-upload-drag {
+        width: 380px;
+        height: 380px;
+        padding: 2rem;
+      }
+
+      .ant-upload.ant-upload-drag:not(.ant-upload-disabled):hover {
+        border-color: var(--color-accent);
+      }
+
+      .ant-upload-list-item-info .anticon-loading .anticon,
+      .ant-upload-list-item-info .ant-upload-text-icon .anticon,
+      .ant-upload-list-item-card-actions .anticon {
+        color: var(--color-typo-primary);
+      }
+
+      .ant-upload-list-item-info:hover {
+        background: none;
+      }
+
+      .ant-upload.ant-upload-drag .ant-upload-drag-container svg {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
+}
+
+.slider {
+  margin: 0;
+
+  :global {
+    .ant-slider-track {
+      background-color: var(--color-accent);
+    }
+
+    .ant-slider-handle {
+      border: 2px solid var(--color-accent);
+    }
+  }
+}
+
+:global {
+  .ant-slider:hover .ant-slider-handle:not(.ant-tooltip-open) {
+    border-color: var(--color-accent);
+  }
+}

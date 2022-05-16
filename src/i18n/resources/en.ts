@@ -1,22 +1,23 @@
+import { RequestStatus } from '@/store/gallery/types';
+import { Routes } from '@/constants/routes';
+
 export const en = {
   name: 'en',
   translation: {
     header: {
-      drops: 'Drops',
-      marketplace: 'Marketplace',
-      contact: 'Contact',
-      faq: 'FAQ',
-      galleries: 'Get wow',
-      socials: 'Socials',
-      subtitle: 'we represent',
-      meta: ' the meta gallery',
       languages: {
         ru: 'RU',
         jp: '中文',
         en: 'EN',
       },
-      login: 'Sign in',
+      links: {
+        [Routes.Main]: 'Main',
+        [Routes.Market]: 'Market',
+        [Routes.Manage]: 'Gallery',
+      },
+      login: 'Login',
       profile: 'Profile',
+      tokyo: 'Tokyo',
       logout: 'Logout',
     },
     footer: {
@@ -52,6 +53,54 @@ export const en = {
       galleryPrefix: 'by {{gallery}}',
       viewAll: 'View all',
     },
+    market: {
+      filter: {
+        label: 'Filters',
+        artist: 'Artist',
+        country: 'Country',
+        price: 'Price',
+        searchPlaceholder: 'Search NFT',
+      },
+    },
+    manage: {
+      requests: 'Requests',
+      create: 'Create',
+      status: {
+        [RequestStatus.Declined]: 'Declined',
+        [RequestStatus.Waiting]: 'Waiting',
+        [RequestStatus.Listed]: 'Listed',
+        [RequestStatus.Hottest]: 'Hottest',
+      },
+      upload: {
+        label: 'Add picture',
+        help: 'Drag and drop or upload pictures of paintings to create a collection',
+      },
+      form: {
+        image: {
+          label: 'Creating an item',
+          name: 'Item',
+          namePlaceholder: 'Item name',
+          artist: 'Artist',
+          artistPlaceholder: 'Artist name',
+          description: 'Description',
+          descriptionPlaceholder: 'Item description',
+          price: 'Price',
+        },
+        collection: {
+          name: 'Collection',
+          namePlaceholder: 'Collection name',
+          description: 'Description',
+          descriptionPlaceholder: 'Collection description',
+        },
+        next: 'Next',
+        sendRequest: 'Send request',
+        createCollection: 'Create a collection',
+      },
+      login: {
+        label: 'Manage gallery',
+        button: 'Login',
+      },
+    },
     item: {
       list: 'List',
     },
@@ -64,7 +113,7 @@ export const en = {
       price: 'Price',
     },
     flow: {
-      amount: '₣{{amount}} FLOW',
+      amount: '{{amount}} FLOW',
     },
   },
 };

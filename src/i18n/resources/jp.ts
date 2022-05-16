@@ -1,22 +1,24 @@
+import { RequestStatus } from '@/store/gallery/types';
+import { Routes } from '@/constants/routes';
+
 export const jp = {
   name: 'jp',
   translation: {
     header: {
-      drops: 'Drops',
-      marketplace: 'Marketplace',
-      contact: 'Contact',
-      faq: 'FAQ',
-      galleries: 'Get wow',
-      socials: 'Socials',
       languages: {
         ru: 'RU',
         jp: '中文',
         en: 'EN',
       },
-      login: 'サインイン',
+      links: {
+        [Routes.Main]: 'メイン',
+        [Routes.Market]: '市場',
+        [Routes.Manage]: 'ギャラリー',
+      },
+      login: '入力',
       profile: 'プロフィール',
       tokyo: 'Tokyo',
-      logout: 'ログアウト',
+      logout: 'お出かけ',
     },
     footer: {
       company: 'KARTINA.DIGITAL',
@@ -50,6 +52,54 @@ export const jp = {
       title: 'コレクション',
       galleryPrefix: '{{gallery}}による',
       viewAll: 'すべて表示',
+    },
+    market: {
+      filter: {
+        label: 'フィルター',
+        artist: 'アーティスト',
+        country: '国',
+        price: '価格',
+        searchPlaceholder: 'NFTを検索',
+      },
+    },
+    manage: {
+      requests: 'リクエスト',
+      create: '作成',
+      status: {
+        [RequestStatus.Declined]: '拒否されました',
+        [RequestStatus.Waiting]: '待っている',
+        [RequestStatus.Listed]: 'リストされている',
+        [RequestStatus.Hottest]: '一番ホットなのは',
+      },
+      upload: {
+        label: '画像を追加',
+        help: '絵画の写真をドラッグ＆ドロップまたはアップロードしてコレクションを作成します',
+      },
+      form: {
+        image: {
+          label: 'アイテムの作成',
+          name: 'アイテム',
+          namePlaceholder: 'アイテム名',
+          artist: 'アーティスト',
+          artistPlaceholder: 'アーティスト名',
+          description: '説明',
+          descriptionPlaceholder: '商品説明',
+          price: '価格',
+        },
+        collection: {
+          name: 'コレクション',
+          namePlaceholder: 'コレクション名',
+          description: '説明',
+          descriptionPlaceholder: 'コレクションの説明',
+        },
+        next: '次へ',
+        sendRequest: 'リクエストの送信',
+        createCollection: 'コレクションの作成',
+      },
+      login: {
+        label: 'ギャラリーの管理',
+        button: 'ログイン',
+      },
     },
     item: {
       list: 'リスト',

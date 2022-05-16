@@ -6,7 +6,7 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import { Routes } from '@/constants/routes';
 import { Header } from '@/components/Header/Header';
-import { useAuthentication } from '@/pages/Main/hooks';
+import { useAuthentication } from '@/helpers/useAuthentication';
 import { Spinner } from '@/components/Spinner/Spinner';
 import { Size } from '@/types/common';
 import { useTranslation } from '@/i18n';

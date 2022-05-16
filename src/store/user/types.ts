@@ -1,3 +1,5 @@
+import { TListing } from '../market/types';
+
 export const TYPE_PREFIX = 'user';
 
 export type TItem = {
@@ -9,19 +11,6 @@ export type TItem = {
   itemID: number;
   resourceID: number;
   owner: string;
-};
-
-export type TListing = {
-  name: string;
-  description: string;
-  imageCID: string;
-  imagePath: string;
-  artist: string;
-  listingID: number;
-  resourceID: number;
-  owner: string;
-  price: string;
-  itemID: number;
 };
 
 export type TUserProfile = {
