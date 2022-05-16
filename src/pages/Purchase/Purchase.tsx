@@ -140,7 +140,7 @@ const Purchase: React.FC = () => {
                 </div>
               ) : (
                 <div className={styles.congrats}>
-                  Поздравляем! Вы купили NFT "{name}". <Link to={`${Routes.Profile}`}>Нажмите</Link>, чтобы перейти к
+                  Поздравляем! Вы купили NFT {`"name"`}. <Link to={`${Routes.Profile}`}>Нажмите</Link>, чтобы перейти к
                   своей коллекции
                 </div>
               ))}
