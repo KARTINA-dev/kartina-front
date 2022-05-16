@@ -69,6 +69,7 @@ export const en = {
         [RequestStatus.Declined]: 'Declined',
         [RequestStatus.Waiting]: 'Waiting',
         [RequestStatus.Listed]: 'Listed',
+        [RequestStatus.Hottest]: 'Hottest',
       },
       upload: {
         label: 'Add picture',

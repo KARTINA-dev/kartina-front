@@ -23,6 +23,7 @@ export interface IInputString {
   value?: string;
   defaultValue?: string;
   maxLength?: number;
+  type?: string;
   onChange?: (value: string) => void;
   onBlur?: (value: string) => void;
   onPressEnter?: React.KeyboardEventHandler<HTMLInputElement>;

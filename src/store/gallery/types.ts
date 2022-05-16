@@ -26,6 +26,7 @@ export enum RequestStatus {
   Listed = 'listed',
   Waiting = 'waiting',
   Declined = 'declined',
+  Hottest = 'hottest',
 }
 
 export type TRequest = {

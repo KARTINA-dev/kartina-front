@@ -69,6 +69,7 @@ export const jp = {
         [RequestStatus.Declined]: '拒否されました',
         [RequestStatus.Waiting]: '待っている',
         [RequestStatus.Listed]: 'リストされている',
+        [RequestStatus.Hottest]: '一番ホットなのは',
       },
       upload: {
         label: '画像を追加',
