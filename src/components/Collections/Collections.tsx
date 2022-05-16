@@ -5,6 +5,7 @@ import { ListingCard } from '@/components/ListingCard/ListingCard';
 import { TListing } from '@/store/user/types';
 import { useTranslation } from '@/i18n';
 import { getListings } from '@/api/market';
+import { Routes } from '@/constants/routes';
 
 import styles from './Collections.module.scss';
 
@@ -42,11 +43,15 @@ export const Collections: React.VFC = () => {
                   {t((d) => d.collections.galleryPrefix, { gallery: gallery.name })}
                 </Link>
               </h3>
-              <span className={styles.button}>{t((d) => d.collections.viewAll)}</span>
+              <Link to={`${Routes.Collections}/${id}`} className={styles.viewAll}>
+                {t((d) => d.collections.viewAll)}
+              </Link>
             </div>
 
             <div className={styles.listings}>
-              {listings?.length ? listings.map((listing, index) => <ListingCard key={index} {...listing} />) : null}
+              {listings?.length
+                ? listings.map((listing) => <ListingCard key={listing.listingID} {...listing} />)
+                : null}
             </div>
           </div>
         ))}

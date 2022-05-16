@@ -1,7 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Routes as BaseRoutes, Route } from 'react-router-dom';
 
-import { ADDRESS_PARAM, ITEMS_ITEM_ID_PARAM, MARKET_LISTING_ID_PARAM, Routes } from '@/constants/routes';
+import {
+  ADDRESS_PARAM,
+  ITEMS_ITEM_ID_PARAM,
+  MARKET_LISTING_ID_PARAM,
+  COLLECTIONS_COLLECTION_ID_PARAM,
+  Routes,
+} from '@/constants/routes';
 import { PrivateRoute } from '@/utils/PrivateRoute';
 import List from '@/pages/List/List';
 
@@ -11,6 +17,7 @@ import Profile from './Profile/Profile';
 import Item from './Item/Item';
 import Listing from './Listing/Listing';
 import Purchase from './Purchase/Purchase';
+import Collection from './Collection/Collection';
 
 export const Root: React.VFC = () => (
   <BrowserRouter>
@@ -22,6 +29,7 @@ export const Root: React.VFC = () => (
       <Route path={`${Routes.Purchase}${ADDRESS_PARAM}${MARKET_LISTING_ID_PARAM}`} element={<Purchase />} />
       <Route path={`${Routes.List}${ADDRESS_PARAM}${ITEMS_ITEM_ID_PARAM}`} element={<List />} />
       <Route path={Routes.Profile} element={<PrivateRoute component={Profile} />} />
+      <Route path={`${Routes.Collections}${COLLECTIONS_COLLECTION_ID_PARAM}`} element={<Collection />} />
     </BaseRoutes>
   </BrowserRouter>
 );

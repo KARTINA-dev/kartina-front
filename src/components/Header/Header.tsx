@@ -83,27 +83,25 @@ export const Header: React.FC<IHeader> = (props) => {
               </span>
             ))}
           </div>
-          {login || logout ? (
-            isAuthenticated ? (
-              pathname === Routes.Profile ? (
-                <button className={cn(styles.infoLink, styles.infoBuy)} onClick={logout}>
-                  {t((d) => d.header.logout)}
-                </button>
-              ) : (
-                <Link
-                  className={cn(styles.infoLink, styles.infoBuy)}
-                  to={Routes.Profile}
-                  state={{ activeTab: ProfileTabs.Collection }}
-                >
-                  {t((d) => d.header.profile)}
-                </Link>
-              )
-            ) : (
-              <button className={cn(styles.infoLink, styles.infoBuy)} onClick={login}>
-                {t((d) => d.header.login)}
+          {isAuthenticated ? (
+            pathname === Routes.Profile ? (
+              <button className={cn(styles.infoLink)} onClick={logout}>
+                {t((d) => d.header.logout)}
               </button>
+            ) : (
+              <Link
+                className={cn(styles.infoLink, styles.infoBuy)}
+                to={Routes.Profile}
+                state={{ activeTab: ProfileTabs.Collection }}
+              >
+                {t((d) => d.header.profile)}
+              </Link>
             )
-          ) : null}
+          ) : (
+            <button className={cn(styles.infoLink, styles.infoBuy)} onClick={login}>
+              {t((d) => d.header.login)}
+            </button>
+          )}
         </div>
       </header>
       {/*<Sidebar open={sidebarOpen} />*/}
