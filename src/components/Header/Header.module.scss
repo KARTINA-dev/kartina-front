@@ -5,10 +5,8 @@
   align-items: center;
   border-bottom: 1px solid var(--color-bg-border);
 
-  .menuIcon {
-    display: flex;
-    cursor: pointer;
-    padding: 0;
+  .burgerContainer {
+    margin-left: -10px;
   }
 
   .menu {
