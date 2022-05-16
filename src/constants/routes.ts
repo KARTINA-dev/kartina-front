@@ -10,4 +10,5 @@ export enum Routes {
   Listing = '/listings',
   Purchase = '/purchase',
   List = '/list',
+  Manage = '/manage',
 }

@@ -11,11 +11,11 @@ import { Size } from '@/types/common';
 import { getIPFSImage } from '@/helpers/getIPFSImage';
 import { Routes } from '@/constants/routes';
 import { MARKET_REMOVE_LISTING } from '@/cadence/market/remove_listing';
-import { useAuthentication } from '@/pages/Main/hooks';
+import { useAuthentication } from '@/helpers/useAuthentication';
 import { ReactComponent as HeartIcon } from '@/assets/icons/heart.svg';
 import { ReactComponent as ShareIcon } from '@/assets/icons/share.svg';
 import { ReactComponent as OpenIcon } from '@/assets/icons/open.svg';
-import { ReactComponent as FlowLogo } from '@/assets/flowLogo.svg';
+import { ReactComponent as FlowIcon } from '@/assets/icons/flow_12.svg';
 import { Tabs, TabsPane } from '@/components/Tabs/Tabs';
 import { ListingTabs } from '@/pages/Listing/types';
 import { ProfileTabs } from '@/pages/Profile/types';
@@ -75,7 +75,7 @@ const Listing: React.VFC = () => {
     );
   }
 
-  const { imageCID, imagePath, owner, description, name, price, artist, itemID } = listing;
+  const { imageCID, imagePath, owner, description, name, price, artist, resourceID } = listing;
 
   return (
     <div className={styles.listingpage}>
@@ -86,8 +86,8 @@ const Listing: React.VFC = () => {
         <div className={styles.info}>
           <div className={styles.infoRow}>
             <div className={styles.mainInfo}>
-              <span className={styles.mainInfo__name}>{name}</span>
-              <span className={styles.mainInfo__artist}>{artist}</span>
+              <span className={styles.mainInfoName}>{name}</span>
+              <span className={styles.mainInfoArtist}>{artist}</span>
             </div>
             <div className={styles.actions}>
               <button>
@@ -103,12 +103,12 @@ const Listing: React.VFC = () => {
           </div>
 
           <div>
-            <div className={styles.listing__subtitle}>{t((d) => d.listing.price)}</div>
+            <div className={styles.listingSubtitle}>{t((d) => d.listing.price)}</div>
             <div className={styles.infoRow}>
               <div className={styles.price}>
                 <div className={styles.priceCrypto}>
-                  <FlowLogo />
-                  <span className={styles.priceCrypto__amount}>{parseFloat(price).toFixed(3)} FLOW</span>
+                  <FlowIcon />
+                  <span>{parseFloat(price).toFixed(3)} FLOW</span>
                 </div>
                 {localPrice && <div className={styles.priceLocal}>≈ {localPrice} RUB</div>}
               </div>
@@ -161,8 +161,8 @@ const Listing: React.VFC = () => {
                     <span>FLOW</span>
                   </div>
                   <div className={styles.detailsRow}>
-                    <span className={styles.detailsRowName}>Tocken ID</span>
-                    <span>{itemID}</span>
+                    <span className={styles.detailsRowName}>Resource ID</span>
+                    <span>{resourceID}</span>
                   </div>
                 </div>
               </TabsPane>

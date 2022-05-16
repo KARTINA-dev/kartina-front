@@ -9,13 +9,13 @@ import { Spinner } from '@/components/Spinner/Spinner';
 import { Size } from '@/types/common';
 import { getIPFSImage } from '@/helpers/getIPFSImage';
 import { Routes } from '@/constants/routes';
-import { useAuthentication } from '@/pages/Main/hooks';
 import { ReactComponent as HeartIcon } from '@/assets/icons/heart.svg';
 import { ReactComponent as ShareIcon } from '@/assets/icons/share.svg';
 import { ReactComponent as OpenIcon } from '@/assets/icons/open.svg';
 import { ReactComponent as FlowLogo } from '@/assets/flowLogo.svg';
 import { Tabs, TabsPane } from '@/components/Tabs/Tabs';
 import { ListingTabs } from '@/pages/Listing/types';
+import { useAuthentication } from '@/helpers/useAuthentication';
 
 import styles from './Item.module.scss';
 import { useItemInfo } from './hooks';
@@ -50,7 +50,7 @@ const Item: React.VFC = () => {
     <div className={styles.itempage}>
       <Header isAuthenticated={isAuthenticated} login={login} pathname={Routes.Main} />
       <div className={styles.listing}>
-        <img src={getIPFSImage({ imageCID, imagePath })} alt={`Listing ID Image`} className={styles.image} />
+        <img src={getIPFSImage({ imageCID, imagePath })} alt={`Item Image`} className={styles.image} />
 
         <div className={styles.info}>
           <div className={styles.infoRow}>

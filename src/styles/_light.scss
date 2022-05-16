@@ -1,14 +1,19 @@
 body[theme='light'] {
   --color-accent: #ffd814;
+  --color-error: #ff5151;
 
   // фон
   --color-bg-default: #fff;
+  --color-bg-secondary: #ededed;
   --color-bg-delete: #b719b3;
-  --color-bg-secondary: #eaecef;
+  --color-bg-border: #ededed;
 
   // типографика
   --color-typo-primary: #000;
+  --color-typo-secondary: #757575;
   --color-typo-accent: #ffd814;
   --color-typo-link: #ffd814;
-  --color-typo-secondary: #6b6b6b;
+
+  // контролы
+  --color-control-primary: #000;
 }

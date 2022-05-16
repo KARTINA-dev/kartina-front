@@ -8,8 +8,8 @@ import { Header } from '@/components/Header/Header';
 import { Collections } from '@/components/Collections/Collections';
 import { Routes } from '@/constants/routes';
 import { HottestDrops } from '@/components/HottestDrops/HottestDrops';
+import { useAuthentication } from '@/helpers/useAuthentication';
 
-import { useAuthentication } from './hooks';
 import styles from './Main.module.scss';
 
 const Main: React.VFC = () => {

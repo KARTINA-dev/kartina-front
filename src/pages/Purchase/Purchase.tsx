@@ -6,7 +6,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { Routes } from '@/constants/routes';
 import { Header } from '@/components/Header/Header';
-import { useAuthentication } from '@/pages/Main/hooks';
+import { useAuthentication } from '@/helpers/useAuthentication';
 import { Spinner } from '@/components/Spinner/Spinner';
 import { Size } from '@/types/common';
 import { MARKET_PURCHASE_LISTING } from '@/cadence/market/purchase_listing';
@@ -78,7 +78,7 @@ const Purchase: React.FC = () => {
   const { imageCID, imagePath, owner, name, price, artist, itemID } = listing;
 
   return (
-    <div className={styles.checkoutPage}>
+    <div className={styles.purchase}>
       <Header isAuthenticated={isAuthenticated} login={login} pathname={Routes.Main} />
       <div className={styles.content}>
         <button className={styles.back} onClick={() => navigate(-1)}>
@@ -149,7 +149,7 @@ const Purchase: React.FC = () => {
           <div className={styles.item}>
             <img src={getIPFSImage({ imageCID, imagePath })} alt={`Listing ID Image`} className={styles.image} />
             <div className={styles.details}>
-              <div className={styles.detailsBlock}>
+              <div className={styles.detailsDescription}>
                 <span className={styles.title}>{name}</span>
                 <span>{artist}</span>
               </div>
@@ -168,23 +168,19 @@ const Purchase: React.FC = () => {
                 </div>
               </div>
 
-              <div className={styles.detailsBlock}>
+              <div className={cn(styles.detailsBlock, styles.detailsBlockPrice)}>
                 <div className={styles.detailsBlockRow}>
                   <span className={styles.subtitle}>Всего</span>
                   <span>{parseFloat(price).toFixed(3)} FLOW</span>
                 </div>
               </div>
-              <div className={styles.detailsBlock}>
+              <div className={styles.detailsButton}>
                 {isButtonVisible && (
                   <button
                     className={cn(styles.buy, { [styles.proceedingButton]: isProceeding })}
                     onClick={() => buyListing(Number(listingID), owner)}
                   >
-                    {isProceeding ? (
-                      <Spinner className={styles.proceedingLoader} size={Size.M} />
-                    ) : (
-                      <span>Купить сейчас</span>
-                    )}
+                    {isProceeding ? <Spinner className={styles.proceedingLoader} size={Size.M} /> : 'Купить'}
                   </button>
                 )}
                 {isProceeding ? <div className={styles.proceedingMessage}>Proceeding your order...</div> : ''}

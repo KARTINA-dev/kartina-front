@@ -1,3 +1,5 @@
+import { TGallery } from '@/store/gallery/types';
+
 export const TYPE_PREFIX = 'market';
 
 export type TListing = {
@@ -8,16 +10,19 @@ export type TListing = {
   artist: string;
   listingID: number;
   resourceID: number;
+  itemID: number;
   owner: string;
   price: string;
-  itemID: number;
 };
 
 export type TCollection = {
+  _id: string;
   name: string;
-  gallery: string;
-  listings: TListing;
+  gallery: TGallery;
+  listings: TListing[];
 };
+
+export type TListingsFilter = { price: number; name: string; artists: string[] };
 
 export type TMarketState = {
   collections: TCollection[];

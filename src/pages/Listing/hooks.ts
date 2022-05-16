@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { TListing } from '@/store/user/types';
 import api from '@/api';
+import { TListing } from '@/store/market/types';
 
 export const useListingInfo = (address?: string, listingID?: number) => {
   const [listing, setlisting] = useState<TListing | null>(null);

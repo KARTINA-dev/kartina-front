@@ -11,6 +11,7 @@ import Profile from './Profile/Profile';
 import Item from './Item/Item';
 import Listing from './Listing/Listing';
 import Purchase from './Purchase/Purchase';
+import Manage from './Manage/Manage';
 
 export const Root: React.VFC = () => (
   <BrowserRouter>
@@ -22,6 +23,7 @@ export const Root: React.VFC = () => (
       <Route path={`${Routes.Purchase}${ADDRESS_PARAM}${MARKET_LISTING_ID_PARAM}`} element={<Purchase />} />
       <Route path={`${Routes.List}${ADDRESS_PARAM}${ITEMS_ITEM_ID_PARAM}`} element={<List />} />
       <Route path={Routes.Profile} element={<PrivateRoute component={Profile} />} />
+      <Route path={Routes.Manage} element={<Manage />} />
     </BaseRoutes>
   </BrowserRouter>
 );
