@@ -10,8 +10,9 @@ const getGlobalEnvConfig = (mode: string) => {
 
   return {
     IS_PROD: mode === 'mainnet',
-    FLOW_ACCESS_URL: JSON.stringify(env.FLOW_ACCESS_URL),
-    DISCOVERY_WALLET: JSON.stringify(env.DISCOVERY_WALLET),
+    BACKEND_API: env.BACKEND_API,
+    FLOW_ACCESS_URL: env.FLOW_ACCESS_URL,
+    DISCOVERY_WALLET: env.DISCOVERY_WALLET,
     FUNGIBLE_TOKEN_ADDRESS: env.FUNGIBLE_TOKEN_ADDRESS,
     NONFUNGIBLE_TOKEN_ADDRESS: env.NONFUNGIBLE_TOKEN_ADDRESS,
     FLOW_TOKEN_ADDRESS: env.FLOW_TOKEN_ADDRESS,
@@ -20,8 +21,17 @@ const getGlobalEnvConfig = (mode: string) => {
     KARTINAITEMS_ADDRESS: env.KARTINAITEMS_ADDRESS,
   };
 };
+
+const getDefineConfig = (config: Record<string, any>) => {
+  return Object.entries(config).reduce((defineConfig, [key, value]) => {
+    defineConfig[key] = JSON.stringify(value);
+
+    return defineConfig;
+  }, {} as Record<string, string>);
+};
+
 export default defineConfig(({ mode }) => {
-  const defineConfig = getGlobalEnvConfig(mode);
+  const envConfig = getGlobalEnvConfig(mode);
 
   return {
     publicDir: resolvePath(process.cwd(), 'public'),
@@ -61,7 +71,7 @@ export default defineConfig(({ mode }) => {
     server: {
       proxy: {
         '^/backend': {
-          target: 'http://localhost:3001',
+          target: envConfig.BACKEND_API,
           xfwd: true,
           rewrite: (path) => path.replace(/^\/backend/, ''),
           headers: {
@@ -71,6 +81,6 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    define: defineConfig,
+    define: getDefineConfig(envConfig),
   };
 });
