@@ -53,6 +53,12 @@ export const en = {
       galleryPrefix: 'by {{gallery}}',
       viewAll: 'View all',
     },
+    collection: {
+      artists: 'Artists',
+      styles: 'Painting styles',
+      floorPrice: 'Floor price',
+      assets: 'Assets',
+    },
     market: {
       filter: {
         label: 'Filters',

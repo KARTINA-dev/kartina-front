@@ -33,6 +33,7 @@ export type TRequest = {
   _id: string;
   name: string;
   description?: string;
+  paintingStyle?: string;
   images: TRequestImage[];
   gallery: string;
   status: RequestStatus;

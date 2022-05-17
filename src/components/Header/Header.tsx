@@ -97,23 +97,25 @@ export const Header: React.FC<IHeader> = (props) => {
       </Link>
       <div className={styles.info}>
         {galleryName && <span className={styles.infoLink}>{galleryName}</span>}
-        {login || logout ? (
-          isAuthenticated ? (
-            [Routes.Profile, Routes.Manage].includes(pathname) ? (
-              <button className={cn(styles.infoLink, styles.infoBuy)} onClick={logout}>
-                {t((d) => d.header.logout)}
-              </button>
-            ) : (
-              <Link className={cn(styles.infoLink, styles.infoBuy)} to={Routes.Profile}  state={{ activeTab: ProfileTabs.Collection }}>
-                {t((d) => d.header.profile)}
-              </Link>
-            )
-          ) : (
-            <button className={cn(styles.infoLink, styles.infoBuy)} onClick={login}>
-              {t((d) => d.header.login)}
+        {isAuthenticated ? (
+          [Routes.Profile, Routes.Manage].includes(pathname) ? (
+            <button className={cn(styles.infoLink, styles.infoBuy)} onClick={logout}>
+              {t((d) => d.header.logout)}
             </button>
+          ) : (
+            <Link
+              className={cn(styles.infoLink, styles.infoBuy)}
+              to={Routes.Profile}
+              state={{ activeTab: ProfileTabs.Collection }}
+            >
+              {t((d) => d.header.profile)}
+            </Link>
           )
-        ) : null}
+        ) : (
+          <button className={cn(styles.infoLink, styles.infoBuy)} onClick={login}>
+            {t((d) => d.header.login)}
+          </button>
+        )}
       </div>
     </header>
   );

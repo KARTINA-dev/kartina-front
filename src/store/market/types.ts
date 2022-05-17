@@ -20,6 +20,7 @@ export type TCollection = {
   name: string;
   gallery: TGallery;
   listings: TListing[];
+  description?: string;
 };
 
 export type TListingsFilter = { price: number; name: string; artists: string[] };
