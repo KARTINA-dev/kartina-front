@@ -22,7 +22,18 @@ export type TCollection = {
   listings: TListing[];
 };
 
-export type TListingsFilter = { price: number; name: string; artists: string[] };
+export enum ListingsSort {
+  PRICE_ASC = 'PRICE_ASC',
+  PRICE_DESC = 'PRICE_DESC',
+  DATE_ASC = 'DATE_ASC',
+}
+
+export type TListingsFilter = { price: number; name: string; artists: string[]; sort: ListingsSort };
+
+export type TArtist = {
+  _id: string;
+  name: string;
+};
 
 export type TMarketState = {
   collections: TCollection[];

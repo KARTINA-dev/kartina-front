@@ -1,5 +1,6 @@
 import { Routes } from '@/constants/routes';
 import { RequestStatus } from '@/store/gallery/types';
+import { ListingsSort } from '@/store/market/types';
 
 export const ru = {
   name: 'ru',
@@ -60,6 +61,11 @@ export const ru = {
         country: 'Страна',
         price: 'Цена',
         searchPlaceholder: 'Найти NFT',
+      },
+      sort: {
+        [ListingsSort.DATE_ASC]: 'Новинки',
+        [ListingsSort.PRICE_ASC]: 'Сначала дешевые',
+        [ListingsSort.PRICE_DESC]: 'Сначала дорогие',
       },
     },
     manage: {

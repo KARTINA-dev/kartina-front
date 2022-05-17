@@ -1,4 +1,4 @@
-import { TListing, TListingsFilter } from '@/store/market/types';
+import { TArtist, TListing, TListingsFilter } from '@/store/market/types';
 
 import { makeRequest } from './makeRequest';
 
@@ -9,3 +9,5 @@ export const getListings = ({ address, filter }: { address?: string; filter?: TL
 
 export const getListing = (listingID: number, address?: string) =>
   makeRequest<TListing>({ method: 'GET', url: getUrl(`/listings/${address}/${listingID}`) });
+
+export const getArtists = () => makeRequest<TArtist[]>({ method: 'GET', url: getUrl(`/artists`) });

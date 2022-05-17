@@ -1,5 +1,6 @@
 import { RequestStatus } from '@/store/gallery/types';
 import { Routes } from '@/constants/routes';
+import { ListingsSort } from '@/store/market/types';
 
 export const en = {
   name: 'en',
@@ -60,6 +61,11 @@ export const en = {
         country: 'Country',
         price: 'Price',
         searchPlaceholder: 'Search NFT',
+      },
+      sort: {
+        [ListingsSort.DATE_ASC]: 'Recently listed',
+        [ListingsSort.PRICE_ASC]: 'Price low - high',
+        [ListingsSort.PRICE_DESC]: 'Price high - low',
       },
     },
     manage: {

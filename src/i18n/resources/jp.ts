@@ -1,5 +1,6 @@
 import { RequestStatus } from '@/store/gallery/types';
 import { Routes } from '@/constants/routes';
+import { ListingsSort } from '@/store/market/types';
 
 export const jp = {
   name: 'jp',
@@ -60,6 +61,11 @@ export const jp = {
         country: '国',
         price: '価格',
         searchPlaceholder: 'NFTを検索',
+      },
+      sort: {
+        [ListingsSort.DATE_ASC]: '最近掲載された',
+        [ListingsSort.PRICE_ASC]: '低価格-高価格',
+        [ListingsSort.PRICE_DESC]: '価格ハイ-ロー',
       },
     },
     manage: {
