@@ -1,13 +1,27 @@
 import { resolve, resolve as resolvePath } from 'path';
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 import checker from 'vite-plugin-checker';
 import inject from '@rollup/plugin-inject';
-import dotenv from 'dotenv';
 
+const getGlobalEnvConfig = (mode: string) => {
+  const env = loadEnv(mode, process.cwd(), '');
+
+  return {
+    IS_PROD: mode === 'mainnet',
+    FLOW_ACCESS_URL: JSON.stringify(env.FLOW_ACCESS_URL),
+    DISCOVERY_WALLET: JSON.stringify(env.DISCOVERY_WALLET),
+    FUNGIBLE_TOKEN_ADDRESS: env.FUNGIBLE_TOKEN_ADDRESS,
+    NONFUNGIBLE_TOKEN_ADDRESS: env.NONFUNGIBLE_TOKEN_ADDRESS,
+    FLOW_TOKEN_ADDRESS: env.FLOW_TOKEN_ADDRESS,
+    METADATA_ADDRESS: env.METADATA_ADDRESS,
+    STOREFRONT_ADDRESS: env.STOREFRONT_ADDRESS,
+    KARTINAITEMS_ADDRESS: env.KARTINAITEMS_ADDRESS,
+  };
+};
 export default defineConfig(({ mode }) => {
-  dotenv.config({ path: resolvePath(process.cwd(), `.env.${mode}`) });
+  const defineConfig = getGlobalEnvConfig(mode);
 
   return {
     publicDir: resolvePath(process.cwd(), 'public'),
@@ -57,5 +71,6 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
+    define: defineConfig,
   };
 });

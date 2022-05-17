@@ -1,7 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { IS_PROD } from '../constants/env';
-
 import { createRootReducer } from './reducer';
 
 export const store = configureStore({
