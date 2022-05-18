@@ -25,12 +25,11 @@ export const ru = {
       company: 'KARTINA.DIGITAL',
       copyright: '2022 @ ITMO UNIVERSITY',
     },
-    main: {
-      subscribeForm: {
-        title: 'Не пропускайте информацию о новых релизах',
-        email: 'Email',
-        subscribe: 'Подписаться',
-      },
+    subscribeForm: {
+      titleAll: 'Не пропускайте информацию о новых релизах',
+      titleHottest: 'Узнайте о выходе коллекции первым',
+      email: 'Email',
+      subscribe: 'Подписаться',
     },
     hottestDrops: {
       title: 'Новые релизы',
@@ -120,6 +119,9 @@ export const ru = {
     },
     flow: {
       amount: '{{amount}} FLOW',
+    },
+    drop: {
+      notFound: 'Анонс коллекции не найден',
     },
   },
 };

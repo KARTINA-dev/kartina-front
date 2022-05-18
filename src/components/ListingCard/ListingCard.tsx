@@ -1,26 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import cn from 'classnames';
 
 import { useTranslation } from '@/i18n';
 import { Routes } from '@/constants/routes';
 import { getIPFSImage } from '@/helpers/getIPFSImage';
-import { Size } from '@/types/common';
 import { ReactComponent as FlowIcon } from '@/assets/icons/flow_12.svg';
 import { TListing } from '@/store/market/types';
 
 import styles from './ListingCard.module.scss';
 
-interface IListingCard extends TListing {
-  size?: Size;
-}
-
-export const ListingCard: React.FC<IListingCard> = (props) => {
-  const { name, owner, price, imagePath, imageCID, artist, listingID, size = Size.XS } = props;
+export const ListingCard: React.FC<TListing> = (props) => {
+  const { name, owner, price, imagePath, imageCID, artist, listingID } = props;
   const { t } = useTranslation();
 
   return (
-    <Link to={`${Routes.Listing}/${owner}/${listingID}`} className={cn(styles.listing, styles[`listingSize${size}`])}>
+    <Link to={`${Routes.Listing}/${owner}/${listingID}`} className={styles.listing}>
       <img src={getIPFSImage({ imageCID, imagePath })} alt={`Listing ID Image`} className={styles.image} />
       <div className={styles.content}>
         <div className={styles.info}>

@@ -1,0 +1,36 @@
+.dropPage {
+  width: 100%;
+  padding: 0 6rem;
+  font-size: var(--font-size-s);
+
+  .drop {
+    display: flex;
+    width: 100%;
+    font-size: var(--font-size-s);
+    padding: 6rem 0;
+
+    .image {
+      max-width: 555px;
+      height: fit-content;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 5rem;
+      width: 100%;
+      padding-left: 4rem;
+    }
+
+    .mainInfo {
+      display: flex;
+      font-weight: 500;
+      gap: 1rem;
+      font-size: var(--font-size-3xl);
+    }
+  }
+
+  .notFound {
+    margin-top: 2rem;
+  }
+}

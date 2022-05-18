@@ -25,12 +25,11 @@ export const jp = {
       company: 'KARTINA.DIGITAL',
       copyright: '2022 @ 大学',
     },
-    main: {
-      subscribeForm: {
-        title: '新規販売に関する情報をお見逃しなく',
-        email: 'メール',
-        subscribe: '購読する',
-      },
+    subscribeForm: {
+      titleAll: '新規販売に関する情報をお見逃しなく',
+      titleHottest: 'コレクションのドロップをお見逃しなく',
+      email: 'メール',
+      subscribe: '購読する',
     },
     hottestDrops: {
       title: '最もホットな絵画',
@@ -120,6 +119,9 @@ export const jp = {
     },
     flow: {
       amount: '₣{{amount}} FLOW',
+    },
+    drop: {
+      notFound: 'ドロップが見つかりません',
     },
   },
 };

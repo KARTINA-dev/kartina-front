@@ -8,7 +8,7 @@ const getUrl = (rest = '') => `/galleries${rest}`;
 export const getGallery = (address: string) => makeRequest<TGallery>({ method: 'GET', url: getUrl(`/${address}`) });
 
 export const getRequests = (address: string) =>
-  makeRequest<TRequest[]>({ method: 'GET', url: getUrl(`/requests/${address}`) });
+  makeRequest<TRequest[]>({ method: 'GET', url: getUrl(`/${address}/requests`) });
 
 export const sendRequest = (request: TCreateRequest) => {
   const body = getFormData(request);

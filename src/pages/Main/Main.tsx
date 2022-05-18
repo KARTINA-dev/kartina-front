@@ -30,7 +30,7 @@ const Main: React.VFC = () => {
       <Header isAuthenticated={isAuthenticated} login={login} pathname={Routes.Main} />
       <HottestDrops />
       <Collections />
-      <EmailSubscribe />
+      <EmailSubscribe title={t((d) => d.subscribeForm.titleAll)} />
       <footer className={styles.footer}>
         <span className={styles.footerCompany}>{t((d) => d.footer.company)}</span>
         <span className={styles.footerCopyright}>{t((d) => d.footer.copyright)}</span>

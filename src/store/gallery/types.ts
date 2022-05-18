@@ -34,7 +34,7 @@ export type TRequest = {
   name: string;
   description?: string;
   images: TRequestImage[];
-  gallery: string;
+  gallery: TGallery;
   status: RequestStatus;
 };
 

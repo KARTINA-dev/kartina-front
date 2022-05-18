@@ -4,15 +4,29 @@ import { AiOutlineCheck } from 'react-icons/ai';
 import { useTranslation } from '@/i18n';
 import { InputString } from '@/components/Input/Input';
 import api from '@/api';
+
 import styles from './EmailSubscribe.module.scss';
 
-export const EmailSubscribe: React.VFC = () => {
+interface IEmailSubscribeProps {
+  dropId?: string;
+  title: string;
+}
+
+export const EmailSubscribe: React.VFC<IEmailSubscribeProps> = ({ dropId, title }) => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
   const { t } = useTranslation();
 
   const subscribeEmail = () => {
     if (email) {
+      if (dropId) {
+        api.requests
+          .subscribeHottestRequest(email, dropId)
+          .then(() => setSubscribed(true))
+          .catch(console.error);
+
+        return;
+      }
       api.mail
         .subscribeEmail(email)
         .then(() => setSubscribed(true))
@@ -22,7 +36,7 @@ export const EmailSubscribe: React.VFC = () => {
 
   return (
     <div className={styles.subscribe}>
-      <h2 className={styles.subscribeTitle}>{t((d) => d.main.subscribeForm.title)}</h2>
+      <h2 className={styles.subscribeTitle}>{title}</h2>
       <div className={styles.subscribeForm}>
         {subscribed ? (
           <AiOutlineCheck className={styles.subscribeFormIcon} />
@@ -31,11 +45,11 @@ export const EmailSubscribe: React.VFC = () => {
             <InputString
               type={'email'}
               className={styles.subscribeInput}
-              placeholder={t((d) => d.main.subscribeForm.email)}
+              placeholder={t((d) => d.subscribeForm.email)}
               onChange={setEmail}
             />
             <button className={styles.subscribeButton} onClick={subscribeEmail}>
-              {t((d) => d.main.subscribeForm.subscribe)}
+              {t((d) => d.subscribeForm.subscribe)}
             </button>
           </>
         )}

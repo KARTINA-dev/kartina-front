@@ -25,12 +25,11 @@ export const en = {
       company: 'KARTINA.DIGITAL',
       copyright: '2022 @ ITMO UNIVERSITY',
     },
-    main: {
-      subscribeForm: {
-        title: 'Never miss a drop',
-        email: 'Email',
-        subscribe: 'Subscribe',
-      },
+    subscribeForm: {
+      titleAll: 'Never miss a drop',
+      titleHottest: `Don't miss the drop of collection`,
+      email: 'Email',
+      subscribe: 'Subscribe',
     },
     hottestDrops: {
       title: 'Hottest Drops',
@@ -120,6 +119,9 @@ export const en = {
     },
     flow: {
       amount: '{{amount}} FLOW',
+    },
+    drop: {
+      notFound: `Can't find the drop`,
     },
   },
 };
