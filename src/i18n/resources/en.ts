@@ -47,6 +47,8 @@ export const en = {
         title: 'No items',
         description: 'You can browse items available for purchase on the marketplace',
       },
+      address: 'Address',
+      balance: 'Balance',
     },
     collections: {
       title: 'Collections',
@@ -108,6 +110,10 @@ export const en = {
     },
     item: {
       list: 'List',
+      owner: 'Owner',
+      creator: 'Creator',
+      blockchain: 'Blockchain',
+      tokenId: 'Token ID',
     },
     listing: {
       buy: 'Buy Now',
@@ -116,6 +122,16 @@ export const en = {
       details: 'Details',
       description: 'Description',
       price: 'Price',
+    },
+    list: {
+      transactionInfo: 'Transaction info',
+      tokenType: 'Item type',
+      contract: 'Contract',
+      list: 'List',
+      fees: 'Fees',
+      galleryFees: 'Gallery fees',
+      serviceFees: 'Service fees',
+      transactionStatus: 'Transaction status',
     },
     flow: {
       amount: '{{amount}} FLOW',

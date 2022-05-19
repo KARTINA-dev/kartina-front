@@ -56,11 +56,11 @@ const Profile: React.VFC = () => {
       <div className={styles.content}>
         <div className={styles.userInfo}>
           <span className={styles.field}>
-            <span className={styles.fieldName}>Address</span>
+            <span className={styles.fieldName}>{t((d) => d.profile.address)}</span>
             <span className={styles.fieldValue}>{addr}</span>
           </span>
           <span className={styles.field}>
-            <span className={styles.fieldName}>Balance</span>
+            <span className={styles.fieldName}>{t((d) => d.profile.balance)}</span>
             {
               <div className={styles.balance}>
                 <FlowIcon />

@@ -47,6 +47,8 @@ export const ru = {
         title: 'Нет предметов',
         description: 'Вы можете просматривать товары, доступные для покупки на торговой площадке',
       },
+      address: 'Адрес',
+      balance: 'Баланс',
     },
     collections: {
       title: 'Коллекции',
@@ -108,6 +110,10 @@ export const ru = {
     },
     item: {
       list: 'Выставить',
+      owner: 'Владелец',
+      creator: 'Создатель',
+      blockchain: 'Блокчейн',
+      tokenId: 'ID токена',
     },
     listing: {
       buy: 'Перейти к покупке',
@@ -116,6 +122,16 @@ export const ru = {
       details: 'Подробности',
       description: 'Описание',
       price: 'Цена',
+    },
+    list: {
+      transactionInfo: 'Информация о транзакции',
+      tokenType: 'Тип токена',
+      contract: 'Контракт',
+      list: 'Выставить',
+      fees: 'Сборы',
+      galleryFees: 'Сборы галлереи',
+      serviceFees: 'Сервисный сбор',
+      transactionStatus: 'Статус транзакции',
     },
     flow: {
       amount: '{{amount}} FLOW',

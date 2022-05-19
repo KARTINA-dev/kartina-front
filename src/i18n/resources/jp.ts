@@ -47,6 +47,8 @@ export const jp = {
         title: 'アイテムなし',
         description: 'マーケットプレイスで購入可能なアイテムを閲覧できます',
       },
+      address: '住所',
+      balance: 'バランス',
     },
     collections: {
       title: 'コレクション',
@@ -108,6 +110,10 @@ export const jp = {
     },
     item: {
       list: 'リスト',
+      owner: 'オーナー',
+      creator: 'クリエイター',
+      blockchain: 'ブロックチェーン',
+      tokenId: 'トークンID',
     },
     listing: {
       buy: '今買う',
@@ -116,6 +122,16 @@ export const jp = {
       details: '詳細',
       description: '説明',
       price: '価格',
+    },
+    list: {
+      transactionInfo: '取引情報',
+      tokenType: 'アイテムタイプ',
+      contract: '契約',
+      list: 'リスト',
+      fees: '料金',
+      galleryFees: 'ギャラリー料金',
+      serviceFees: 'サービス料',
+      transactionStatus: '取引状況',
     },
     flow: {
       amount: '₣{{amount}} FLOW',
