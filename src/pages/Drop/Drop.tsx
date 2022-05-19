@@ -14,7 +14,7 @@ import styles from './Drop.module.scss';
 const Drop: React.FC = () => {
   const { login, isAuthenticated } = useAuthentication();
   const { dropId } = useParams();
-  const { drop } = useDrop(dropId!);
+  const { drop } = useDrop(dropId);
   const { t } = useTranslation();
 
   return (
@@ -23,7 +23,7 @@ const Drop: React.FC = () => {
       {drop ? (
         <div>
           <div className={styles.drop}>
-            <img src={getMediaImage(drop.images[0].fileName)} className={styles.image} />
+            <img src={getMediaImage(drop.images[0].fileName)} className={styles.image} alt={'Drop main image'} />
             <div className={styles.info}>
               <div className={styles.mainInfo}>
                 {drop.name}
