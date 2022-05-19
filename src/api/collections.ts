@@ -6,5 +6,5 @@ const getUrl = (rest = '') => `/collections${rest}`;
 
 export const getCollections = () => makeRequest<TCollection[]>({ method: 'GET', url: getUrl() });
 
-export const getCollection = (collectionId: string) =>
-  makeRequest<TCollection[]>({ method: 'GET', url: getUrl(`/${collectionId}`) });
+export const getCollection = (collectionId?: string) =>
+  makeRequest<TCollection>({ method: 'GET', url: getUrl(`/${collectionId}`) });

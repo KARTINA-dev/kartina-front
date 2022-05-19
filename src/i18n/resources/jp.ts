@@ -58,6 +58,7 @@ export const jp = {
       styles: '絵画のスタイル',
       floorPrice: '最低料金',
       assets: '資産',
+      notFound: 'コレクションが見つかりません',
     },
     market: {
       filter: {

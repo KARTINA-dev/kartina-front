@@ -14,15 +14,14 @@ import styles from './Collection.module.scss';
 const Collection: React.FC = () => {
   const { collectionID } = useParams();
   const { t } = useTranslation();
-  const { collection } = useCollection(collectionID!);
+  const { collection } = useCollection(collectionID);
   const { login, isAuthenticated } = useAuthentication();
 
   const artists = useMemo(() => new Set(collection?.listings.map((listing) => listing.artist)), [collection]);
   const floorPrice = useMemo(
-    () => Math.min(...(collection?.listings.map((listing) => parseFloat(listing.price)) || [])).toFixed(3),
+    () => Math.min(...(collection?.listings.map((listing) => parseFloat(listing.price)) ?? [0])).toFixed(3),
     [collection],
   );
-  const assetsQuantity = useMemo(() => collection?.listings.length, [collection]);
 
   return (
     <div className={styles.collection}>
@@ -51,7 +50,7 @@ const Collection: React.FC = () => {
               </tr>
               <tr className={styles.row}>
                 <td className={cn(styles.cell, styles.fieldName)}>{t((d) => d.collection.assets)}</td>
-                <td className={cn(styles.cell, styles.fieldValue)}>{assetsQuantity}</td>
+                <td className={cn(styles.cell, styles.fieldValue)}>{collection.listings.length}</td>
               </tr>
             </table>
             <div className={styles.description}>{collection.description}</div>
@@ -63,7 +62,7 @@ const Collection: React.FC = () => {
           </div>
         </div>
       ) : (
-        <h1>Cant find collection:((</h1>
+        <h1 className={styles.notFount}>{t((d) => d.collection.notFound)}</h1>
       )}
     </div>
   );

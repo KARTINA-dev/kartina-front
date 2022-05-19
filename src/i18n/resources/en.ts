@@ -58,6 +58,7 @@ export const en = {
       styles: 'Painting styles',
       floorPrice: 'Floor price',
       assets: 'Assets',
+      notFound: `Can't find collection`,
     },
     market: {
       filter: {

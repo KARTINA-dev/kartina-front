@@ -58,6 +58,7 @@ export const ru = {
       styles: 'Стили живописи',
       floorPrice: 'Минимальная цена',
       assets: 'Кол-во картин',
+      notFound: 'Не удалось найти коллекцию',
     },
     market: {
       filter: {
