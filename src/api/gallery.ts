@@ -1,5 +1,6 @@
 import { TCreateRequest, TGallery, TRequest } from '@/store/gallery/types';
 import { getFormData } from '@/helpers/getFormData';
+import { TCollection } from '@/store/market/types';
 
 import { makeRequest } from './makeRequest';
 
@@ -15,3 +16,6 @@ export const sendRequest = (request: TCreateRequest) => {
 
   return makeRequest<TRequest>({ method: 'POST', url: getUrl(`/requests`), body });
 };
+
+export const getCollections = (galleryId: string) =>
+  makeRequest<TCollection[]>({ method: 'GET', url: getUrl(`/${galleryId}/collections`) });
