@@ -55,6 +55,13 @@ export const ru = {
       galleryPrefix: 'от {{gallery}}',
       viewAll: 'Посмотреть все',
     },
+    collection: {
+      artists: 'Художники',
+      styles: 'Стили живописи',
+      floorPrice: 'Минимальная цена',
+      assets: 'Кол-во картин',
+      notFound: 'Не удалось найти коллекцию',
+    },
     market: {
       filter: {
         label: 'Фильтры',

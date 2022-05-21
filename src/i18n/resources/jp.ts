@@ -55,6 +55,13 @@ export const jp = {
       galleryPrefix: '{{gallery}}による',
       viewAll: 'すべて表示',
     },
+    collection: {
+      artists: 'アーティスト',
+      styles: '絵画のスタイル',
+      floorPrice: '最低料金',
+      assets: '資産',
+      notFound: 'コレクションが見つかりません',
+    },
     market: {
       filter: {
         label: 'フィルター',

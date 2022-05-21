@@ -20,6 +20,7 @@ export type TCollection = {
   name: string;
   gallery: TGallery;
   listings: TListing[];
+  description?: string;
 };
 
 export enum ListingsSort {
