@@ -144,11 +144,10 @@ const List: React.FC = () => {
                 </div>
               ) : (
                 <div className={styles.congrats}>
-                  Вы выставили NFT {`"${name}"`}.
+                  Вы выставили NFT
                   <Link to={`${Routes.Profile}`} state={{ activeTab: ProfileTabs.Listed }}>
-                    {` Нажмите`}
+                    {name}
                   </Link>
-                  , чтобы перейти к своим выставленным предметам
                 </div>
               ))}
           </div>

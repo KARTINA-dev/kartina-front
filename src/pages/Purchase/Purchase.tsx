@@ -136,8 +136,7 @@ const Purchase: React.FC = () => {
                 </div>
               ) : (
                 <div className={styles.congrats}>
-                  Вы купили NFT {`"name"`}. <Link to={`${Routes.Profile}`}>Нажмите</Link>, чтобы перейти к своей
-                  коллекции
+                  Вы купили NFT <Link to={`${Routes.Profile}`}>{name}</Link>
                 </div>
               ))}
           </div>
