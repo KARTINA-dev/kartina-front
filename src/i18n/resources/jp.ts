@@ -25,12 +25,11 @@ export const jp = {
       company: 'KARTINA.DIGITAL',
       copyright: '2022 @ 大学',
     },
-    main: {
-      subscribeForm: {
-        title: '新規販売に関する情報をお見逃しなく',
-        email: 'メール',
-        subscribe: '購読する',
-      },
+    subscribeForm: {
+      titleAll: '新規販売に関する情報をお見逃しなく',
+      titleHottest: 'コレクションのドロップをお見逃しなく',
+      email: 'メール',
+      subscribe: '購読する',
     },
     hottestDrops: {
       title: '最もホットな絵画',
@@ -48,6 +47,8 @@ export const jp = {
         title: 'アイテムなし',
         description: 'マーケットプレイスで購入可能なアイテムを閲覧できます',
       },
+      address: '住所',
+      balance: 'バランス',
     },
     collections: {
       title: 'コレクション',
@@ -116,6 +117,10 @@ export const jp = {
     },
     item: {
       list: 'リスト',
+      owner: 'オーナー',
+      creator: 'クリエイター',
+      blockchain: 'ブロックチェーン',
+      tokenId: 'トークンID',
     },
     listing: {
       buy: '今買う',
@@ -125,8 +130,21 @@ export const jp = {
       description: '説明',
       price: '価格',
     },
+    list: {
+      transactionInfo: '取引情報',
+      tokenType: 'アイテムタイプ',
+      contract: '契約',
+      list: 'リスト',
+      fees: '料金',
+      galleryFees: 'ギャラリー料金',
+      serviceFees: 'サービス料',
+      transactionStatus: '取引状況',
+    },
     flow: {
       amount: '₣{{amount}} FLOW',
+    },
+    drop: {
+      notFound: 'ドロップが見つかりません',
     },
   },
 };

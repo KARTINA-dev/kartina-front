@@ -1,6 +1,7 @@
 export const ITEMS_ITEM_ID_PARAM = '/:itemID';
 export const MARKET_LISTING_ID_PARAM = '/:listingID';
 export const ADDRESS_PARAM = '/:address';
+export const DROP_ID_PARAM = '/:dropId';
 export const COLLECTION_ID_PARAM = '/:collectionID';
 
 export enum Routes {
@@ -13,4 +14,5 @@ export enum Routes {
   List = '/list',
   Manage = '/manage',
   Collections = '/collections',
+  Drop = '/drops',
 }

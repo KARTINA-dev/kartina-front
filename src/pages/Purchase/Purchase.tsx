@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import cn from 'classnames';
 import * as fcl from '@onflow/fcl';
 import * as ft from '@onflow/types';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import { Routes } from '@/constants/routes';
 import { Header } from '@/components/Header/Header';
@@ -11,12 +11,12 @@ import { Spinner } from '@/components/Spinner/Spinner';
 import { Size } from '@/types/common';
 import { MARKET_PURCHASE_LISTING } from '@/cadence/market/purchase_listing';
 import { useListingInfo } from '@/pages/Listing/hooks';
-import { ReactComponent as BackIcon } from '@/assets/icons/back.svg';
 import { ReactComponent as QuestionIcon } from '@/assets/icons/question.svg';
 import { ReactComponent as OpenIcon } from '@/assets/icons/open.svg';
 import { getIPFSImage } from '@/helpers/getIPFSImage';
 import { TransactionStatus, TTransaction } from '@/pages/Purchase/types';
 import ProgressBar from '@/components/ProgressBar/ProgressBar';
+import { useTranslation } from '@/i18n';
 
 import styles from './Purchase.module.scss';
 
@@ -28,7 +28,7 @@ const Purchase: React.FC = () => {
   const [txErrors, setTxErrors] = useState<string[]>([]);
   const { address, listingID } = useParams();
   const { listing, isLoading } = useListingInfo(address, Number(listingID));
-  const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const buyListing = useCallback(async (listingID: number, ownerAccount: string) => {
     setIsProceeding(true);
@@ -81,35 +81,31 @@ const Purchase: React.FC = () => {
     <div className={styles.purchase}>
       <Header isAuthenticated={isAuthenticated} login={login} pathname={Routes.Main} />
       <div className={styles.content}>
-        <button className={styles.back} onClick={() => navigate(-1)}>
-          <BackIcon className={styles.backIcon} />
-          <span className={styles.backText}>Back to listing</span>
-        </button>
         <div className={styles.info}>
           <div className={styles.transaction}>
-            <span className={styles.title}>Transaction info</span>
+            <span className={styles.title}>{t((d) => d.list.transactionInfo)}</span>
             <div className={styles.row}>
               <div className={styles.col}>
-                <span className={styles.colTitle}>Item ID</span>
+                <span className={styles.colTitle}>{t((d) => d.item.tokenId)}</span>
                 <span>{itemID}</span>
               </div>
               <div className={styles.col}>
-                <span className={styles.colTitle}>Owned by</span>
+                <span className={styles.colTitle}>{t((d) => d.item.owner)}</span>
                 <span>{owner}</span>
               </div>
               <div className={styles.col}>
-                <span className={styles.colTitle}>Contract</span>
+                <span className={styles.colTitle}>{t((d) => d.list.contract)}</span>
                 <span>KartinaItems</span>
               </div>
               <div className={styles.col}>
-                <span className={styles.colTitle}>Blockchain</span>
+                <span className={styles.colTitle}>{t((d) => d.item.blockchain)}</span>
                 <span>FLOW</span>
               </div>
             </div>
             {txID && (
               <div className={styles.col}>
                 <div className={styles.row}>
-                  <span className={styles.subtitle}>Transaction status</span>
+                  <span className={styles.subtitle}>{t((d) => d.list.transactionStatus)}</span>
                   {txStatus === TransactionStatus.Sealed ? (
                     <a
                       target='_blank'
@@ -140,8 +136,7 @@ const Purchase: React.FC = () => {
                 </div>
               ) : (
                 <div className={styles.congrats}>
-                  Поздравляем! Вы купили NFT {`"name"`}. <Link to={`${Routes.Profile}`}>Нажмите</Link>, чтобы перейти к
-                  своей коллекции
+                  Вы купили NFT <Link to={`${Routes.Profile}`}>{name}</Link>
                 </div>
               ))}
           </div>

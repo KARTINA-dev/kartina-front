@@ -25,12 +25,11 @@ export const en = {
       company: 'KARTINA.DIGITAL',
       copyright: '2022 @ ITMO UNIVERSITY',
     },
-    main: {
-      subscribeForm: {
-        title: 'Never miss a drop',
-        email: 'Email',
-        subscribe: 'Subscribe',
-      },
+    subscribeForm: {
+      titleAll: 'Never miss a drop',
+      titleHottest: `Don't miss the drop of collection`,
+      email: 'Email',
+      subscribe: 'Subscribe',
     },
     hottestDrops: {
       title: 'Hottest Drops',
@@ -48,6 +47,8 @@ export const en = {
         title: 'No items',
         description: 'You can browse items available for purchase on the marketplace',
       },
+      address: 'Address',
+      balance: 'Balance',
     },
     collections: {
       title: 'Collections',
@@ -116,6 +117,10 @@ export const en = {
     },
     item: {
       list: 'List',
+      owner: 'Owner',
+      creator: 'Creator',
+      blockchain: 'Blockchain',
+      tokenId: 'Token ID',
     },
     listing: {
       buy: 'Buy Now',
@@ -125,8 +130,21 @@ export const en = {
       description: 'Description',
       price: 'Price',
     },
+    list: {
+      transactionInfo: 'Transaction info',
+      tokenType: 'Item type',
+      contract: 'Contract',
+      list: 'List',
+      fees: 'Fees',
+      galleryFees: 'Gallery fees',
+      serviceFees: 'Service fees',
+      transactionStatus: 'Transaction status',
+    },
     flow: {
       amount: '{{amount}} FLOW',
+    },
+    drop: {
+      notFound: `Can't find the drop`,
     },
   },
 };

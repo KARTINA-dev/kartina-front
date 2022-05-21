@@ -25,12 +25,11 @@ export const ru = {
       company: 'KARTINA.DIGITAL',
       copyright: '2022 @ ITMO UNIVERSITY',
     },
-    main: {
-      subscribeForm: {
-        title: 'Не пропускайте информацию о новых релизах',
-        email: 'Email',
-        subscribe: 'Подписаться',
-      },
+    subscribeForm: {
+      titleAll: 'Не пропускайте информацию о новых релизах',
+      titleHottest: 'Узнайте о выходе коллекции первым',
+      email: 'Email',
+      subscribe: 'Подписаться',
     },
     hottestDrops: {
       title: 'Новые релизы',
@@ -48,6 +47,8 @@ export const ru = {
         title: 'Нет предметов',
         description: 'Вы можете просматривать товары, доступные для покупки на торговой площадке',
       },
+      address: 'Адрес',
+      balance: 'Баланс',
     },
     collections: {
       title: 'Коллекции',
@@ -116,6 +117,10 @@ export const ru = {
     },
     item: {
       list: 'Выставить',
+      owner: 'Владелец',
+      creator: 'Создатель',
+      blockchain: 'Блокчейн',
+      tokenId: 'ID токена',
     },
     listing: {
       buy: 'Перейти к покупке',
@@ -125,8 +130,21 @@ export const ru = {
       description: 'Описание',
       price: 'Цена',
     },
+    list: {
+      transactionInfo: 'Информация о транзакции',
+      tokenType: 'Тип токена',
+      contract: 'Контракт',
+      list: 'Выставить',
+      fees: 'Сборы',
+      galleryFees: 'Сборы галлереи',
+      serviceFees: 'Сервисный сбор',
+      transactionStatus: 'Статус транзакции',
+    },
     flow: {
       amount: '{{amount}} FLOW',
+    },
+    drop: {
+      notFound: 'Анонс коллекции не найден',
     },
   },
 };

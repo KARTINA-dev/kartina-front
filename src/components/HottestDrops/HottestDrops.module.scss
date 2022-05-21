@@ -8,23 +8,11 @@
     font-size: var(--font-size-3xl);
   }
 
-  .drop {
+  .drops {
     display: flex;
-    flex-direction: column;
-    color: var(--color-typo-primary);
-    gap: 1rem;
-    cursor: pointer;
-
-    .gallery {
-      color: var(--color-typo-link);
-    }
-
-    .listings {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      overflow: hidden;
-      padding: 2rem 0;
-    }
+    gap: 2rem;
+    align-items: center;
+    overflow: hidden;
+    padding: 2rem 0;
   }
 }

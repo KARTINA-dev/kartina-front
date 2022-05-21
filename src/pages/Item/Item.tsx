@@ -24,8 +24,7 @@ const Item: React.VFC = () => {
   const { t } = useTranslation();
   const { address, itemID } = useParams();
   const { item, isLoading } = useItemInfo(address, Number(itemID));
-  const [localPrice, setLocalPrice] = useState<string>();
-  const [price, setPrice] = useState<number>();
+  const [price, setPrice] = useState<string>();
   const DEFAULT_ACTIVE_TAB = ListingTabs.Description;
 
   const [activeTab, setActiveTab] = useState<ListingTabs>(DEFAULT_ACTIVE_TAB);
@@ -41,10 +40,11 @@ const Item: React.VFC = () => {
   }
 
   const onPriceChange = (value: string) => {
-    setPrice(parseFloat(value));
+    setPrice(value);
   };
 
   const { imageCID, imagePath, owner, description, name, artist } = item;
+  const listLink = price ? `${Routes.List}/${owner}/${itemID}` : '#';
 
   return (
     <div className={styles.itempage}>
@@ -72,7 +72,6 @@ const Item: React.VFC = () => {
           </div>
 
           <div>
-            <div className={styles.lastPrice}>Последняя цена - 124.43 FLOW</div>
             <div className={styles.infoRow}>
               <InputNumber
                 onChange={onPriceChange}
@@ -88,8 +87,8 @@ const Item: React.VFC = () => {
               <div className={styles.buttons}>
                 {owner === user.addr && (
                   <Link
-                    to={`${Routes.List}/${owner}/${itemID}`}
-                    state={{ price }}
+                    to={listLink}
+                    state={price && { price: parseFloat(price).toFixed(3) }}
                     className={cn(styles.button, styles.buttonPrimary)}
                   >
                     {t((d) => d.item.list)}
@@ -111,19 +110,19 @@ const Item: React.VFC = () => {
               <TabsPane key={ListingTabs.Details} tab={t((d) => d.listing.details)}>
                 <div className={styles.details}>
                   <div className={styles.detailsRow}>
-                    <span className={styles.detailsRowName}>Creator</span>
+                    <span className={styles.detailsRowName}>{t((d) => d.item.creator)}</span>
                     <span>Didi Gallery</span>
                   </div>
                   <div className={styles.detailsRow}>
-                    <span className={styles.detailsRowName}>Owner</span>
+                    <span className={styles.detailsRowName}>{t((d) => d.item.owner)}</span>
                     <span>{owner}</span>
                   </div>
                   <div className={styles.detailsRow}>
-                    <span className={styles.detailsRowName}>Blockchain</span>
+                    <span className={styles.detailsRowName}>{t((d) => d.item.blockchain)}</span>
                     <span>FLOW</span>
                   </div>
                   <div className={styles.detailsRow}>
-                    <span className={styles.detailsRowName}>Tocken ID</span>
+                    <span className={styles.detailsRowName}>{t((d) => d.item.tokenId)}</span>
                     <span>{itemID}</span>
                   </div>
                 </div>

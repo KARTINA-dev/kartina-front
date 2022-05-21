@@ -35,7 +35,7 @@ export type TRequest = {
   description?: string;
   paintingStyle?: string;
   images: TRequestImage[];
-  gallery: string;
+  gallery: TGallery;
   status: RequestStatus;
 };
 

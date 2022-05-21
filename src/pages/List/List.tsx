@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import cn from 'classnames';
 import * as fcl from '@onflow/fcl';
 import * as ft from '@onflow/types';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 import { Routes } from '@/constants/routes';
 import { Header } from '@/components/Header/Header';
@@ -10,7 +10,6 @@ import { useAuthentication } from '@/helpers/useAuthentication';
 import { Spinner } from '@/components/Spinner/Spinner';
 import { Size } from '@/types/common';
 import { useTranslation } from '@/i18n';
-import { ReactComponent as BackIcon } from '@/assets/icons/back.svg';
 import { ReactComponent as QuestionIcon } from '@/assets/icons/question.svg';
 import { ReactComponent as OpenIcon } from '@/assets/icons/open.svg';
 import { getIPFSImage } from '@/helpers/getIPFSImage';
@@ -35,7 +34,6 @@ const List: React.FC = () => {
   const { address, itemID } = useParams();
   const { t } = useTranslation();
   const { item, isLoading } = useItemInfo(address, Number(itemID));
-  const navigate = useNavigate();
   const locationState = useLocation().state as ListLocationState;
   const price = locationState.price;
 
@@ -91,35 +89,31 @@ const List: React.FC = () => {
     <div className={styles.checkoutPage}>
       <Header isAuthenticated={isAuthenticated} login={login} pathname={Routes.Main} />
       <div className={styles.content}>
-        <button className={styles.back} onClick={() => navigate(-1)}>
-          <BackIcon className={styles.backIcon} />
-          <span className={styles.backText}>Back to item</span>
-        </button>
         <div className={styles.info}>
           <div className={styles.transaction}>
-            <span className={styles.title}>Transaction info</span>
+            <span className={styles.title}>{t((d) => d.list.transactionInfo)}</span>
             <div className={styles.row}>
               <div className={styles.col}>
-                <span className={styles.colTitle}>Item ID</span>
+                <span className={styles.colTitle}>{t((d) => d.item.tokenId)}</span>
                 <span>{itemID}</span>
               </div>
               <div className={styles.col}>
-                <span className={styles.colTitle}>Item type</span>
+                <span className={styles.colTitle}>{t((d) => d.list.tokenType)}</span>
                 <span>KartinaItem</span>
               </div>
               <div className={styles.col}>
-                <span className={styles.colTitle}>Contract</span>
+                <span className={styles.colTitle}>{t((d) => d.list.contract)}</span>
                 <span>NFTStorefront</span>
               </div>
               <div className={styles.col}>
-                <span className={styles.colTitle}>Blockchain</span>
+                <span className={styles.colTitle}>{t((d) => d.item.blockchain)}</span>
                 <span>FLOW</span>
               </div>
             </div>
             {txID && (
               <div className={styles.col}>
                 <div className={styles.row}>
-                  <span className={styles.subtitle}>Transaction status</span>
+                  <span className={styles.subtitle}>{t((d) => d.list.transactionStatus)}</span>
                   {txStatus === TransactionStatus.Sealed ? (
                     <a
                       target='_blank'
@@ -150,11 +144,10 @@ const List: React.FC = () => {
                 </div>
               ) : (
                 <div className={styles.congrats}>
-                  Поздравляем! Вы выставили NFT {`"${name}"`}.
+                  Вы выставили NFT
                   <Link to={`${Routes.Profile}`} state={{ activeTab: ProfileTabs.Listed }}>
-                    Нажмите
+                    {name}
                   </Link>
-                  , чтобы перейти к своему маркетплейсу
                 </div>
               ))}
           </div>
@@ -162,32 +155,32 @@ const List: React.FC = () => {
           <div className={styles.item}>
             <img src={getIPFSImage({ imageCID, imagePath })} alt={`Listing ID Image`} className={styles.image} />
             <div className={styles.details}>
-              <div className={styles.detailsBlock}>
+              <div className={styles.detailsDescription}>
                 <span className={styles.title}>{name}</span>
                 <span>{artist}</span>
               </div>
               <div className={styles.detailsBlock}>
                 <div className={styles.detailsBlockRow}>
-                  <span className={styles.subtitle}>Cборы</span>
+                  <span className={styles.subtitle}>{t((d) => d.list.fees)}</span>
                   <QuestionIcon className={styles.question} />
                 </div>
                 <div className={styles.detailsBlockRow}>
-                  <span>Royalties (10%)</span>
+                  <span>{t((d) => d.list.galleryFees)} (10%)</span>
                   <span>{(parseFloat(price) * 0.1).toFixed(3)} FLOW</span>
                 </div>
                 <div className={styles.detailsBlockRow}>
-                  <span>KARTINA fees (3%)</span>
+                  <span>{t((d) => d.list.serviceFees)} (3%)</span>
                   <span>{(parseFloat(price) * 0.03).toFixed(3)} FLOW</span>
                 </div>
               </div>
 
-              <div className={styles.detailsBlock}>
+              <div className={cn(styles.detailsBlock, styles.detailsBlockPrice)}>
                 <div className={styles.detailsBlockRow}>
                   <span className={styles.subtitle}>Всего</span>
                   <span>{parseFloat(price).toFixed(3)} FLOW</span>
                 </div>
               </div>
-              <div className={styles.detailsBlock}>
+              <div className={styles.detailsButton}>
                 {isButtonVisible && (
                   <button
                     className={cn(styles.buy, { [styles.proceedingButton]: isProceeding })}
@@ -196,7 +189,7 @@ const List: React.FC = () => {
                     {isProceeding ? (
                       <Spinner className={styles.proceedingLoader} size={Size.M} />
                     ) : (
-                      t((d) => d.item.list)
+                      t((d) => d.list.list)
                     )}
                   </button>
                 )}
