@@ -61,6 +61,7 @@
       }
       .description {
         width: 800px;
+        height: fit-content;
         max-height: 300px;
         border: solid 1px var(--color-typo-primary);
         padding: 1rem;
