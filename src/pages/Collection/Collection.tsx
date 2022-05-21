@@ -17,7 +17,12 @@ const Collection: React.FC = () => {
   const { collection } = useCollection(collectionID);
   const { login, isAuthenticated } = useAuthentication();
 
-  const artists = useMemo(() => new Set(collection?.listings.map((listing) => listing.artist)), [collection]);
+  const artists = useMemo(() => {
+    const uniqueArtists = Array.from(new Set(collection?.listings.map((listing) => listing.artist)));
+
+    return uniqueArtists.map((artist, index) => (index + 1 === uniqueArtists.length ? artist : `${artist}, `));
+  }, [collection?.listings]);
+
   const floorPrice = useMemo(
     () => Math.min(...(collection?.listings.map((listing) => parseFloat(listing.price)) ?? [0])).toFixed(3),
     [collection],
@@ -39,10 +44,6 @@ const Collection: React.FC = () => {
               <tr className={styles.row}>
                 <td className={cn(styles.cell, styles.fieldName)}>{t((d) => d.collection.artists)}</td>
                 <td className={cn(styles.cell, styles.fieldValue)}>{artists}</td>
-              </tr>
-              <tr className={styles.row}>
-                <td className={cn(styles.cell, styles.fieldName)}>{t((d) => d.collection.styles)}</td>
-                <td className={cn(styles.cell, styles.fieldValue)}>Expressionism, Abstraction</td>
               </tr>
               <tr className={styles.row}>
                 <td className={cn(styles.cell, styles.fieldName)}>{t((d) => d.collection.floorPrice)}</td>
