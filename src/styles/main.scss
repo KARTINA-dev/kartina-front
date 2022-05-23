@@ -65,3 +65,31 @@ ul ul li {
 p {
   margin: 0;
 }
+
+body *::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+body *::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+
+body *::-webkit-scrollbar-track {
+  background: none;
+  border-radius: 3em;
+}
+
+body *::-webkit-scrollbar-thumb {
+  background: var(--color-scrollbar-accent);
+  transition: all 0.2s ease-in-out;
+}
+
+body *::-webkit-scrollbar-thumb:vertical {
+  border-radius: 3em;
+}
+
+body *::-webkit-scrollbar-thumb:horizontal {
+  border-radius: 3em;
+}

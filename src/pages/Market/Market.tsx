@@ -105,11 +105,6 @@ const Market: React.VFC = () => {
           </div>
         </div>
       </div>
-
-      <footer className={styles.footer}>
-        <span className={styles.footerCompany}>{t((d) => d.footer.company)}</span>
-        <span className={styles.footerCopyright}>{t((d) => d.footer.copyright)}</span>
-      </footer>
     </div>
   );
 };

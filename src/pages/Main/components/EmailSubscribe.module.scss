@@ -29,7 +29,8 @@
     padding: 8px 14px;
     color: var(--color-bg-default);
     min-width: 300px;
-    border: none;
+    height: 32px;
+    border-right: none;
 
     &:focus {
       outline: none;
