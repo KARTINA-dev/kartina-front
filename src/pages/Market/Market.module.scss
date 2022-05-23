@@ -14,8 +14,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 216px);
     overflow-y: scroll;
+    padding-bottom: 1rem;
   }
 
   .list {
