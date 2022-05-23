@@ -4,9 +4,21 @@
   gap: 1rem;
   transition: 0.3s;
 
+  --size: 200px;
+
+  &Size {
+    &S {
+      --size: 200px;
+    }
+
+    &M {
+      --size: 230px;
+    }
+  }
+
   .image {
-    height: 200px;
-    width: 200px;
+    height: var(--size);
+    width: var(--size);
     object-fit: cover;
   }
 

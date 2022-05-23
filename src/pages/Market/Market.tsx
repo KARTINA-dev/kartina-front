@@ -101,7 +101,9 @@ const Market: React.VFC = () => {
             />
           </div>
           <div className={styles.listings}>
-            {listings?.length ? listings.map((listing) => <ListingCard key={listing.listingID} {...listing} />) : null}
+            {listings?.length
+              ? listings.map((listing) => <ListingCard key={listing.listingID} size={Size.M} {...listing} />)
+              : null}
           </div>
         </div>
       </div>
