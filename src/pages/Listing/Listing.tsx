@@ -27,7 +27,7 @@ const Listing: React.VFC = () => {
   const { address, listingID: listingIdParam } = useParams();
   const listingId = Number(listingIdParam);
   const { listing, isLoading } = useListingInfo(address, listingId);
-  const { related, isLoading: relatedIsLoading } = useRelatedListings(listingId);
+  const { related } = useRelatedListings(listingId);
   const [isProceeding, setIsProceeding] = useState<boolean>(false);
   const DEFAULT_ACTIVE_TAB = ListingTabs.Description;
 

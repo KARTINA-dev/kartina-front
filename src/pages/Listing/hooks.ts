@@ -25,22 +25,20 @@ export const useListingInfo = (address?: string, listingID?: number) => {
   return { listing, isLoading };
 };
 
-export const useRelatedListings = (listingId: number) => {
+export const useRelatedListings = (listingID: number) => {
   const [related, setRelated] = useState<TListing[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
 
-    console.log(99);
-
     api.collections
-      .getRelatedListings(listingId)
+      .getRelatedListings(listingID)
       .then((listings) => {
-        setRelated(listings);
+        setRelated(listings.filter((listing) => listing.listingID !== listingID));
       })
       .finally(() => setIsLoading(false));
-  }, [listingId]);
+  }, [listingID]);
 
   return { related, isLoading };
 };
