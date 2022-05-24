@@ -9,9 +9,6 @@ import { Spinner } from '@/components/Spinner/Spinner';
 import { Size } from '@/types/common';
 import { getIPFSImage } from '@/helpers/getIPFSImage';
 import { Routes } from '@/constants/routes';
-import { ReactComponent as HeartIcon } from '@/assets/icons/heart.svg';
-import { ReactComponent as ShareIcon } from '@/assets/icons/share.svg';
-import { ReactComponent as OpenIcon } from '@/assets/icons/open.svg';
 import { ReactComponent as FlowLogo } from '@/assets/flowLogo.svg';
 import { Tabs, TabsPane } from '@/components/Tabs/Tabs';
 import { ListingTabs } from '@/pages/Listing/types';
@@ -57,17 +54,6 @@ const Item: React.VFC = () => {
             <div className={styles.mainInfo}>
               <span className={styles.mainInfo__name}>{name}</span>
               <span className={styles.mainInfo__artist}>{artist}</span>
-            </div>
-            <div className={styles.actions}>
-              <button>
-                <HeartIcon className={styles.action} />
-              </button>
-              <button>
-                <ShareIcon className={styles.action} />
-              </button>
-              <button>
-                <OpenIcon className={styles.action} />
-              </button>
             </div>
           </div>
 
