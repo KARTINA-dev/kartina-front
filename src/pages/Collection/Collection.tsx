@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import cn from 'classnames';
 
 import { Header } from '@/components/Header/Header';
 import { Routes } from '@/constants/routes';
@@ -8,6 +7,8 @@ import { useTranslation } from '@/i18n';
 import { useCollection } from '@/pages/Collection/hooks';
 import { ListingCard } from '@/components/ListingCard/ListingCard';
 import { useAuthentication } from '@/helpers/useAuthentication';
+import { Size } from '@/types/common';
+import { ReactComponent as FlowIcon } from '@/assets/icons/flow_12.svg';
 
 import styles from './Collection.module.scss';
 
@@ -23,9 +24,9 @@ const Collection: React.FC = () => {
     return uniqueArtists.map((artist, index) => (index + 1 === uniqueArtists.length ? artist : `${artist}, `));
   }, [collection?.listings]);
 
-  const floorPrice = useMemo(
+  const lowestPrice = useMemo(
     () => Math.min(...(collection?.listings.map((listing) => parseFloat(listing.price)) ?? [0])).toFixed(3),
-    [collection],
+    [collection?.listings],
   );
 
   return (
@@ -40,24 +41,22 @@ const Collection: React.FC = () => {
             </Link>
           </h1>
           <div className={styles.info}>
-            <table className={styles.details}>
-              <tr className={styles.row}>
-                <td className={cn(styles.cell, styles.fieldName)}>{t((d) => d.collection.artists)}</td>
-                <td className={cn(styles.cell, styles.fieldValue)}>{artists}</td>
-              </tr>
-              <tr className={styles.row}>
-                <td className={cn(styles.cell, styles.fieldName)}>{t((d) => d.collection.floorPrice)}</td>
-                <td className={cn(styles.cell, styles.fieldValue)}>{floorPrice} FLOW</td>
-              </tr>
-              <tr className={styles.row}>
-                <td className={cn(styles.cell, styles.fieldName)}>{t((d) => d.collection.assets)}</td>
-                <td className={cn(styles.cell, styles.fieldValue)}>{collection.listings.length}</td>
-              </tr>
-            </table>
+            <ListingCard key={collection.listings[0].listingID} size={Size.L} {...collection.listings[0]} />
             <div className={styles.description}>{collection.description}</div>
+            <div className={styles.details}>
+              <span className={styles.fieldName}>{t((d) => d.collection.artists)}</span>
+              <span>{artists}</span>
+              <span className={styles.fieldName}>{t((d) => d.collection.floorPrice)}</span>
+              <div className={styles.price}>
+                <FlowIcon />
+                <span className={styles.amount}>{t((d) => d.flow.amount, { amount: lowestPrice })}</span>
+              </div>
+              <span className={styles.fieldName}>{t((d) => d.collection.assets)}</span>
+              <span>{collection.listings.length}</span>
+            </div>
           </div>
           <div className={styles.items}>
-            {collection.listings.map((item) => (
+            {collection.listings.slice(1).map((item) => (
               <ListingCard key={item.listingID} {...item} />
             ))}
           </div>

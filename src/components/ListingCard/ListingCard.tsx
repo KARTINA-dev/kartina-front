@@ -12,7 +12,7 @@ import { Size } from '@/types/common';
 import styles from './ListingCard.module.scss';
 
 export interface IListingCard extends TListing {
-  size?: Size.S | Size.M;
+  size?: Size.S | Size.M | Size.L;
 }
 
 export const ListingCard: React.FC<IListingCard> = (props) => {
