@@ -43,7 +43,7 @@ export const CreateRequest: React.FC<ICreateRequests> = (props) => {
 
   return (
     <>
-      <p>{t((d) => d.profile.items.description)}</p>
+      <p>{t((d) => d.manage.create.description)}</p>
       <div className={styles.create}>
         <div className={styles.createUpload}>
           {currentImage ? (

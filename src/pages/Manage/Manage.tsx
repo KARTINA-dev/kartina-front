@@ -61,10 +61,10 @@ const Manage: React.VFC = () => {
           onChange={(key) => setActiveTab(key as ManageTabs)}
           activeKey={activeTab}
         >
-          <TabsPane key={ManageTabs.Requests} tab={t((d) => d.manage.requests)}>
+          <TabsPane key={ManageTabs.Requests} tab={t((d) => d.manage.requests.title)}>
             <Requests />
           </TabsPane>
-          <TabsPane key={ManageTabs.Create} tab={t((d) => d.manage.create)}>
+          <TabsPane key={ManageTabs.Create} tab={t((d) => d.manage.create.title)}>
             <CreateRequest setActiveTab={setActiveTab} />
           </TabsPane>
         </Tabs>

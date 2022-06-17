@@ -77,8 +77,14 @@ export const en = {
       },
     },
     manage: {
-      requests: 'Requests',
-      create: 'Create',
+      requests: {
+        title: 'Requests',
+        description: 'Your requests for collection mint',
+      },
+      create: {
+        title: 'Create',
+        description: 'Create request for a new collection',
+      },
       status: {
         [RequestStatus.Declined]: 'Declined',
         [RequestStatus.Waiting]: 'Waiting',
@@ -139,6 +145,10 @@ export const en = {
       galleryFees: 'Gallery fees',
       serviceFees: 'Service fees',
       transactionStatus: 'Transaction status',
+    },
+    purchase: {
+      buy: 'Buy',
+      total: 'Total',
     },
     flow: {
       amount: '{{amount}} FLOW',
