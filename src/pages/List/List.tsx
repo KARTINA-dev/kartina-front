@@ -176,7 +176,7 @@ const List: React.FC = () => {
 
               <div className={cn(styles.detailsBlock, styles.detailsBlockPrice)}>
                 <div className={styles.detailsBlockRow}>
-                  <span className={styles.subtitle}>Всего</span>
+                  <span className={styles.subtitle}>{t((d) => d.purchase.total)}</span>
                   <span>{parseFloat(price).toFixed(3)} FLOW</span>
                 </div>
               </div>
