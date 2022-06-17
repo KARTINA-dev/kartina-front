@@ -77,8 +77,14 @@ export const ru = {
       },
     },
     manage: {
-      requests: 'Заявки',
-      create: 'Создать',
+      requests: {
+        title: 'Заявки',
+        description: 'Ваши заявки на создание коллекций',
+      },
+      create: {
+        title: 'Создать',
+        description: 'Создать заявку на новую коллекцию',
+      },
       status: {
         [RequestStatus.Declined]: 'Отклонено',
         [RequestStatus.Waiting]: 'Ожидает',
@@ -139,6 +145,10 @@ export const ru = {
       galleryFees: 'Сборы галлереи',
       serviceFees: 'Сервисный сбор',
       transactionStatus: 'Статус транзакции',
+    },
+    purchase: {
+      buy: 'Купить',
+      total: 'Всего',
     },
     flow: {
       amount: '{{amount}} FLOW',

@@ -30,7 +30,7 @@ const Item: React.VFC = () => {
 
   if (isLoading || !item) {
     return (
-      <div className={cn(styles.listingpage, styles.loading)}>
+      <div className={cn(styles.itempage, styles.loading)}>
         <Spinner size={Size.L} />
       </div>
     );

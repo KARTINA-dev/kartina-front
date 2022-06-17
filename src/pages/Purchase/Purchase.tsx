@@ -150,22 +150,22 @@ const Purchase: React.FC = () => {
               </div>
               <div className={styles.detailsBlock}>
                 <div className={styles.detailsBlockRow}>
-                  <span className={styles.subtitle}>Cборы</span>
+                  <span className={styles.subtitle}>{t((d) => d.list.fees)}</span>
                   <QuestionIcon className={styles.question} />
                 </div>
                 <div className={styles.detailsBlockRow}>
-                  <span>Royalties (10%)</span>
+                  <span>{t((d) => d.list.galleryFees)} (10%)</span>
                   <span>{(parseFloat(price) * 0.1).toFixed(3)} FLOW</span>
                 </div>
                 <div className={styles.detailsBlockRow}>
-                  <span>KARTINA fees (3%)</span>
+                  <span>{t((d) => d.list.serviceFees)} (3%)</span>
                   <span>{(parseFloat(price) * 0.03).toFixed(3)} FLOW</span>
                 </div>
               </div>
 
               <div className={cn(styles.detailsBlock, styles.detailsBlockPrice)}>
                 <div className={styles.detailsBlockRow}>
-                  <span className={styles.subtitle}>Всего</span>
+                  <span className={styles.subtitle}>{t((d) => d.purchase.total)}</span>
                   <span>{parseFloat(price).toFixed(3)} FLOW</span>
                 </div>
               </div>
@@ -175,7 +175,11 @@ const Purchase: React.FC = () => {
                     className={cn(styles.buy, { [styles.proceedingButton]: isProceeding })}
                     onClick={() => buyListing(Number(listingID), owner)}
                   >
-                    {isProceeding ? <Spinner className={styles.proceedingLoader} size={Size.M} /> : 'Купить'}
+                    {isProceeding ? (
+                      <Spinner className={styles.proceedingLoader} size={Size.M} />
+                    ) : (
+                      t((d) => d.purchase.buy)
+                    )}
                   </button>
                 )}
                 {isProceeding ? <div className={styles.proceedingMessage}>Proceeding your order...</div> : ''}

@@ -6,8 +6,6 @@ import { getMediaImage } from '@/helpers/getMediaImage';
 import { useSelector } from '@/store/hooks';
 import { useTranslation } from '@/i18n';
 
-import { ManageTabs } from '../../types';
-
 import { useRequests } from './hooks';
 import styles from './Requests.module.scss';
 
@@ -18,7 +16,7 @@ export const Requests: React.VFC = () => {
 
   return (
     <>
-      <p>{t((d) => d.profile.items.description)}</p>
+      <p>{t((d) => d.manage.requests.description)}</p>
       <div className={styles.requests}>
         {requests.length > 0 &&
           requests.map(({ _id, name, images, status }) => (

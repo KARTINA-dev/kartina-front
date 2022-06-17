@@ -77,8 +77,14 @@ export const jp = {
       },
     },
     manage: {
-      requests: 'リクエスト',
-      create: '作成',
+      requests: {
+        title: 'リクエスト',
+        description: 'コレクションミントのリクエスト',
+      },
+      create: {
+        title: '作成',
+        description: '新しいコレクションのリクエストを作成する',
+      },
       status: {
         [RequestStatus.Declined]: '拒否されました',
         [RequestStatus.Waiting]: '待っている',
@@ -139,6 +145,10 @@ export const jp = {
       galleryFees: 'ギャラリー料金',
       serviceFees: 'サービス料',
       transactionStatus: '取引状況',
+    },
+    purchase: {
+      buy: '買う',
+      total: '合計',
     },
     flow: {
       amount: '₣{{amount}} FLOW',
