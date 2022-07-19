@@ -37,6 +37,7 @@ jobs:
         uses: appleboy/telegram-action@master
         with:
           message: |
+            *Frontend*
             PR: ${{ github.event.pull_request.title }}
             Author: ${{ github.actor }}
             ⚠️ Failed - Health Check Frontend
@@ -68,6 +69,7 @@ jobs:
         uses: appleboy/telegram-action@master
         with:
           message: |
+            *Frontend*
             PR: ${{ github.event.pull_request.title }}
             Author: ${{ github.actor }}
             ⚠️ Failed - Build and Publish Dockerfile Images
@@ -114,6 +116,7 @@ jobs:
         uses: appleboy/telegram-action@master
         with:
           message: |
+            *Frontend*
             PR: ${{ github.event.pull_request.title }}
             Author: ${{ github.actor }}
             ✅ Frontend new version was successfuly deployed
