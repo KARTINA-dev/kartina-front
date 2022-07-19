@@ -9,7 +9,7 @@ import styles from './HottestDrops.module.scss';
 
 const cardsSizesOrder = [Size.M, Size.S, Size.L];
 
-export const HottestDrops: React.VFC = () => {
+export const HottestDrops: React.FC = () => {
   const { t } = useTranslation();
   const { hottest } = useHottest();
 

@@ -11,6 +11,7 @@ import { Size } from '@/types/common';
 import { ReactComponent as FlowIcon } from '@/assets/icons/flow_12.svg';
 
 import styles from './Collection.module.scss';
+import { Scene } from '@/components/Scene/Scene';
 
 const Collection: React.FC = () => {
   const { collectionID } = useParams();
@@ -31,38 +32,38 @@ const Collection: React.FC = () => {
 
   return (
     <div className={styles.collection}>
-      <Header pathname={Routes.Collections} login={login} isAuthenticated={isAuthenticated} />
-      {collection ? (
-        <div className={styles.content}>
-          <h1 className={styles.name}>
-            {collection.name}
-            <Link className={styles.gallery} to={'#'}>
-              {t((d) => d.collections.galleryPrefix, { gallery: collection.gallery.name })}
-            </Link>
-          </h1>
-          <div className={styles.info}>
-            <ListingCard key={collection.listings[0].listingID} size={Size.L} {...collection.listings[0]} />
-            <div className={styles.description}>{collection.description}</div>
-            <div className={styles.details}>
-              <span className={styles.fieldName}>{t((d) => d.collection.artists)}</span>
-              <span>{artists}</span>
-              <span className={styles.fieldName}>{t((d) => d.collection.floorPrice)}</span>
-              <div className={styles.price}>
-                <FlowIcon />
-                <span className={styles.amount}>{t((d) => d.flow.amount, { amount: lowestPrice })}</span>
+      {collection && (
+        <>
+          <Scene listings={collection.listings} />
+          <div className={styles.content}>
+            <h1 className={styles.name}>
+              {collection.name}
+              <Link className={styles.gallery} to={'#'}>
+                {t((d) => d.collections.galleryPrefix, { gallery: collection.gallery.name })}
+              </Link>
+            </h1>
+            <div className={styles.info}>
+              <ListingCard key={collection.listings[0].listingID} size={Size.L} {...collection.listings[0]} />
+              <div className={styles.description}>{collection.description}</div>
+              <div className={styles.details}>
+                <span className={styles.fieldName}>{t((d) => d.collection.artists)}</span>
+                <span>{artists}</span>
+                <span className={styles.fieldName}>{t((d) => d.collection.floorPrice)}</span>
+                <div className={styles.price}>
+                  <FlowIcon />
+                  <span className={styles.amount}>{t((d) => d.flow.amount, { amount: lowestPrice })}</span>
+                </div>
+                <span className={styles.fieldName}>{t((d) => d.collection.assets)}</span>
+                <span>{collection.listings.length}</span>
               </div>
-              <span className={styles.fieldName}>{t((d) => d.collection.assets)}</span>
-              <span>{collection.listings.length}</span>
+            </div>
+            <div className={styles.items}>
+              {collection.listings.slice(1).map((item) => (
+                <ListingCard key={item.listingID} {...item} />
+              ))}
             </div>
           </div>
-          <div className={styles.items}>
-            {collection.listings.slice(1).map((item) => (
-              <ListingCard key={item.listingID} {...item} />
-            ))}
-          </div>
-        </div>
-      ) : (
-        <h1 className={styles.notFount}>{t((d) => d.collection.notFound)}</h1>
+        </>
       )}
     </div>
   );

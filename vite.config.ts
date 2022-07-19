@@ -38,8 +38,6 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),
-        'react/jsx-dev-runtime': 'react/jsx-dev-runtime.js',
-        'react/jsx-runtime': 'react/jsx-runtime.js',
         stream: 'vite-compatible-readable-stream',
         zlib: 'browserify-zlib',
         util: 'util',
@@ -66,6 +64,9 @@ export default defineConfig(({ mode }) => {
       outDir: resolvePath(process.cwd(), 'dist'),
       rollupOptions: {
         plugins: [inject({ Buffer: ['buffer', 'Buffer'] })],
+      },
+      optimizeDeps: {
+        include: ['react/jsx-runtime'],
       },
     },
     server: {

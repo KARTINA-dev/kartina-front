@@ -18,7 +18,7 @@ import styles from './Manage.module.scss';
 
 const DEFAULT_ACTIVE_TAB = ManageTabs.Requests;
 
-const Manage: React.VFC = () => {
+const Manage: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState<ManageTabs>(DEFAULT_ACTIVE_TAB);

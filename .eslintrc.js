@@ -95,6 +95,7 @@ module.exports = {
     '@typescript-eslint/no-shadow': 'off',
     'react/prop-types': 'off',
     '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
+    '@typescript-eslint/unbound-method': 'off',
   },
   ignorePatterns: ['vite.config.ts', '*.js'],
 };

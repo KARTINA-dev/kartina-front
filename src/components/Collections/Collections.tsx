@@ -8,7 +8,7 @@ import { useCollections } from '@/components/Collections/hooks';
 
 import styles from './Collections.module.scss';
 
-export const Collections: React.VFC = () => {
+export const Collections: React.FC = () => {
   const { t } = useTranslation();
   const { collections } = useCollections();
 

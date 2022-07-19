@@ -17,7 +17,7 @@ import { useAuthentication } from '@/helpers/useAuthentication';
 import styles from './Item.module.scss';
 import { useItemInfo } from './hooks';
 
-const Item: React.VFC = () => {
+const Item: React.FC = () => {
   const { t } = useTranslation();
   const { address, itemID } = useParams();
   const { item, isLoading } = useItemInfo(address, Number(itemID));

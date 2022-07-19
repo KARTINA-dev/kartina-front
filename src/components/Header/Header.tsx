@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { Link, NavLink } from 'react-router-dom';
-import React, { useMemo, useState } from 'react';
+import React, { ReactNode, useMemo, useState } from 'react';
 import { Turn as Hamburger } from 'hamburger-react';
 
 import { ReactComponent as ThemeIcon } from '@/assets/icons/theme_24.svg';
@@ -13,6 +13,7 @@ import { ProfileTabs } from '@/pages/Profile/types';
 import styles from './Header.module.scss';
 
 interface IHeader {
+  children?: ReactNode;
   login?: () => void;
   logout?: () => void;
   isAuthenticated?: boolean;
@@ -59,7 +60,7 @@ export const Header: React.FC<IHeader> = (props) => {
     <header className={cn(styles.header, { [styles.headerMenuOpen]: menuOpen })}>
       <div className={styles.menu}>
         <div className={styles.burgerContainer}>
-          <Hamburger toggled={menuOpen} size={23} distance={'sm'} onToggle={toggleMenu} />
+          <Hamburger toggled={menuOpen} size={18} distance={'sm'} onToggle={toggleMenu} />
         </div>
         <div className={styles.menuLinks}>
           <ThemeIcon className={styles.menuLinksItem} onClick={toggleTheme} />

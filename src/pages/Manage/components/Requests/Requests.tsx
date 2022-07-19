@@ -9,7 +9,7 @@ import { useTranslation } from '@/i18n';
 import { useRequests } from './hooks';
 import styles from './Requests.module.scss';
 
-export const Requests: React.VFC = () => {
+export const Requests: React.FC = () => {
   const { t } = useTranslation();
   const { _id: galleryId } = useSelector((state) => state.gallery);
   const { requests } = useRequests(galleryId);

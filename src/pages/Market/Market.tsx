@@ -20,7 +20,7 @@ import styles from './Market.module.scss';
 const COUNTRIES = [{ label: 'Россия', value: 'ru' }];
 const MAX_PRICE = 50000;
 
-const Market: React.VFC = () => {
+const Market: React.FC = () => {
   const { t } = useTranslation();
   const { isAuthenticated, login, isLoading } = useAuthentication();
   const { filter, onFilterChange, sortOptions } = useFilter();

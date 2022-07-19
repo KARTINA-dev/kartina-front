@@ -21,7 +21,7 @@ import { ProfileTabs } from '@/pages/Profile/types';
 import styles from './Listing.module.scss';
 import { useListingInfo, useRelatedListings } from './hooks';
 
-const Listing: React.VFC = () => {
+const Listing: React.FC = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { address, listingID: listingIdParam } = useParams();

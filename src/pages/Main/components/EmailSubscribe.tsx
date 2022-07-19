@@ -12,7 +12,7 @@ interface IEmailSubscribeProps {
   title: string;
 }
 
-export const EmailSubscribe: React.VFC<IEmailSubscribeProps> = ({ dropId, title }) => {
+export const EmailSubscribe: React.FC<IEmailSubscribeProps> = ({ dropId, title }) => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
   const { t } = useTranslation();

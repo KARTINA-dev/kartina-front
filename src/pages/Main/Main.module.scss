@@ -1,36 +1,12 @@
 .main {
   height: 100%;
   width: 100%;
-  padding: 0 6rem;
+  padding: 3rem;
   font-size: var(--font-size-s);
 
   .subtitle {
     &Meta {
       color: var(--color-typo-accent);
-    }
-  }
-
-  .footer {
-    display: flex;
-    flex-direction: column;
-    height: 192px;
-    align-items: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    border-top: 1px solid var(--color-bg-border);
-    padding: 4rem 0;
-    margin-top: 4rem;
-
-    &Company {
-      display: flex;
-      width: 100%;
-      font-size: var(--font-size-4xl);
-    }
-
-    &Copyright {
-      display: flex;
-      width: 100%;
-      justify-content: flex-end;
-      padding: 2rem 0;
     }
   }
 }

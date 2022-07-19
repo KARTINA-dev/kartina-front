@@ -19,7 +19,7 @@ import styles from './Profile.module.scss';
 
 const DEFAULT_ACTIVE_TAB = ProfileTabs.Collection;
 
-const Profile: React.VFC = () => {
+const Profile: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState<ProfileTabs>(DEFAULT_ACTIVE_TAB);

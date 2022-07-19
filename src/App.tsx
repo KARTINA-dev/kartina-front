@@ -7,7 +7,7 @@ import { ThemeProvider } from './helpers/Theme/ThemeProvider';
 
 import './flow';
 
-const App: React.VFC = () => (
+const App: React.FC = () => (
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider>

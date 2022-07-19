@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useContext, useCallback } from 'react';
+import React, { useState, useEffect, createContext, useContext, useCallback, ReactNode } from 'react';
 
 export enum Theme {
   Light = 'light',
@@ -14,7 +14,7 @@ const DEFAULT_THEME = Theme.Light;
 
 export const ThemeContext = createContext<ITheme>({});
 
-export const ThemeProvider: React.FC = ({ children }) => {
+export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState(Theme.Dark);
 
   useEffect(() => {
