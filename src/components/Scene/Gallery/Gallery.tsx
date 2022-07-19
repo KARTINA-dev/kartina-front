@@ -3,7 +3,7 @@ import { useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 export const Gallery = () => {
-  const { scene } = useLoader(GLTFLoader, '/assets/gallery.glb');
+  const { scene } = useLoader(GLTFLoader, '/gallery.glb');
 
   return (
     <Suspense fallback={null}>

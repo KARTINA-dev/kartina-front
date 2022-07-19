@@ -83,6 +83,5 @@ export default defineConfig(({ mode }) => {
       },
     },
     define: getDefineConfig(envConfig),
-    assetsInclude: ['**/*.gltf', '**/*.glb'],
   };
 });
