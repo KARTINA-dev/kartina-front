@@ -36,7 +36,10 @@ jobs:
         if: ${{ failure() }}
         uses: appleboy/telegram-action@master
         with:
-          message: ⚠️ Failed - Health Check Frontend
+          message: |
+            PR: ${{ github.event.pull_request.title }}
+            Author: ${{ github.actor }}
+            ⚠️ Failed - Health Check Frontend
           format: markdown
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -64,7 +67,10 @@ jobs:
         if: ${{ failure() }}
         uses: appleboy/telegram-action@master
         with:
-          message: ⚠️ Failed - Build and Publish Dockerfile Images
+          message: |
+            PR: ${{ github.event.pull_request.title }}
+            Author: ${{ github.actor }}
+            ⚠️ Failed - Build and Publish Dockerfile Images
           format: markdown
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -107,7 +113,10 @@ jobs:
         if: ${{ success() }}
         uses: appleboy/telegram-action@master
         with:
-          message: ✅ Frontend new version was successfuly deployed
+          message: |
+            PR: ${{ github.event.pull_request.title }}
+            Author: ${{ github.actor }}
+            ✅ Frontend new version was successfuly deployed
           format: markdown
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
